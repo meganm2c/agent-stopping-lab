@@ -1,0 +1,24 @@
+{
+  "dataset_id": "RGF0YXNldDox",
+  "dataset_version_id": "RGF0YXNldFZlcnNpb246MQ==",
+  "dataset_sha256": "2d92afebe6926f4828adff5a15d7428d835972bf446f4b299989442fae25b70d",
+  "prompt_sha256": "5b4dda77aa73fae889ed9b9e8187716a13599c8824e912ded92a20148da9dab6",
+  "experiments": [
+    {
+      "name": "repeatability-budget-6-phase3",
+      "id": "RXhwZXJpbWVudDo4",
+      "project_name": "Experiment-a5306e0e25812f6326d8932b",
+      "budget": 6,
+      "adaptive": false,
+      "url": "http://localhost:6006/datasets/RGF0YXNldDox/compare?experimentId=RXhwZXJpbWVudDo4"
+    },
+    {
+      "name": "repeatability-budget-8-phase3",
+      "id": "RXhwZXJpbWVudDo5",
+      "project_name": "Experiment-f7e59373dbbc9058412ea026",
+      "budget": 8,
+      "adaptive": false,
+      "url": "http://localhost:6006/datasets/RGF0YXNldDox/compare?experimentId=RXhwZXJpbWVudDo5"
+    }
+  ]
+}

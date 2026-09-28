@@ -1,0 +1,117 @@
+{
+  "prompt": "You decide whether a diagnostic agent should continue investigating a software incident.\nUse only the user report and observed tool results supplied below.\nReturn STOP only when the observed evidence supports a coherent diagnosis and another\ncall is unlikely to materially improve confidence or resolve an important ambiguity.\nReturn CONTINUE when important uncertainty remains. Do not assume unobserved facts.\nReturn a decision (STOP or CONTINUE) and a short reason grounded in observed evidence.\n",
+  "schema": {
+    "additionalProperties": false,
+    "properties": {
+      "decision": {
+        "enum": [
+          "STOP",
+          "CONTINUE"
+        ],
+        "title": "Decision",
+        "type": "string"
+      },
+      "reason": {
+        "title": "Reason",
+        "type": "string"
+      }
+    },
+    "required": [
+      "decision",
+      "reason"
+    ],
+    "title": "StopDecision",
+    "type": "object"
+  },
+  "hypothesis_sha256": "b8cdd3d1762ea95b662a57ab35488e0b22ed950619fda490f5f45c6148ffbbbb",
+  "agent_prompt": "You diagnose a small software system with frontend, api, database, and cache.\nUse diagnostic tools to gather enough evidence to identify the most likely root cause.\nDo not assume facts that have not been observed through tool results.\nAvoid unnecessary repeated tool calls. Stop when you have enough evidence.\nReturn predicted_root_cause, a short explanation, and evidence_used (observed evidence IDs).\nUse this shared root-cause vocabulary: frontend_deployment_regression,\napi_configuration_issue, database_saturation, cache_configuration_regression,\ndatabase_connection_regression, api_dependency_issue. Use unknown if evidence is insufficient.\n",
+  "diagnosis_schema": {
+    "additionalProperties": false,
+    "properties": {
+      "predicted_root_cause": {
+        "title": "Predicted Root Cause",
+        "type": "string"
+      },
+      "explanation": {
+        "title": "Explanation",
+        "type": "string"
+      },
+      "evidence_used": {
+        "items": {
+          "type": "string"
+        },
+        "title": "Evidence Used",
+        "type": "array"
+      }
+    },
+    "required": [
+      "predicted_root_cause",
+      "explanation",
+      "evidence_used"
+    ],
+    "title": "Diagnosis",
+    "type": "object"
+  },
+  "tool_schemas": [
+    {
+      "type": "function",
+      "function": {
+        "name": "check_status",
+        "description": "Check health and a short metric for frontend, api, database, or cache.",
+        "parameters": {
+          "properties": {
+            "component": {
+              "title": "Component",
+              "type": "string"
+            }
+          },
+          "required": [
+            "component"
+          ],
+          "title": "check_status_input",
+          "type": "object"
+        }
+      }
+    },
+    {
+      "type": "function",
+      "function": {
+        "name": "read_logs",
+        "description": "Read log summary for frontend, api, database, or cache.",
+        "parameters": {
+          "properties": {
+            "component": {
+              "title": "Component",
+              "type": "string"
+            }
+          },
+          "required": [
+            "component"
+          ],
+          "title": "read_logs_input",
+          "type": "object"
+        }
+      }
+    },
+    {
+      "type": "function",
+      "function": {
+        "name": "check_recent_change",
+        "description": "Check recent deployment/configuration change for a system component.",
+        "parameters": {
+          "properties": {
+            "component": {
+              "title": "Component",
+              "type": "string"
+            }
+          },
+          "required": [
+            "component"
+          ],
+          "title": "check_recent_change_input",
+          "type": "object"
+        }
+      }
+    }
+  ]
+}

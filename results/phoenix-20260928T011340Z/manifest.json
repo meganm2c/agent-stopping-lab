@@ -1,0 +1,39 @@
+{
+  "dataset_id": "RGF0YXNldDox",
+  "dataset_version_id": "RGF0YXNldFZlcnNpb246MQ==",
+  "dataset_name": "agent-tool-budget-pilot-v2-2d92afeb",
+  "dataset_sha256": "2d92afebe6926f4828adff5a15d7428d835972bf446f4b299989442fae25b70d",
+  "model_name": "gpt-4.1-mini-2025-04-14",
+  "prompt_sha256": "5b4dda77aa73fae889ed9b9e8187716a13599c8824e912ded92a20148da9dab6",
+  "temperature": 0.0,
+  "experiments": [
+    {
+      "budget": 2,
+      "id": "RXhwZXJpbWVudDox",
+      "project_name": "Experiment-352a0f1dedc0c58cad787464",
+      "url": "http://localhost:6006/datasets/RGF0YXNldDox/compare?experimentId=RXhwZXJpbWVudDox",
+      "project_id": "UHJvamVjdDo1"
+    },
+    {
+      "budget": 4,
+      "id": "RXhwZXJpbWVudDoy",
+      "project_name": "Experiment-6d6fe7db02624f90d99b0931",
+      "url": "http://localhost:6006/datasets/RGF0YXNldDox/compare?experimentId=RXhwZXJpbWVudDoy",
+      "project_id": "UHJvamVjdDo2"
+    },
+    {
+      "budget": 6,
+      "id": "RXhwZXJpbWVudDoz",
+      "project_name": "Experiment-e4a64421e89b64ed2dab0efd",
+      "url": "http://localhost:6006/datasets/RGF0YXNldDox/compare?experimentId=RXhwZXJpbWVudDoz",
+      "project_id": "UHJvamVjdDo3"
+    },
+    {
+      "budget": 8,
+      "id": "RXhwZXJpbWVudDo0",
+      "project_name": "Experiment-0cb369d0d889d2fc259f2546",
+      "url": "http://localhost:6006/datasets/RGF0YXNldDox/compare?experimentId=RXhwZXJpbWVudDo0",
+      "project_id": "UHJvamVjdDo4"
+    }
+  ]
+}

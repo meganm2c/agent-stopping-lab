@@ -1,0 +1,32 @@
+{
+  "dataset_id": "RGF0YXNldDox",
+  "dataset_version_id": "RGF0YXNldFZlcnNpb246MQ==",
+  "dataset_sha256": "2d92afebe6926f4828adff5a15d7428d835972bf446f4b299989442fae25b70d",
+  "prompt_sha256": "5b4dda77aa73fae889ed9b9e8187716a13599c8824e912ded92a20148da9dab6",
+  "experiments": [
+    {
+      "name": "fixed-budget-6",
+      "id": "RXhwZXJpbWVudDoxMA==",
+      "project_name": "Experiment-5e696b42a08ee0ba03a3cf9d",
+      "budget": 6,
+      "adaptive": false,
+      "url": "http://localhost:6006/datasets/RGF0YXNldDox/compare?experimentId=RXhwZXJpbWVudDoxMA=="
+    },
+    {
+      "name": "fixed-budget-8",
+      "id": "RXhwZXJpbWVudDoxMQ==",
+      "project_name": "Experiment-7f84a8a298ebddcbbf2c2636",
+      "budget": 8,
+      "adaptive": false,
+      "url": "http://localhost:6006/datasets/RGF0YXNldDox/compare?experimentId=RXhwZXJpbWVudDoxMQ=="
+    },
+    {
+      "name": "adaptive-stopping",
+      "id": "RXhwZXJpbWVudDoxMg==",
+      "project_name": "Experiment-882336a62febf8c1c7c7193a",
+      "budget": 8,
+      "adaptive": true,
+      "url": "http://localhost:6006/datasets/RGF0YXNldDox/compare?experimentId=RXhwZXJpbWVudDoxMg=="
+    }
+  ]
+}

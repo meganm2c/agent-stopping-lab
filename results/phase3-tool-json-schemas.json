@@ -1,0 +1,62 @@
+[
+  {
+    "function": {
+      "description": "Check health and a short metric for frontend, api, database, or cache.",
+      "name": "check_status",
+      "parameters": {
+        "properties": {
+          "component": {
+            "title": "Component",
+            "type": "string"
+          }
+        },
+        "required": [
+          "component"
+        ],
+        "title": "check_status_input",
+        "type": "object"
+      }
+    },
+    "type": "function"
+  },
+  {
+    "function": {
+      "description": "Read log summary for frontend, api, database, or cache.",
+      "name": "read_logs",
+      "parameters": {
+        "properties": {
+          "component": {
+            "title": "Component",
+            "type": "string"
+          }
+        },
+        "required": [
+          "component"
+        ],
+        "title": "read_logs_input",
+        "type": "object"
+      }
+    },
+    "type": "function"
+  },
+  {
+    "function": {
+      "description": "Check recent deployment/configuration change for a system component.",
+      "name": "check_recent_change",
+      "parameters": {
+        "properties": {
+          "component": {
+            "title": "Component",
+            "type": "string"
+          }
+        },
+        "required": [
+          "component"
+        ],
+        "title": "check_recent_change_input",
+        "type": "object"
+      }
+    },
+    "type": "function"
+  }
+]

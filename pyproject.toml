@@ -1,0 +1,26 @@
+[build-system]
+requires = ["setuptools>=77"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "agent-tool-budget-lab"
+version = "0.1.0"
+description = "A controlled diagnostic environment for agent tool budgets"
+requires-python = ">=3.11"
+dependencies = [
+  "agent-framework-core==1.19.0",
+  "agent-framework-openai==1.14.4",
+  "pydantic==2.13.5",
+  "python-dotenv==1.2.3",
+]
+
+[project.optional-dependencies]
+phoenix = ["arize-phoenix-client==3.5.0", "arize-phoenix-otel==0.17.1", "opentelemetry-sdk==1.45.0"]
+dev = ["pytest==9.1.1"]
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+pythonpath = ["src"]
+testpaths = ["tests"]

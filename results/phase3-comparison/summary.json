@@ -1,0 +1,700 @@
+{
+  "aggregates": {
+    "fixed-budget-6": {
+      "n": 24,
+      "diagnoses": {
+        "cache_configuration_regression": 3,
+        "database_connection_regression": 6,
+        "api_dependency_issue": 6,
+        "database_saturation": 3,
+        "frontend_deployment_regression": 3,
+        "api_configuration_issue": 3
+      },
+      "diagnosis_consistency": 0.25,
+      "accuracy": 0.875,
+      "evidence_completeness": 0.8333333333333334,
+      "evidence_sufficient": 0.5416666666666666,
+      "premature_stop": 0.4583333333333333,
+      "calls_mean": 4.958333333333333,
+      "calls_min": 2,
+      "calls_max": 6,
+      "calls_sd": 1.3987841942995431,
+      "trajectory_variants": 10,
+      "evidence_set_variants": 10,
+      "stop_reasons": {
+        "tool_budget": 15,
+        "agent_answered": 9
+      },
+      "post_sufficiency_calls": 0.4583333333333333,
+      "irrelevant_calls": 2.4583333333333335,
+      "agent_tokens": 3046.5833333333335,
+      "latency_seconds": 4.31350062087525,
+      "adaptive_stop_triggered": 0,
+      "false_early_stop": 0,
+      "avoided_calls_vs_budget8": 3.0416666666666665,
+      "stopper_overhead_tokens": 0,
+      "stopper_overhead_latency": 0,
+      "total_tokens": 3046.5833333333335,
+      "stopper_errors": 0,
+      "mean_stop_call_index": null,
+      "false_early_stop_given_trigger": null
+    },
+    "fixed-budget-8": {
+      "n": 24,
+      "diagnoses": {
+        "cache_configuration_regression": 6,
+        "database_connection_regression": 6,
+        "api_configuration_issue": 6,
+        "database_saturation": 3,
+        "frontend_deployment_regression": 3
+      },
+      "diagnosis_consistency": 0.25,
+      "accuracy": 1,
+      "evidence_completeness": 0.9791666666666666,
+      "evidence_sufficient": 0.9166666666666666,
+      "premature_stop": 0.08333333333333333,
+      "calls_mean": 5.791666666666667,
+      "calls_min": 1,
+      "calls_max": 8,
+      "calls_sd": 2.14046658984022,
+      "trajectory_variants": 14,
+      "evidence_set_variants": 13,
+      "stop_reasons": {
+        "tool_budget": 7,
+        "agent_answered": 17
+      },
+      "post_sufficiency_calls": 0.5416666666666666,
+      "irrelevant_calls": 2.7083333333333335,
+      "agent_tokens": 3698.375,
+      "latency_seconds": 4.845431653252793,
+      "adaptive_stop_triggered": 0,
+      "false_early_stop": 0,
+      "avoided_calls_vs_budget8": 2.2083333333333335,
+      "stopper_overhead_tokens": 0,
+      "stopper_overhead_latency": 0,
+      "total_tokens": 3698.375,
+      "stopper_errors": 0,
+      "mean_stop_call_index": null,
+      "false_early_stop_given_trigger": null
+    },
+    "adaptive-stopping": {
+      "n": 24,
+      "diagnoses": {
+        "cache_configuration_regression": 5,
+        "database_connection_regression": 6,
+        "api_configuration_issue": 4,
+        "database_saturation": 5,
+        "api_dependency_issue": 1,
+        "frontend_deployment_regression": 3
+      },
+      "diagnosis_consistency": 0.25,
+      "accuracy": 0.7916666666666666,
+      "evidence_completeness": 0.7013888888888888,
+      "evidence_sufficient": 0.3333333333333333,
+      "premature_stop": 0.6666666666666666,
+      "calls_mean": 3.9166666666666665,
+      "calls_min": 1,
+      "calls_max": 7,
+      "calls_sd": 1.998263134713633,
+      "trajectory_variants": 12,
+      "evidence_set_variants": 12,
+      "stop_reasons": {
+        "adaptive_stop": 24
+      },
+      "post_sufficiency_calls": 0,
+      "irrelevant_calls": 1.6666666666666667,
+      "agent_tokens": 2435.75,
+      "latency_seconds": 7.20343933733299,
+      "adaptive_stop_triggered": 1,
+      "false_early_stop": 0.6666666666666666,
+      "avoided_calls_vs_budget8": 4.083333333333333,
+      "stopper_overhead_tokens": 1646.8333333333333,
+      "stopper_overhead_latency": 3.614707011873785,
+      "total_tokens": 4082.5833333333335,
+      "stopper_errors": 0,
+      "mean_stop_call_index": 3.9166666666666665,
+      "false_early_stop_given_trigger": 0.6666666666666666
+    }
+  },
+  "groups": {
+    "fixed-budget-6/diag_001": {
+      "n": 3,
+      "diagnoses": {
+        "api_configuration_issue": 3
+      },
+      "diagnosis_consistency": 1.0,
+      "accuracy": 1,
+      "evidence_completeness": 1.0,
+      "evidence_sufficient": 1,
+      "premature_stop": 0,
+      "calls_mean": 2.6666666666666665,
+      "calls_min": 2,
+      "calls_max": 3,
+      "calls_sd": 0.4714045207910317,
+      "trajectory_variants": 2,
+      "evidence_set_variants": 2,
+      "stop_reasons": {
+        "agent_answered": 3
+      },
+      "post_sufficiency_calls": 1.6666666666666667,
+      "irrelevant_calls": 1.6666666666666667,
+      "agent_tokens": 1614.3333333333333,
+      "latency_seconds": 2.9675546890017963
+    },
+    "fixed-budget-6/diag_002": {
+      "n": 3,
+      "diagnoses": {
+        "frontend_deployment_regression": 3
+      },
+      "diagnosis_consistency": 1.0,
+      "accuracy": 1,
+      "evidence_completeness": 1.0,
+      "evidence_sufficient": 1,
+      "premature_stop": 0,
+      "calls_mean": 3,
+      "calls_min": 3,
+      "calls_max": 3,
+      "calls_sd": 0.0,
+      "trajectory_variants": 1,
+      "evidence_set_variants": 1,
+      "stop_reasons": {
+        "agent_answered": 3
+      },
+      "post_sufficiency_calls": 0,
+      "irrelevant_calls": 0,
+      "agent_tokens": 1797.6666666666667,
+      "latency_seconds": 3.1908300843303246
+    },
+    "fixed-budget-6/diag_003": {
+      "n": 3,
+      "diagnoses": {
+        "database_saturation": 3
+      },
+      "diagnosis_consistency": 1.0,
+      "accuracy": 1,
+      "evidence_completeness": 1.0,
+      "evidence_sufficient": 1,
+      "premature_stop": 0,
+      "calls_mean": 6,
+      "calls_min": 6,
+      "calls_max": 6,
+      "calls_sd": 0.0,
+      "trajectory_variants": 1,
+      "evidence_set_variants": 1,
+      "stop_reasons": {
+        "tool_budget": 3
+      },
+      "post_sufficiency_calls": 2,
+      "irrelevant_calls": 4,
+      "agent_tokens": 3711,
+      "latency_seconds": 4.780888853997264
+    },
+    "fixed-budget-6/diag_004": {
+      "n": 3,
+      "diagnoses": {
+        "api_dependency_issue": 3
+      },
+      "diagnosis_consistency": 1.0,
+      "accuracy": 0,
+      "evidence_completeness": 0.5,
+      "evidence_sufficient": 0,
+      "premature_stop": 1,
+      "calls_mean": 6,
+      "calls_min": 6,
+      "calls_max": 6,
+      "calls_sd": 0.0,
+      "trajectory_variants": 1,
+      "evidence_set_variants": 1,
+      "stop_reasons": {
+        "tool_budget": 3
+      },
+      "post_sufficiency_calls": 0,
+      "irrelevant_calls": 4,
+      "agent_tokens": 3734,
+      "latency_seconds": 4.872617465332344
+    },
+    "fixed-budget-6/diag_005": {
+      "n": 3,
+      "diagnoses": {
+        "database_connection_regression": 3
+      },
+      "diagnosis_consistency": 1.0,
+      "accuracy": 1,
+      "evidence_completeness": 1.0,
+      "evidence_sufficient": 1,
+      "premature_stop": 0,
+      "calls_mean": 4,
+      "calls_min": 4,
+      "calls_max": 4,
+      "calls_sd": 0.0,
+      "trajectory_variants": 1,
+      "evidence_set_variants": 1,
+      "stop_reasons": {
+        "agent_answered": 3
+      },
+      "post_sufficiency_calls": 0,
+      "irrelevant_calls": 2,
+      "agent_tokens": 2356.3333333333335,
+      "latency_seconds": 3.7576536030052616
+    },
+    "fixed-budget-6/diag_006": {
+      "n": 3,
+      "diagnoses": {
+        "api_dependency_issue": 3
+      },
+      "diagnosis_consistency": 1.0,
+      "accuracy": 1,
+      "evidence_completeness": 0.6666666666666666,
+      "evidence_sufficient": 0,
+      "premature_stop": 1,
+      "calls_mean": 6,
+      "calls_min": 6,
+      "calls_max": 6,
+      "calls_sd": 0.0,
+      "trajectory_variants": 1,
+      "evidence_set_variants": 1,
+      "stop_reasons": {
+        "tool_budget": 3
+      },
+      "post_sufficiency_calls": 0,
+      "irrelevant_calls": 4,
+      "agent_tokens": 3651.3333333333335,
+      "latency_seconds": 4.845556619664421
+    },
+    "fixed-budget-6/diag_007": {
+      "n": 3,
+      "diagnoses": {
+        "database_connection_regression": 3
+      },
+      "diagnosis_consistency": 1.0,
+      "accuracy": 1,
+      "evidence_completeness": 0.8333333333333334,
+      "evidence_sufficient": 0.3333333333333333,
+      "premature_stop": 0.6666666666666666,
+      "calls_mean": 6,
+      "calls_min": 6,
+      "calls_max": 6,
+      "calls_sd": 0.0,
+      "trajectory_variants": 2,
+      "evidence_set_variants": 2,
+      "stop_reasons": {
+        "tool_budget": 3
+      },
+      "post_sufficiency_calls": 0,
+      "irrelevant_calls": 2,
+      "agent_tokens": 3752,
+      "latency_seconds": 5.037771877667789
+    },
+    "fixed-budget-6/diag_008": {
+      "n": 3,
+      "diagnoses": {
+        "cache_configuration_regression": 3
+      },
+      "diagnosis_consistency": 1.0,
+      "accuracy": 1,
+      "evidence_completeness": 0.6666666666666666,
+      "evidence_sufficient": 0,
+      "premature_stop": 1,
+      "calls_mean": 6,
+      "calls_min": 6,
+      "calls_max": 6,
+      "calls_sd": 0.0,
+      "trajectory_variants": 2,
+      "evidence_set_variants": 2,
+      "stop_reasons": {
+        "tool_budget": 3
+      },
+      "post_sufficiency_calls": 0,
+      "irrelevant_calls": 2,
+      "agent_tokens": 3756,
+      "latency_seconds": 5.055131774002803
+    },
+    "fixed-budget-8/diag_001": {
+      "n": 3,
+      "diagnoses": {
+        "api_configuration_issue": 3
+      },
+      "diagnosis_consistency": 1.0,
+      "accuracy": 1,
+      "evidence_completeness": 1.0,
+      "evidence_sufficient": 1,
+      "premature_stop": 0,
+      "calls_mean": 2.3333333333333335,
+      "calls_min": 1,
+      "calls_max": 3,
+      "calls_sd": 0.9428090415820634,
+      "trajectory_variants": 2,
+      "evidence_set_variants": 2,
+      "stop_reasons": {
+        "agent_answered": 3
+      },
+      "post_sufficiency_calls": 1.3333333333333333,
+      "irrelevant_calls": 1.3333333333333333,
+      "agent_tokens": 1452.3333333333333,
+      "latency_seconds": 2.436194237670861
+    },
+    "fixed-budget-8/diag_002": {
+      "n": 3,
+      "diagnoses": {
+        "frontend_deployment_regression": 3
+      },
+      "diagnosis_consistency": 1.0,
+      "accuracy": 1,
+      "evidence_completeness": 1.0,
+      "evidence_sufficient": 1,
+      "premature_stop": 0,
+      "calls_mean": 3,
+      "calls_min": 3,
+      "calls_max": 3,
+      "calls_sd": 0.0,
+      "trajectory_variants": 1,
+      "evidence_set_variants": 1,
+      "stop_reasons": {
+        "agent_answered": 3
+      },
+      "post_sufficiency_calls": 0,
+      "irrelevant_calls": 0,
+      "agent_tokens": 1797.6666666666667,
+      "latency_seconds": 2.8219524676678702
+    },
+    "fixed-budget-8/diag_003": {
+      "n": 3,
+      "diagnoses": {
+        "database_saturation": 3
+      },
+      "diagnosis_consistency": 1.0,
+      "accuracy": 1,
+      "evidence_completeness": 1.0,
+      "evidence_sufficient": 1,
+      "premature_stop": 0,
+      "calls_mean": 7,
+      "calls_min": 6,
+      "calls_max": 8,
+      "calls_sd": 0.816496580927726,
+      "trajectory_variants": 3,
+      "evidence_set_variants": 3,
+      "stop_reasons": {
+        "agent_answered": 2,
+        "tool_budget": 1
+      },
+      "post_sufficiency_calls": 3,
+      "irrelevant_calls": 5,
+      "agent_tokens": 4486,
+      "latency_seconds": 5.526186361001844
+    },
+    "fixed-budget-8/diag_004": {
+      "n": 3,
+      "diagnoses": {
+        "cache_configuration_regression": 3
+      },
+      "diagnosis_consistency": 1.0,
+      "accuracy": 1,
+      "evidence_completeness": 0.8333333333333334,
+      "evidence_sufficient": 0.3333333333333333,
+      "premature_stop": 0.6666666666666666,
+      "calls_mean": 8,
+      "calls_min": 8,
+      "calls_max": 8,
+      "calls_sd": 0.0,
+      "trajectory_variants": 2,
+      "evidence_set_variants": 2,
+      "stop_reasons": {
+        "tool_budget": 3
+      },
+      "post_sufficiency_calls": 0,
+      "irrelevant_calls": 4.666666666666667,
+      "agent_tokens": 5282.333333333333,
+      "latency_seconds": 6.4527411236679955
+    },
+    "fixed-budget-8/diag_005": {
+      "n": 3,
+      "diagnoses": {
+        "database_connection_regression": 3
+      },
+      "diagnosis_consistency": 1.0,
+      "accuracy": 1,
+      "evidence_completeness": 1.0,
+      "evidence_sufficient": 1,
+      "premature_stop": 0,
+      "calls_mean": 4.666666666666667,
+      "calls_min": 4,
+      "calls_max": 6,
+      "calls_sd": 0.9428090415820634,
+      "trajectory_variants": 2,
+      "evidence_set_variants": 2,
+      "stop_reasons": {
+        "agent_answered": 3
+      },
+      "post_sufficiency_calls": 0,
+      "irrelevant_calls": 2.6666666666666665,
+      "agent_tokens": 2789,
+      "latency_seconds": 3.854019778004537
+    },
+    "fixed-budget-8/diag_006": {
+      "n": 3,
+      "diagnoses": {
+        "api_configuration_issue": 3
+      },
+      "diagnosis_consistency": 1.0,
+      "accuracy": 1,
+      "evidence_completeness": 1.0,
+      "evidence_sufficient": 1,
+      "premature_stop": 0,
+      "calls_mean": 7,
+      "calls_min": 7,
+      "calls_max": 7,
+      "calls_sd": 0.0,
+      "trajectory_variants": 1,
+      "evidence_set_variants": 1,
+      "stop_reasons": {
+        "agent_answered": 3
+      },
+      "post_sufficiency_calls": 0,
+      "irrelevant_calls": 4,
+      "agent_tokens": 4404.666666666667,
+      "latency_seconds": 6.002353561333924
+    },
+    "fixed-budget-8/diag_007": {
+      "n": 3,
+      "diagnoses": {
+        "database_connection_regression": 3
+      },
+      "diagnosis_consistency": 1.0,
+      "accuracy": 1,
+      "evidence_completeness": 1.0,
+      "evidence_sufficient": 1,
+      "premature_stop": 0,
+      "calls_mean": 6.333333333333333,
+      "calls_min": 6,
+      "calls_max": 7,
+      "calls_sd": 0.4714045207910317,
+      "trajectory_variants": 2,
+      "evidence_set_variants": 2,
+      "stop_reasons": {
+        "agent_answered": 3
+      },
+      "post_sufficiency_calls": 0,
+      "irrelevant_calls": 2,
+      "agent_tokens": 4008.6666666666665,
+      "latency_seconds": 4.876407195003897
+    },
+    "fixed-budget-8/diag_008": {
+      "n": 3,
+      "diagnoses": {
+        "cache_configuration_regression": 3
+      },
+      "diagnosis_consistency": 1.0,
+      "accuracy": 1,
+      "evidence_completeness": 1.0,
+      "evidence_sufficient": 1,
+      "premature_stop": 0,
+      "calls_mean": 8,
+      "calls_min": 8,
+      "calls_max": 8,
+      "calls_sd": 0.0,
+      "trajectory_variants": 1,
+      "evidence_set_variants": 1,
+      "stop_reasons": {
+        "tool_budget": 3
+      },
+      "post_sufficiency_calls": 0,
+      "irrelevant_calls": 2,
+      "agent_tokens": 5366.333333333333,
+      "latency_seconds": 6.793598501671416
+    },
+    "adaptive-stopping/diag_001": {
+      "n": 3,
+      "diagnoses": {
+        "api_configuration_issue": 3
+      },
+      "diagnosis_consistency": 1.0,
+      "accuracy": 1,
+      "evidence_completeness": 1.0,
+      "evidence_sufficient": 1,
+      "premature_stop": 0,
+      "calls_mean": 1,
+      "calls_min": 1,
+      "calls_max": 1,
+      "calls_sd": 0.0,
+      "trajectory_variants": 1,
+      "evidence_set_variants": 1,
+      "stop_reasons": {
+        "adaptive_stop": 3
+      },
+      "post_sufficiency_calls": 0,
+      "irrelevant_calls": 0,
+      "agent_tokens": 789,
+      "latency_seconds": 2.658172226661312
+    },
+    "adaptive-stopping/diag_002": {
+      "n": 3,
+      "diagnoses": {
+        "frontend_deployment_regression": 3
+      },
+      "diagnosis_consistency": 1.0,
+      "accuracy": 1,
+      "evidence_completeness": 0.5,
+      "evidence_sufficient": 0,
+      "premature_stop": 1,
+      "calls_mean": 2,
+      "calls_min": 2,
+      "calls_max": 2,
+      "calls_sd": 0.0,
+      "trajectory_variants": 1,
+      "evidence_set_variants": 1,
+      "stop_reasons": {
+        "adaptive_stop": 3
+      },
+      "post_sufficiency_calls": 0,
+      "irrelevant_calls": 0,
+      "agent_tokens": 1271.3333333333333,
+      "latency_seconds": 4.158571607001552
+    },
+    "adaptive-stopping/diag_003": {
+      "n": 3,
+      "diagnoses": {
+        "database_saturation": 3
+      },
+      "diagnosis_consistency": 1.0,
+      "accuracy": 1,
+      "evidence_completeness": 0.5,
+      "evidence_sufficient": 0,
+      "premature_stop": 1,
+      "calls_mean": 3,
+      "calls_min": 3,
+      "calls_max": 3,
+      "calls_sd": 0.0,
+      "trajectory_variants": 1,
+      "evidence_set_variants": 1,
+      "stop_reasons": {
+        "adaptive_stop": 3
+      },
+      "post_sufficiency_calls": 0,
+      "irrelevant_calls": 2,
+      "agent_tokens": 1754.3333333333333,
+      "latency_seconds": 5.715516785998868
+    },
+    "adaptive-stopping/diag_004": {
+      "n": 3,
+      "diagnoses": {
+        "database_saturation": 2,
+        "api_dependency_issue": 1
+      },
+      "diagnosis_consistency": 0.6666666666666666,
+      "accuracy": 0,
+      "evidence_completeness": 0.3333333333333333,
+      "evidence_sufficient": 0,
+      "premature_stop": 1,
+      "calls_mean": 2.3333333333333335,
+      "calls_min": 2,
+      "calls_max": 3,
+      "calls_sd": 0.4714045207910317,
+      "trajectory_variants": 2,
+      "evidence_set_variants": 2,
+      "stop_reasons": {
+        "adaptive_stop": 3
+      },
+      "post_sufficiency_calls": 0,
+      "irrelevant_calls": 1,
+      "agent_tokens": 1455,
+      "latency_seconds": 4.426127702002607
+    },
+    "adaptive-stopping/diag_005": {
+      "n": 3,
+      "diagnoses": {
+        "database_connection_regression": 3
+      },
+      "diagnosis_consistency": 1.0,
+      "accuracy": 1,
+      "evidence_completeness": 1.0,
+      "evidence_sufficient": 1,
+      "premature_stop": 0,
+      "calls_mean": 5,
+      "calls_min": 4,
+      "calls_max": 6,
+      "calls_sd": 0.816496580927726,
+      "trajectory_variants": 3,
+      "evidence_set_variants": 3,
+      "stop_reasons": {
+        "adaptive_stop": 3
+      },
+      "post_sufficiency_calls": 0,
+      "irrelevant_calls": 3,
+      "agent_tokens": 2998.3333333333335,
+      "latency_seconds": 8.919678354335096
+    },
+    "adaptive-stopping/diag_006": {
+      "n": 3,
+      "diagnoses": {
+        "cache_configuration_regression": 2,
+        "api_configuration_issue": 1
+      },
+      "diagnosis_consistency": 0.6666666666666666,
+      "accuracy": 0.3333333333333333,
+      "evidence_completeness": 0.7777777777777778,
+      "evidence_sufficient": 0.3333333333333333,
+      "premature_stop": 0.6666666666666666,
+      "calls_mean": 5.666666666666667,
+      "calls_min": 5,
+      "calls_max": 7,
+      "calls_sd": 0.9428090415820634,
+      "trajectory_variants": 2,
+      "evidence_set_variants": 2,
+      "stop_reasons": {
+        "adaptive_stop": 3
+      },
+      "post_sufficiency_calls": 0,
+      "irrelevant_calls": 3.3333333333333335,
+      "agent_tokens": 3450,
+      "latency_seconds": 9.936812349333195
+    },
+    "adaptive-stopping/diag_007": {
+      "n": 3,
+      "diagnoses": {
+        "database_connection_regression": 3
+      },
+      "diagnosis_consistency": 1.0,
+      "accuracy": 1,
+      "evidence_completeness": 0.8333333333333334,
+      "evidence_sufficient": 0.3333333333333333,
+      "premature_stop": 0.6666666666666666,
+      "calls_mean": 6.333333333333333,
+      "calls_min": 6,
+      "calls_max": 7,
+      "calls_sd": 0.4714045207910317,
+      "trajectory_variants": 2,
+      "evidence_set_variants": 2,
+      "stop_reasons": {
+        "adaptive_stop": 3
+      },
+      "post_sufficiency_calls": 0,
+      "irrelevant_calls": 2,
+      "agent_tokens": 4008,
+      "latency_seconds": 11.665455021667489
+    },
+    "adaptive-stopping/diag_008": {
+      "n": 3,
+      "diagnoses": {
+        "cache_configuration_regression": 3
+      },
+      "diagnosis_consistency": 1.0,
+      "accuracy": 1,
+      "evidence_completeness": 0.6666666666666666,
+      "evidence_sufficient": 0,
+      "premature_stop": 1,
+      "calls_mean": 6,
+      "calls_min": 6,
+      "calls_max": 6,
+      "calls_sd": 0.0,
+      "trajectory_variants": 1,
+      "evidence_set_variants": 1,
+      "stop_reasons": {
+        "adaptive_stop": 3
+      },
+      "post_sufficiency_calls": 0,
+      "irrelevant_calls": 2,
+      "agent_tokens": 3760,
+      "latency_seconds": 10.147180651663803
+    }
+  }
+}

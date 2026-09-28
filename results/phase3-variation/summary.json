@@ -1,0 +1,301 @@
+{
+  "aggregates": {
+    "repeatability-budget-6-phase3": {
+      "n": 25,
+      "diagnoses": {
+        "cache_configuration_regression": 5,
+        "database_connection_regression": 10,
+        "api_dependency_issue": 10
+      },
+      "diagnosis_consistency": 0.4,
+      "accuracy": 0.8,
+      "evidence_completeness": 0.7566666666666666,
+      "evidence_sufficient": 0.36,
+      "premature_stop": 0.64,
+      "calls_mean": 5.6,
+      "calls_min": 4,
+      "calls_max": 6,
+      "calls_sd": 0.8,
+      "trajectory_variants": 7,
+      "evidence_set_variants": 7,
+      "stop_reasons": {
+        "tool_budget": 20,
+        "agent_answered": 5
+      },
+      "post_sufficiency_calls": 0,
+      "irrelevant_calls": 2.8,
+      "agent_tokens": 3450.56,
+      "latency_seconds": 4.742370801200159
+    },
+    "repeatability-budget-8-phase3": {
+      "n": 25,
+      "diagnoses": {
+        "cache_configuration_regression": 10,
+        "database_connection_regression": 10,
+        "api_configuration_issue": 5
+      },
+      "diagnosis_consistency": 0.4,
+      "accuracy": 1,
+      "evidence_completeness": 0.97,
+      "evidence_sufficient": 0.88,
+      "premature_stop": 0.12,
+      "calls_mean": 6.72,
+      "calls_min": 4,
+      "calls_max": 8,
+      "calls_sd": 1.45657131648265,
+      "trajectory_variants": 9,
+      "evidence_set_variants": 8,
+      "stop_reasons": {
+        "tool_budget": 9,
+        "agent_answered": 16
+      },
+      "post_sufficiency_calls": 0,
+      "irrelevant_calls": 2.88,
+      "agent_tokens": 4321,
+      "latency_seconds": 5.371582001437782
+    }
+  },
+  "groups": {
+    "repeatability-budget-6-phase3/diag_004": {
+      "n": 5,
+      "diagnoses": {
+        "api_dependency_issue": 5
+      },
+      "diagnosis_consistency": 1.0,
+      "accuracy": 0,
+      "evidence_completeness": 0.5,
+      "evidence_sufficient": 0,
+      "premature_stop": 1,
+      "calls_mean": 6,
+      "calls_min": 6,
+      "calls_max": 6,
+      "calls_sd": 0.0,
+      "trajectory_variants": 1,
+      "evidence_set_variants": 1,
+      "stop_reasons": {
+        "tool_budget": 5
+      },
+      "post_sufficiency_calls": 0,
+      "irrelevant_calls": 4,
+      "agent_tokens": 3737.2,
+      "latency_seconds": 5.579990493002697
+    },
+    "repeatability-budget-6-phase3/diag_005": {
+      "n": 5,
+      "diagnoses": {
+        "database_connection_regression": 5
+      },
+      "diagnosis_consistency": 1.0,
+      "accuracy": 1,
+      "evidence_completeness": 1.0,
+      "evidence_sufficient": 1,
+      "premature_stop": 0,
+      "calls_mean": 4,
+      "calls_min": 4,
+      "calls_max": 4,
+      "calls_sd": 0.0,
+      "trajectory_variants": 1,
+      "evidence_set_variants": 1,
+      "stop_reasons": {
+        "agent_answered": 5
+      },
+      "post_sufficiency_calls": 0,
+      "irrelevant_calls": 2,
+      "agent_tokens": 2355.8,
+      "latency_seconds": 3.5400112451956374
+    },
+    "repeatability-budget-6-phase3/diag_006": {
+      "n": 5,
+      "diagnoses": {
+        "api_dependency_issue": 5
+      },
+      "diagnosis_consistency": 1.0,
+      "accuracy": 1,
+      "evidence_completeness": 0.6666666666666666,
+      "evidence_sufficient": 0,
+      "premature_stop": 1,
+      "calls_mean": 6,
+      "calls_min": 6,
+      "calls_max": 6,
+      "calls_sd": 0.0,
+      "trajectory_variants": 2,
+      "evidence_set_variants": 2,
+      "stop_reasons": {
+        "tool_budget": 5
+      },
+      "post_sufficiency_calls": 0,
+      "irrelevant_calls": 4,
+      "agent_tokens": 3648.2,
+      "latency_seconds": 4.853546307596844
+    },
+    "repeatability-budget-6-phase3/diag_007": {
+      "n": 5,
+      "diagnoses": {
+        "database_connection_regression": 5
+      },
+      "diagnosis_consistency": 1.0,
+      "accuracy": 1,
+      "evidence_completeness": 0.95,
+      "evidence_sufficient": 0.8,
+      "premature_stop": 0.2,
+      "calls_mean": 6,
+      "calls_min": 6,
+      "calls_max": 6,
+      "calls_sd": 0.0,
+      "trajectory_variants": 2,
+      "evidence_set_variants": 2,
+      "stop_reasons": {
+        "tool_budget": 5
+      },
+      "post_sufficiency_calls": 0,
+      "irrelevant_calls": 2,
+      "agent_tokens": 3754,
+      "latency_seconds": 4.812041442203918
+    },
+    "repeatability-budget-6-phase3/diag_008": {
+      "n": 5,
+      "diagnoses": {
+        "cache_configuration_regression": 5
+      },
+      "diagnosis_consistency": 1.0,
+      "accuracy": 1,
+      "evidence_completeness": 0.6666666666666666,
+      "evidence_sufficient": 0,
+      "premature_stop": 1,
+      "calls_mean": 6,
+      "calls_min": 6,
+      "calls_max": 6,
+      "calls_sd": 0.0,
+      "trajectory_variants": 2,
+      "evidence_set_variants": 2,
+      "stop_reasons": {
+        "tool_budget": 5
+      },
+      "post_sufficiency_calls": 0,
+      "irrelevant_calls": 2,
+      "agent_tokens": 3757.6,
+      "latency_seconds": 4.926264518001699
+    },
+    "repeatability-budget-8-phase3/diag_004": {
+      "n": 5,
+      "diagnoses": {
+        "cache_configuration_regression": 5
+      },
+      "diagnosis_consistency": 1.0,
+      "accuracy": 1,
+      "evidence_completeness": 0.85,
+      "evidence_sufficient": 0.4,
+      "premature_stop": 0.6,
+      "calls_mean": 7.8,
+      "calls_min": 7,
+      "calls_max": 8,
+      "calls_sd": 0.4,
+      "trajectory_variants": 3,
+      "evidence_set_variants": 3,
+      "stop_reasons": {
+        "agent_answered": 1,
+        "tool_budget": 4
+      },
+      "post_sufficiency_calls": 0,
+      "irrelevant_calls": 4.4,
+      "agent_tokens": 5120,
+      "latency_seconds": 5.938170705601806
+    },
+    "repeatability-budget-8-phase3/diag_005": {
+      "n": 5,
+      "diagnoses": {
+        "database_connection_regression": 5
+      },
+      "diagnosis_consistency": 1.0,
+      "accuracy": 1,
+      "evidence_completeness": 1.0,
+      "evidence_sufficient": 1,
+      "premature_stop": 0,
+      "calls_mean": 4,
+      "calls_min": 4,
+      "calls_max": 4,
+      "calls_sd": 0.0,
+      "trajectory_variants": 1,
+      "evidence_set_variants": 1,
+      "stop_reasons": {
+        "agent_answered": 5
+      },
+      "post_sufficiency_calls": 0,
+      "irrelevant_calls": 2,
+      "agent_tokens": 2358.8,
+      "latency_seconds": 3.862269726197701
+    },
+    "repeatability-budget-8-phase3/diag_006": {
+      "n": 5,
+      "diagnoses": {
+        "api_configuration_issue": 5
+      },
+      "diagnosis_consistency": 1.0,
+      "accuracy": 1,
+      "evidence_completeness": 1.0,
+      "evidence_sufficient": 1,
+      "premature_stop": 0,
+      "calls_mean": 7,
+      "calls_min": 7,
+      "calls_max": 7,
+      "calls_sd": 0.0,
+      "trajectory_variants": 2,
+      "evidence_set_variants": 2,
+      "stop_reasons": {
+        "agent_answered": 5
+      },
+      "post_sufficiency_calls": 0,
+      "irrelevant_calls": 4,
+      "agent_tokens": 4388.6,
+      "latency_seconds": 5.601023126597283
+    },
+    "repeatability-budget-8-phase3/diag_007": {
+      "n": 5,
+      "diagnoses": {
+        "database_connection_regression": 5
+      },
+      "diagnosis_consistency": 1.0,
+      "accuracy": 1,
+      "evidence_completeness": 1.0,
+      "evidence_sufficient": 1,
+      "premature_stop": 0,
+      "calls_mean": 6.8,
+      "calls_min": 6,
+      "calls_max": 7,
+      "calls_sd": 0.4,
+      "trajectory_variants": 2,
+      "evidence_set_variants": 2,
+      "stop_reasons": {
+        "agent_answered": 5
+      },
+      "post_sufficiency_calls": 0,
+      "irrelevant_calls": 2,
+      "agent_tokens": 4374,
+      "latency_seconds": 5.458472118797363
+    },
+    "repeatability-budget-8-phase3/diag_008": {
+      "n": 5,
+      "diagnoses": {
+        "cache_configuration_regression": 5
+      },
+      "diagnosis_consistency": 1.0,
+      "accuracy": 1,
+      "evidence_completeness": 1.0,
+      "evidence_sufficient": 1,
+      "premature_stop": 0,
+      "calls_mean": 8,
+      "calls_min": 8,
+      "calls_max": 8,
+      "calls_sd": 0.0,
+      "trajectory_variants": 1,
+      "evidence_set_variants": 1,
+      "stop_reasons": {
+        "tool_budget": 5
+      },
+      "post_sufficiency_calls": 0,
+      "irrelevant_calls": 2,
+      "agent_tokens": 5363.6,
+      "latency_seconds": 5.997974329994759
+    }
+  }
+}

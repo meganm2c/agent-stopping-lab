@@ -1,0 +1,763 @@
+[
+  {
+    "scenario_id": "diag_001",
+    "difficulty": "easy",
+    "root_cause": "api_configuration_issue",
+    "required_evidence": [
+      "api_status"
+    ],
+    "optional_supporting_evidence": [],
+    "distractor_evidence": [],
+    "runtime": {
+      "user_report": "API requests are being rejected for all users.",
+      "components": {
+        "frontend": {
+          "status": {
+            "component": "frontend",
+            "status": "healthy",
+            "detail": "Availability and latency are within baseline.",
+            "evidence_id": "frontend_status"
+          },
+          "logs": {
+            "component": "frontend",
+            "log_summary": "No errors or unusual traffic in the incident window.",
+            "evidence_id": "frontend_logs"
+          },
+          "recent_change": {
+            "component": "frontend",
+            "changed": false,
+            "description": "No configuration or deployment changes in the incident window.",
+            "evidence_id": "frontend_change"
+          }
+        },
+        "api": {
+          "status": {
+            "component": "api",
+            "status": "unavailable",
+            "detail": "Startup validation failed: configured request limit is zero; all requests are rejected.",
+            "evidence_id": "api_status"
+          },
+          "logs": {
+            "component": "api",
+            "log_summary": "No errors or unusual traffic in the incident window.",
+            "evidence_id": "api_logs"
+          },
+          "recent_change": {
+            "component": "api",
+            "changed": false,
+            "description": "No configuration or deployment changes in the incident window.",
+            "evidence_id": "api_change"
+          }
+        },
+        "database": {
+          "status": {
+            "component": "database",
+            "status": "healthy",
+            "detail": "Availability and latency are within baseline.",
+            "evidence_id": "database_status"
+          },
+          "logs": {
+            "component": "database",
+            "log_summary": "No errors or unusual traffic in the incident window.",
+            "evidence_id": "database_logs"
+          },
+          "recent_change": {
+            "component": "database",
+            "changed": false,
+            "description": "No configuration or deployment changes in the incident window.",
+            "evidence_id": "database_change"
+          }
+        },
+        "cache": {
+          "status": {
+            "component": "cache",
+            "status": "healthy",
+            "detail": "Availability and latency are within baseline.",
+            "evidence_id": "cache_status"
+          },
+          "logs": {
+            "component": "cache",
+            "log_summary": "No errors or unusual traffic in the incident window.",
+            "evidence_id": "cache_logs"
+          },
+          "recent_change": {
+            "component": "cache",
+            "changed": false,
+            "description": "No configuration or deployment changes in the incident window.",
+            "evidence_id": "cache_change"
+          }
+        }
+      }
+    }
+  },
+  {
+    "scenario_id": "diag_002",
+    "difficulty": "easy",
+    "root_cause": "frontend_deployment_regression",
+    "required_evidence": [
+      "frontend_logs",
+      "frontend_change"
+    ],
+    "optional_supporting_evidence": [
+      "frontend_status"
+    ],
+    "distractor_evidence": [],
+    "runtime": {
+      "user_report": "Users see a blank page when opening the application.",
+      "components": {
+        "frontend": {
+          "status": {
+            "component": "frontend",
+            "status": "degraded",
+            "detail": "Page shell loads, but client initialization fails.",
+            "evidence_id": "frontend_status"
+          },
+          "logs": {
+            "component": "frontend",
+            "log_summary": "All page loads fail with missing asset app.91.js. The bundle manifest references that file.",
+            "evidence_id": "frontend_logs"
+          },
+          "recent_change": {
+            "component": "frontend",
+            "changed": true,
+            "description": "Frontend release replaced the asset directory; app.91.js was omitted from the release artifact.",
+            "evidence_id": "frontend_change"
+          }
+        },
+        "api": {
+          "status": {
+            "component": "api",
+            "status": "healthy",
+            "detail": "Availability and latency are within baseline.",
+            "evidence_id": "api_status"
+          },
+          "logs": {
+            "component": "api",
+            "log_summary": "No errors or unusual traffic in the incident window.",
+            "evidence_id": "api_logs"
+          },
+          "recent_change": {
+            "component": "api",
+            "changed": false,
+            "description": "No configuration or deployment changes in the incident window.",
+            "evidence_id": "api_change"
+          }
+        },
+        "database": {
+          "status": {
+            "component": "database",
+            "status": "healthy",
+            "detail": "Availability and latency are within baseline.",
+            "evidence_id": "database_status"
+          },
+          "logs": {
+            "component": "database",
+            "log_summary": "No errors or unusual traffic in the incident window.",
+            "evidence_id": "database_logs"
+          },
+          "recent_change": {
+            "component": "database",
+            "changed": false,
+            "description": "No configuration or deployment changes in the incident window.",
+            "evidence_id": "database_change"
+          }
+        },
+        "cache": {
+          "status": {
+            "component": "cache",
+            "status": "healthy",
+            "detail": "Availability and latency are within baseline.",
+            "evidence_id": "cache_status"
+          },
+          "logs": {
+            "component": "cache",
+            "log_summary": "No errors or unusual traffic in the incident window.",
+            "evidence_id": "cache_logs"
+          },
+          "recent_change": {
+            "component": "cache",
+            "changed": false,
+            "description": "No configuration or deployment changes in the incident window.",
+            "evidence_id": "cache_change"
+          }
+        }
+      }
+    }
+  },
+  {
+    "scenario_id": "diag_003",
+    "difficulty": "easy",
+    "root_cause": "database_saturation",
+    "required_evidence": [
+      "database_status",
+      "database_logs"
+    ],
+    "optional_supporting_evidence": [],
+    "distractor_evidence": [],
+    "runtime": {
+      "user_report": "Saved records take a long time to appear in search.",
+      "components": {
+        "frontend": {
+          "status": {
+            "component": "frontend",
+            "status": "healthy",
+            "detail": "Availability and latency are within baseline.",
+            "evidence_id": "frontend_status"
+          },
+          "logs": {
+            "component": "frontend",
+            "log_summary": "No errors or unusual traffic in the incident window.",
+            "evidence_id": "frontend_logs"
+          },
+          "recent_change": {
+            "component": "frontend",
+            "changed": false,
+            "description": "No configuration or deployment changes in the incident window.",
+            "evidence_id": "frontend_change"
+          }
+        },
+        "api": {
+          "status": {
+            "component": "api",
+            "status": "healthy",
+            "detail": "Availability and latency are within baseline.",
+            "evidence_id": "api_status"
+          },
+          "logs": {
+            "component": "api",
+            "log_summary": "No errors or unusual traffic in the incident window.",
+            "evidence_id": "api_logs"
+          },
+          "recent_change": {
+            "component": "api",
+            "changed": false,
+            "description": "No configuration or deployment changes in the incident window.",
+            "evidence_id": "api_change"
+          }
+        },
+        "database": {
+          "status": {
+            "component": "database",
+            "status": "degraded",
+            "detail": "CPU is 100%; active queries are 240 against capacity of 40.",
+            "evidence_id": "database_status"
+          },
+          "logs": {
+            "component": "database",
+            "log_summary": "Query execution queues are growing; CPU time is dominated by full-table scans, with no connection or lock errors.",
+            "evidence_id": "database_logs"
+          },
+          "recent_change": {
+            "component": "database",
+            "changed": false,
+            "description": "No configuration or deployment changes in the incident window.",
+            "evidence_id": "database_change"
+          }
+        },
+        "cache": {
+          "status": {
+            "component": "cache",
+            "status": "healthy",
+            "detail": "Availability and latency are within baseline.",
+            "evidence_id": "cache_status"
+          },
+          "logs": {
+            "component": "cache",
+            "log_summary": "No errors or unusual traffic in the incident window.",
+            "evidence_id": "cache_logs"
+          },
+          "recent_change": {
+            "component": "cache",
+            "changed": false,
+            "description": "No configuration or deployment changes in the incident window.",
+            "evidence_id": "cache_change"
+          }
+        }
+      }
+    }
+  },
+  {
+    "scenario_id": "diag_004",
+    "difficulty": "medium",
+    "root_cause": "cache_configuration_regression",
+    "required_evidence": [
+      "api_status",
+      "database_status",
+      "cache_logs",
+      "cache_change"
+    ],
+    "optional_supporting_evidence": [],
+    "distractor_evidence": [
+      "frontend_status"
+    ],
+    "runtime": {
+      "user_report": "Users report that the application is unusually slow.",
+      "components": {
+        "frontend": {
+          "status": {
+            "component": "frontend",
+            "status": "healthy",
+            "detail": "CPU is 58% versus usual 50%; rendering latency remains normal.",
+            "evidence_id": "frontend_status"
+          },
+          "logs": {
+            "component": "frontend",
+            "log_summary": "No errors or unusual traffic in the incident window.",
+            "evidence_id": "frontend_logs"
+          },
+          "recent_change": {
+            "component": "frontend",
+            "changed": false,
+            "description": "No configuration or deployment changes in the incident window.",
+            "evidence_id": "frontend_change"
+          }
+        },
+        "api": {
+          "status": {
+            "component": "api",
+            "status": "degraded",
+            "detail": "Read latency is 1.8 seconds; time is spent on repeated backend reads.",
+            "evidence_id": "api_status"
+          },
+          "logs": {
+            "component": "api",
+            "log_summary": "No errors or unusual traffic in the incident window.",
+            "evidence_id": "api_logs"
+          },
+          "recent_change": {
+            "component": "api",
+            "changed": false,
+            "description": "No configuration or deployment changes in the incident window.",
+            "evidence_id": "api_change"
+          }
+        },
+        "database": {
+          "status": {
+            "component": "database",
+            "status": "healthy",
+            "detail": "Availability and latency are within baseline.",
+            "evidence_id": "database_status"
+          },
+          "logs": {
+            "component": "database",
+            "log_summary": "No errors or unusual traffic in the incident window.",
+            "evidence_id": "database_logs"
+          },
+          "recent_change": {
+            "component": "database",
+            "changed": false,
+            "description": "No configuration or deployment changes in the incident window.",
+            "evidence_id": "database_change"
+          }
+        },
+        "cache": {
+          "status": {
+            "component": "cache",
+            "status": "healthy",
+            "detail": "Availability and latency are within baseline.",
+            "evidence_id": "cache_status"
+          },
+          "logs": {
+            "component": "cache",
+            "log_summary": "Hit rate dropped from 95% to 8%; nearly all entries expire before reuse.",
+            "evidence_id": "cache_logs"
+          },
+          "recent_change": {
+            "component": "cache",
+            "changed": true,
+            "description": "Entry TTL changed from 300 seconds to 10 seconds just before the incident.",
+            "evidence_id": "cache_change"
+          }
+        }
+      }
+    }
+  },
+  {
+    "scenario_id": "diag_005",
+    "difficulty": "medium",
+    "root_cause": "database_connection_regression",
+    "required_evidence": [
+      "database_logs",
+      "database_change"
+    ],
+    "optional_supporting_evidence": [
+      "api_logs"
+    ],
+    "distractor_evidence": [],
+    "runtime": {
+      "user_report": "Writes intermittently fail while existing records can still be read.",
+      "components": {
+        "frontend": {
+          "status": {
+            "component": "frontend",
+            "status": "healthy",
+            "detail": "Availability and latency are within baseline.",
+            "evidence_id": "frontend_status"
+          },
+          "logs": {
+            "component": "frontend",
+            "log_summary": "No errors or unusual traffic in the incident window.",
+            "evidence_id": "frontend_logs"
+          },
+          "recent_change": {
+            "component": "frontend",
+            "changed": false,
+            "description": "No configuration or deployment changes in the incident window.",
+            "evidence_id": "frontend_change"
+          }
+        },
+        "api": {
+          "status": {
+            "component": "api",
+            "status": "healthy",
+            "detail": "Availability and latency are within baseline.",
+            "evidence_id": "api_status"
+          },
+          "logs": {
+            "component": "api",
+            "log_summary": "Write requests fail opening database connections; existing read connections continue working.",
+            "evidence_id": "api_logs"
+          },
+          "recent_change": {
+            "component": "api",
+            "changed": false,
+            "description": "No configuration or deployment changes in the incident window.",
+            "evidence_id": "api_change"
+          }
+        },
+        "database": {
+          "status": {
+            "component": "database",
+            "status": "healthy",
+            "detail": "Availability and latency are within baseline.",
+            "evidence_id": "database_status"
+          },
+          "logs": {
+            "component": "database",
+            "log_summary": "New connections from the API fail TLS handshake; running queries and capacity are normal.",
+            "evidence_id": "database_logs"
+          },
+          "recent_change": {
+            "component": "database",
+            "changed": true,
+            "description": "Database server now requires TLS 1.3; the API connector supports up to TLS 1.2.",
+            "evidence_id": "database_change"
+          }
+        },
+        "cache": {
+          "status": {
+            "component": "cache",
+            "status": "healthy",
+            "detail": "Availability and latency are within baseline.",
+            "evidence_id": "cache_status"
+          },
+          "logs": {
+            "component": "cache",
+            "log_summary": "No errors or unusual traffic in the incident window.",
+            "evidence_id": "cache_logs"
+          },
+          "recent_change": {
+            "component": "cache",
+            "changed": false,
+            "description": "No configuration or deployment changes in the incident window.",
+            "evidence_id": "cache_change"
+          }
+        }
+      }
+    }
+  },
+  {
+    "scenario_id": "diag_006",
+    "difficulty": "medium",
+    "root_cause": "api_dependency_issue",
+    "required_evidence": [
+      "api_logs",
+      "cache_status",
+      "api_change"
+    ],
+    "optional_supporting_evidence": [],
+    "distractor_evidence": [],
+    "runtime": {
+      "user_report": "Search requests fail after several seconds; other pages work.",
+      "components": {
+        "frontend": {
+          "status": {
+            "component": "frontend",
+            "status": "healthy",
+            "detail": "Availability and latency are within baseline.",
+            "evidence_id": "frontend_status"
+          },
+          "logs": {
+            "component": "frontend",
+            "log_summary": "No errors or unusual traffic in the incident window.",
+            "evidence_id": "frontend_logs"
+          },
+          "recent_change": {
+            "component": "frontend",
+            "changed": false,
+            "description": "No configuration or deployment changes in the incident window.",
+            "evidence_id": "frontend_change"
+          }
+        },
+        "api": {
+          "status": {
+            "component": "api",
+            "status": "healthy",
+            "detail": "Availability and latency are within baseline.",
+            "evidence_id": "api_status"
+          },
+          "logs": {
+            "component": "api",
+            "log_summary": "Search requests time out fetching cached search indexes. No database request is issued on the failing path.",
+            "evidence_id": "api_logs"
+          },
+          "recent_change": {
+            "component": "api",
+            "changed": true,
+            "description": "Search cache destination changed from cache:6379 to cache:6380. Cache service listens only on 6379.",
+            "evidence_id": "api_change"
+          }
+        },
+        "database": {
+          "status": {
+            "component": "database",
+            "status": "healthy",
+            "detail": "Availability and latency are within baseline.",
+            "evidence_id": "database_status"
+          },
+          "logs": {
+            "component": "database",
+            "log_summary": "No errors or unusual traffic in the incident window.",
+            "evidence_id": "database_logs"
+          },
+          "recent_change": {
+            "component": "database",
+            "changed": false,
+            "description": "No configuration or deployment changes in the incident window.",
+            "evidence_id": "database_change"
+          }
+        },
+        "cache": {
+          "status": {
+            "component": "cache",
+            "status": "healthy",
+            "detail": "Cache responds to health probes with normal latency.",
+            "evidence_id": "cache_status"
+          },
+          "logs": {
+            "component": "cache",
+            "log_summary": "No errors or unusual traffic in the incident window.",
+            "evidence_id": "cache_logs"
+          },
+          "recent_change": {
+            "component": "cache",
+            "changed": false,
+            "description": "No configuration or deployment changes in the incident window.",
+            "evidence_id": "cache_change"
+          }
+        }
+      }
+    },
+    "acceptable_root_causes": [
+      "api_dependency_issue",
+      "api_configuration_issue"
+    ]
+  },
+  {
+    "scenario_id": "diag_007",
+    "difficulty": "hard",
+    "root_cause": "database_connection_regression",
+    "required_evidence": [
+      "api_status",
+      "api_logs",
+      "database_status",
+      "api_change"
+    ],
+    "optional_supporting_evidence": [
+      "database_logs"
+    ],
+    "distractor_evidence": [
+      "frontend_status",
+      "frontend_change"
+    ],
+    "runtime": {
+      "user_report": "The application intermittently stalls during normal traffic.",
+      "components": {
+        "frontend": {
+          "status": {
+            "component": "frontend",
+            "status": "degraded",
+            "detail": "CPU is 78%; rendering itself remains under 20 ms.",
+            "evidence_id": "frontend_status"
+          },
+          "logs": {
+            "component": "frontend",
+            "log_summary": "No errors or unusual traffic in the incident window.",
+            "evidence_id": "frontend_logs"
+          },
+          "recent_change": {
+            "component": "frontend",
+            "changed": true,
+            "description": "Analytics sampling increased; background CPU grew without affecting page-render time.",
+            "evidence_id": "frontend_change"
+          }
+        },
+        "api": {
+          "status": {
+            "component": "api",
+            "status": "degraded",
+            "detail": "Request handlers wait for a downstream resource; API CPU is normal.",
+            "evidence_id": "api_status"
+          },
+          "logs": {
+            "component": "api",
+            "log_summary": "Handlers spend 2 seconds waiting for database connection acquisition; cache requests finish within baseline.",
+            "evidence_id": "api_logs"
+          },
+          "recent_change": {
+            "component": "api",
+            "changed": true,
+            "description": "API database pool maximum changed from 40 to 2 during the last configuration rollout.",
+            "evidence_id": "api_change"
+          }
+        },
+        "database": {
+          "status": {
+            "component": "database",
+            "status": "healthy",
+            "detail": "Query CPU is 20%, storage latency is normal, and only 2 connections are active.",
+            "evidence_id": "database_status"
+          },
+          "logs": {
+            "component": "database",
+            "log_summary": "No slow queries, rejected connections, or TLS errors. Most time is idle between requests.",
+            "evidence_id": "database_logs"
+          },
+          "recent_change": {
+            "component": "database",
+            "changed": false,
+            "description": "No configuration or deployment changes in the incident window.",
+            "evidence_id": "database_change"
+          }
+        },
+        "cache": {
+          "status": {
+            "component": "cache",
+            "status": "healthy",
+            "detail": "Availability and latency are within baseline.",
+            "evidence_id": "cache_status"
+          },
+          "logs": {
+            "component": "cache",
+            "log_summary": "No errors or unusual traffic in the incident window.",
+            "evidence_id": "cache_logs"
+          },
+          "recent_change": {
+            "component": "cache",
+            "changed": false,
+            "description": "No configuration or deployment changes in the incident window.",
+            "evidence_id": "cache_change"
+          }
+        }
+      }
+    }
+  },
+  {
+    "scenario_id": "diag_008",
+    "difficulty": "hard",
+    "root_cause": "cache_configuration_regression",
+    "required_evidence": [
+      "frontend_logs",
+      "api_logs",
+      "database_status",
+      "cache_status",
+      "cache_logs",
+      "cache_change"
+    ],
+    "optional_supporting_evidence": [],
+    "distractor_evidence": [
+      "frontend_change"
+    ],
+    "runtime": {
+      "user_report": "Some users see old values after saving, while others see current values.",
+      "components": {
+        "frontend": {
+          "status": {
+            "component": "frontend",
+            "status": "healthy",
+            "detail": "Availability and latency are within baseline.",
+            "evidence_id": "frontend_status"
+          },
+          "logs": {
+            "component": "frontend",
+            "log_summary": "Affected browsers receive old values from API GET responses after successful saves; no local caching is enabled.",
+            "evidence_id": "frontend_logs"
+          },
+          "recent_change": {
+            "component": "frontend",
+            "changed": true,
+            "description": "A new color theme was deployed; data fetching and storage logic were unchanged.",
+            "evidence_id": "frontend_change"
+          }
+        },
+        "api": {
+          "status": {
+            "component": "api",
+            "status": "healthy",
+            "detail": "Availability and latency are within baseline.",
+            "evidence_id": "api_status"
+          },
+          "logs": {
+            "component": "api",
+            "log_summary": "Writes commit to the database and publish invalidations to namespace records-v2. Subsequent reads sometimes return old cache entries.",
+            "evidence_id": "api_logs"
+          },
+          "recent_change": {
+            "component": "api",
+            "changed": false,
+            "description": "No configuration or deployment changes in the incident window.",
+            "evidence_id": "api_change"
+          }
+        },
+        "database": {
+          "status": {
+            "component": "database",
+            "status": "healthy",
+            "detail": "Primary and read replica are current; replication lag is zero and queries complete normally.",
+            "evidence_id": "database_status"
+          },
+          "logs": {
+            "component": "database",
+            "log_summary": "No errors or unusual traffic in the incident window.",
+            "evidence_id": "database_logs"
+          },
+          "recent_change": {
+            "component": "database",
+            "changed": false,
+            "description": "No configuration or deployment changes in the incident window.",
+            "evidence_id": "database_change"
+          }
+        },
+        "cache": {
+          "status": {
+            "component": "cache",
+            "status": "healthy",
+            "detail": "Hit rate is 98%, memory is 45%, and network round trips are within baseline.",
+            "evidence_id": "cache_status"
+          },
+          "logs": {
+            "component": "cache",
+            "log_summary": "Read entries are served from records-v1; invalidations arrive on records-v2 and match no entries.",
+            "evidence_id": "cache_logs"
+          },
+          "recent_change": {
+            "component": "cache",
+            "changed": true,
+            "description": "Cache read namespace reverted to records-v1 during a configuration rollout. API invalidation namespace remains records-v2.",
+            "evidence_id": "cache_change"
+          }
+        }
+      }
+    }
+  }
+]

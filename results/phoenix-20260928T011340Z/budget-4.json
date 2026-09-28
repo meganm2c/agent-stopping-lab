@@ -1,0 +1,3319 @@
+{
+  "experiment_id": "RXhwZXJpbWVudDoy",
+  "dataset_id": "RGF0YXNldDox",
+  "dataset_version_id": "RGF0YXNldFZlcnNpb246MQ==",
+  "task_runs": [
+    {
+      "dataset_example_id": "RGF0YXNldEV4YW1wbGU6OA==",
+      "output": {
+        "run": {
+          "scenario_id": "diag_008",
+          "user_report": "Some users see old values after saving, while others see current values.",
+          "model_name": "gpt-4.1-mini-2025-04-14",
+          "model_provider": "openai",
+          "configured_tool_budget": 4,
+          "tool_calls": [
+            {
+              "tool_index": 1,
+              "tool_name": "check_status",
+              "arguments": {
+                "component": "frontend"
+              },
+              "output": {
+                "component": "frontend",
+                "status": "healthy",
+                "detail": "Availability and latency are within baseline.",
+                "evidence_id": "frontend_status"
+              },
+              "executed": true,
+              "elapsed_seconds": 9.281799430027604e-05
+            },
+            {
+              "tool_index": 2,
+              "tool_name": "check_status",
+              "arguments": {
+                "component": "api"
+              },
+              "output": {
+                "component": "api",
+                "status": "healthy",
+                "detail": "Availability and latency are within baseline.",
+                "evidence_id": "api_status"
+              },
+              "executed": true,
+              "elapsed_seconds": 0.00011239200830459595
+            },
+            {
+              "tool_index": 3,
+              "tool_name": "check_status",
+              "arguments": {
+                "component": "cache"
+              },
+              "output": {
+                "component": "cache",
+                "status": "healthy",
+                "detail": "Hit rate is 98%, memory is 45%, and network round trips are within baseline.",
+                "evidence_id": "cache_status"
+              },
+              "executed": true,
+              "elapsed_seconds": 8.728299872018397e-05
+            },
+            {
+              "tool_index": 4,
+              "tool_name": "check_status",
+              "arguments": {
+                "component": "database"
+              },
+              "output": {
+                "component": "database",
+                "status": "healthy",
+                "detail": "Primary and read replica are current; replication lag is zero and queries complete normally.",
+                "evidence_id": "database_status"
+              },
+              "executed": true,
+              "elapsed_seconds": 0.00010344499605707824
+            }
+          ],
+          "evidence_ids_retrieved": [
+            "frontend_status",
+            "api_status",
+            "cache_status",
+            "database_status"
+          ],
+          "number_of_tool_calls": 4,
+          "final_diagnosis": {
+            "predicted_root_cause": "cache_configuration_regression",
+            "explanation": "The frontend, API, database, and cache components are all healthy with normal metrics. However, the symptom where some users see old values after saving while others see current values suggests a caching inconsistency issue. Since the cache is healthy but the problem is related to stale data visibility, a cache configuration regression is the most likely root cause.",
+            "evidence_used": [
+              "frontend_status",
+              "api_status",
+              "cache_status",
+              "database_status"
+            ]
+          },
+          "elapsed_seconds": 4.264419952989556,
+          "usage": {
+            "cache_read_input_token_count": 0,
+            "completion/rejected_prediction_tokens": 0,
+            "output_token_count": 155,
+            "completion/audio_tokens": 0,
+            "input_token_count": 2247,
+            "completion/accepted_prediction_tokens": 0,
+            "reasoning_output_token_count": 0,
+            "prompt/audio_tokens": 0,
+            "prompt/cached_tokens": 0,
+            "completion/reasoning_tokens": 0,
+            "total_token_count": 2402
+          },
+          "error": null,
+          "stop_reason": "tool_budget",
+          "model_rounds": [
+            {
+              "tool_choice": "auto",
+              "tools_present": true,
+              "finish_reason": "tool_calls",
+              "usage": {
+                "input_token_count": 334,
+                "output_token_count": 14,
+                "total_token_count": 348,
+                "completion/accepted_prediction_tokens": 0,
+                "completion/audio_tokens": 0,
+                "completion/reasoning_tokens": 0,
+                "reasoning_output_token_count": 0,
+                "completion/rejected_prediction_tokens": 0,
+                "prompt/audio_tokens": 0,
+                "prompt/cached_tokens": 0,
+                "cache_read_input_token_count": 0
+              },
+              "function_calls": 1
+            },
+            {
+              "tool_choice": "auto",
+              "tools_present": true,
+              "finish_reason": "tool_calls",
+              "usage": {
+                "input_token_count": 388,
+                "output_token_count": 14,
+                "total_token_count": 402,
+                "completion/accepted_prediction_tokens": 0,
+                "completion/audio_tokens": 0,
+                "completion/reasoning_tokens": 0,
+                "reasoning_output_token_count": 0,
+                "completion/rejected_prediction_tokens": 0,
+                "prompt/audio_tokens": 0,
+                "prompt/cached_tokens": 0,
+                "cache_read_input_token_count": 0
+              },
+              "function_calls": 1
+            },
+            {
+              "tool_choice": "auto",
+              "tools_present": true,
+              "finish_reason": "tool_calls",
+              "usage": {
+                "input_token_count": 442,
+                "output_token_count": 14,
+                "total_token_count": 456,
+                "completion/accepted_prediction_tokens": 0,
+                "completion/audio_tokens": 0,
+                "completion/reasoning_tokens": 0,
+                "reasoning_output_token_count": 0,
+                "completion/rejected_prediction_tokens": 0,
+                "prompt/audio_tokens": 0,
+                "prompt/cached_tokens": 0,
+                "cache_read_input_token_count": 0
+              },
+              "function_calls": 1
+            },
+            {
+              "tool_choice": "auto",
+              "tools_present": true,
+              "finish_reason": "tool_calls",
+              "usage": {
+                "input_token_count": 508,
+                "output_token_count": 14,
+                "total_token_count": 522,
+                "completion/accepted_prediction_tokens": 0,
+                "completion/audio_tokens": 0,
+                "completion/reasoning_tokens": 0,
+                "reasoning_output_token_count": 0,
+                "completion/rejected_prediction_tokens": 0,
+                "prompt/audio_tokens": 0,
+                "prompt/cached_tokens": 0,
+                "cache_read_input_token_count": 0
+              },
+              "function_calls": 1
+            },
+            {
+              "tool_choice": "none",
+              "tools_present": true,
+              "finish_reason": "stop",
+              "usage": {
+                "input_token_count": 575,
+                "output_token_count": 99,
+                "total_token_count": 674,
+                "completion/accepted_prediction_tokens": 0,
+                "completion/audio_tokens": 0,
+                "completion/reasoning_tokens": 0,
+                "reasoning_output_token_count": 0,
+                "completion/rejected_prediction_tokens": 0,
+                "prompt/audio_tokens": 0,
+                "prompt/cached_tokens": 0,
+                "cache_read_input_token_count": 0
+              },
+              "function_calls": 0
+            }
+          ],
+          "model_settings": {
+            "temperature": 0.0,
+            "reasoning_effort": null,
+            "allow_multiple_tool_calls": false,
+            "max_iterations": 20
+          },
+          "prompt_sha256": "5b4dda77aa73fae889ed9b9e8187716a13599c8824e912ded92a20148da9dab6",
+          "runtime_sha256": "a04af1ded91c1626e9e489fe732e1ef03e706b9474ba7db0f31e9a255be9c65e"
+        },
+        "metrics": {
+          "correct": true,
+          "diagnosis_correct": true,
+          "evidence_sufficient": false,
+          "required_evidence_count": 6,
+          "required_evidence_retrieved_count": 2,
+          "required_evidence_retrieved": [
+            "cache_status",
+            "database_status"
+          ],
+          "missing_required_evidence": [
+            "api_logs",
+            "cache_change",
+            "cache_logs",
+            "frontend_logs"
+          ],
+          "evidence_completeness": 0.3333333333333333,
+          "premature_stop": true,
+          "outside_required_supporting_evidence": [
+            "api_status",
+            "frontend_status"
+          ],
+          "outside_required_supporting_calls": 2,
+          "redundant_calls": 2,
+          "excess_calls": 0,
+          "repeated_calls": 0,
+          "unobserved_citations": []
+        },
+        "difficulty": "hard",
+        "trace_id": "3f109e45969f5bf91a13140e744666ed",
+        "span_id": "10f7a7f158674822"
+      },
+      "repetition_number": 1,
+      "start_time": "2026-09-28T01:14:07.804543+00:00",
+      "end_time": "2026-09-28T01:14:12.080851+00:00",
+      "trace_id": "3f109e45969f5bf91a13140e744666ed",
+      "error": null,
+      "id": "RXhwZXJpbWVudFJ1bjoxNg==",
+      "experiment_id": "RXhwZXJpbWVudDoy"
+    },
+    {
+      "dataset_example_id": "RGF0YXNldEV4YW1wbGU6Nw==",
+      "output": {
+        "run": {
+          "scenario_id": "diag_007",
+          "user_report": "The application intermittently stalls during normal traffic.",
+          "model_name": "gpt-4.1-mini-2025-04-14",
+          "model_provider": "openai",
+          "configured_tool_budget": 4,
+          "tool_calls": [
+            {
+              "tool_index": 1,
+              "tool_name": "check_status",
+              "arguments": {
+                "component": "frontend"
+              },
+              "output": {
+                "component": "frontend",
+                "status": "degraded",
+                "detail": "CPU is 78%; rendering itself remains under 20 ms.",
+                "evidence_id": "frontend_status"
+              },
+              "executed": true,
+              "elapsed_seconds": 0.0001322070020250976
+            },
+            {
+              "tool_index": 2,
+              "tool_name": "check_status",
+              "arguments": {
+                "component": "api"
+              },
+              "output": {
+                "component": "api",
+                "status": "degraded",
+                "detail": "Request handlers wait for a downstream resource; API CPU is normal.",
+                "evidence_id": "api_status"
+              },
+              "executed": true,
+              "elapsed_seconds": 0.00016313701053149998
+            },
+            {
+              "tool_index": 3,
+              "tool_name": "check_status",
+              "arguments": {
+                "component": "database"
+              },
+              "output": {
+                "component": "database",
+                "status": "healthy",
+                "detail": "Query CPU is 20%, storage latency is normal, and only 2 connections are active.",
+                "evidence_id": "database_status"
+              },
+              "executed": true,
+              "elapsed_seconds": 0.00018525599443819374
+            },
+            {
+              "tool_index": 4,
+              "tool_name": "check_status",
+              "arguments": {
+                "component": "cache"
+              },
+              "output": {
+                "component": "cache",
+                "status": "healthy",
+                "detail": "Availability and latency are within baseline.",
+                "evidence_id": "cache_status"
+              },
+              "executed": true,
+              "elapsed_seconds": 9.50090034166351e-05
+            }
+          ],
+          "evidence_ids_retrieved": [
+            "frontend_status",
+            "api_status",
+            "database_status",
+            "cache_status"
+          ],
+          "number_of_tool_calls": 4,
+          "final_diagnosis": {
+            "predicted_root_cause": "api_dependency_issue",
+            "explanation": "The API is degraded and waiting on a downstream resource, while the database and cache are healthy and not saturated. The frontend is also degraded but with normal rendering times, indicating the stall is likely due to the API waiting on an external dependency rather than internal resource issues or recent changes.",
+            "evidence_used": [
+              "frontend_status",
+              "api_status",
+              "database_status",
+              "cache_status"
+            ]
+          },
+          "elapsed_seconds": 3.8320913880015723,
+          "usage": {
+            "cache_read_input_token_count": 0,
+            "completion/rejected_prediction_tokens": 0,
+            "output_token_count": 143,
+            "completion/audio_tokens": 0,
+            "input_token_count": 2262,
+            "completion/accepted_prediction_tokens": 0,
+            "reasoning_output_token_count": 0,
+            "prompt/audio_tokens": 0,
+            "prompt/cached_tokens": 0,
+            "completion/reasoning_tokens": 0,
+            "total_token_count": 2405
+          },
+          "error": null,
+          "stop_reason": "tool_budget",
+          "model_rounds": [
+            {
+              "tool_choice": "auto",
+              "tools_present": true,
+              "finish_reason": "tool_calls",
+              "usage": {
+                "input_token_count": 329,
+                "output_token_count": 14,
+                "total_token_count": 343,
+                "completion/accepted_prediction_tokens": 0,
+                "completion/audio_tokens": 0,
+                "completion/reasoning_tokens": 0,
+                "reasoning_output_token_count": 0,
+                "completion/rejected_prediction_tokens": 0,
+                "prompt/audio_tokens": 0,
+                "prompt/cached_tokens": 0,
+                "cache_read_input_token_count": 0
+              },
+              "function_calls": 1
+            },
+            {
+              "tool_choice": "auto",
+              "tools_present": true,
+              "finish_reason": "tool_calls",
+              "usage": {
+                "input_token_count": 390,
+                "output_token_count": 14,
+                "total_token_count": 404,
+                "completion/accepted_prediction_tokens": 0,
+                "completion/audio_tokens": 0,
+                "completion/reasoning_tokens": 0,
+                "reasoning_output_token_count": 0,
+                "completion/rejected_prediction_tokens": 0,
+                "prompt/audio_tokens": 0,
+                "prompt/cached_tokens": 0,
+                "cache_read_input_token_count": 0
+              },
+              "function_calls": 1
+            },
+            {
+              "tool_choice": "auto",
+              "tools_present": true,
+              "finish_reason": "tool_calls",
+              "usage": {
+                "input_token_count": 451,
+                "output_token_count": 14,
+                "total_token_count": 465,
+                "completion/accepted_prediction_tokens": 0,
+                "completion/audio_tokens": 0,
+                "completion/reasoning_tokens": 0,
+                "reasoning_output_token_count": 0,
+                "completion/rejected_prediction_tokens": 0,
+                "prompt/audio_tokens": 0,
+                "prompt/cached_tokens": 0,
+                "cache_read_input_token_count": 0
+              },
+              "function_calls": 1
+            },
+            {
+              "tool_choice": "auto",
+              "tools_present": true,
+              "finish_reason": "tool_calls",
+              "usage": {
+                "input_token_count": 517,
+                "output_token_count": 14,
+                "total_token_count": 531,
+                "completion/accepted_prediction_tokens": 0,
+                "completion/audio_tokens": 0,
+                "completion/reasoning_tokens": 0,
+                "reasoning_output_token_count": 0,
+                "completion/rejected_prediction_tokens": 0,
+                "prompt/audio_tokens": 0,
+                "prompt/cached_tokens": 0,
+                "cache_read_input_token_count": 0
+              },
+              "function_calls": 1
+            },
+            {
+              "tool_choice": "none",
+              "tools_present": true,
+              "finish_reason": "stop",
+              "usage": {
+                "input_token_count": 575,
+                "output_token_count": 87,
+                "total_token_count": 662,
+                "completion/accepted_prediction_tokens": 0,
+                "completion/audio_tokens": 0,
+                "completion/reasoning_tokens": 0,
+                "reasoning_output_token_count": 0,
+                "completion/rejected_prediction_tokens": 0,
+                "prompt/audio_tokens": 0,
+                "prompt/cached_tokens": 0,
+                "cache_read_input_token_count": 0
+              },
+              "function_calls": 0
+            }
+          ],
+          "model_settings": {
+            "temperature": 0.0,
+            "reasoning_effort": null,
+            "allow_multiple_tool_calls": false,
+            "max_iterations": 20
+          },
+          "prompt_sha256": "5b4dda77aa73fae889ed9b9e8187716a13599c8824e912ded92a20148da9dab6",
+          "runtime_sha256": "1121ade102b75e99ca3ec4e5609d544ef44daf5efb382c55ec946eb1e7883424"
+        },
+        "metrics": {
+          "correct": false,
+          "diagnosis_correct": false,
+          "evidence_sufficient": false,
+          "required_evidence_count": 4,
+          "required_evidence_retrieved_count": 2,
+          "required_evidence_retrieved": [
+            "api_status",
+            "database_status"
+          ],
+          "missing_required_evidence": [
+            "api_change",
+            "api_logs"
+          ],
+          "evidence_completeness": 0.5,
+          "premature_stop": true,
+          "outside_required_supporting_evidence": [
+            "cache_status",
+            "frontend_status"
+          ],
+          "outside_required_supporting_calls": 2,
+          "redundant_calls": 2,
+          "excess_calls": 0,
+          "repeated_calls": 0,
+          "unobserved_citations": []
+        },
+        "difficulty": "hard",
+        "trace_id": "476c2f8c6a074aecf7662256120a07f6",
+        "span_id": "752f691af0a4a2b6"
+      },
+      "repetition_number": 1,
+      "start_time": "2026-09-28T01:14:03.923652+00:00",
+      "end_time": "2026-09-28T01:14:07.765741+00:00",
+      "trace_id": "476c2f8c6a074aecf7662256120a07f6",
+      "error": null,
+      "id": "RXhwZXJpbWVudFJ1bjoxNQ==",
+      "experiment_id": "RXhwZXJpbWVudDoy"
+    },
+    {
+      "dataset_example_id": "RGF0YXNldEV4YW1wbGU6Ng==",
+      "output": {
+        "run": {
+          "scenario_id": "diag_006",
+          "user_report": "Search requests fail after several seconds; other pages work.",
+          "model_name": "gpt-4.1-mini-2025-04-14",
+          "model_provider": "openai",
+          "configured_tool_budget": 4,
+          "tool_calls": [
+            {
+              "tool_index": 1,
+              "tool_name": "check_status",
+              "arguments": {
+                "component": "frontend"
+              },
+              "output": {
+                "component": "frontend",
+                "status": "healthy",
+                "detail": "Availability and latency are within baseline.",
+                "evidence_id": "frontend_status"
+              },
+              "executed": true,
+              "elapsed_seconds": 0.0008589089993620291
+            },
+            {
+              "tool_index": 2,
+              "tool_name": "check_status",
+              "arguments": {
+                "component": "api"
+              },
+              "output": {
+                "component": "api",
+                "status": "healthy",
+                "detail": "Availability and latency are within baseline.",
+                "evidence_id": "api_status"
+              },
+              "executed": true,
+              "elapsed_seconds": 0.00015823399007786065
+            },
+            {
+              "tool_index": 3,
+              "tool_name": "check_status",
+              "arguments": {
+                "component": "database"
+              },
+              "output": {
+                "component": "database",
+                "status": "healthy",
+                "detail": "Availability and latency are within baseline.",
+                "evidence_id": "database_status"
+              },
+              "executed": true,
+              "elapsed_seconds": 0.0001328040088992566
+            },
+            {
+              "tool_index": 4,
+              "tool_name": "check_status",
+              "arguments": {
+                "component": "cache"
+              },
+              "output": {
+                "component": "cache",
+                "status": "healthy",
+                "detail": "Cache responds to health probes with normal latency.",
+                "evidence_id": "cache_status"
+              },
+              "executed": true,
+              "elapsed_seconds": 0.00019834500562865287
+            }
+          ],
+          "evidence_ids_retrieved": [
+            "frontend_status",
+            "api_status",
+            "database_status",
+            "cache_status"
+          ],
+          "number_of_tool_calls": 4,
+          "final_diagnosis": {
+            "predicted_root_cause": "unknown",
+            "explanation": "All components (frontend, api, database, cache) report healthy status with normal availability and latency. No evidence of deployment regressions, configuration issues, or saturation is observed. More specific error logs or recent changes are needed to identify the root cause.",
+            "evidence_used": [
+              "frontend_status",
+              "api_status",
+              "database_status",
+              "cache_status"
+            ]
+          },
+          "elapsed_seconds": 3.9012340089975623,
+          "usage": {
+            "cache_read_input_token_count": 0,
+            "completion/rejected_prediction_tokens": 0,
+            "output_token_count": 135,
+            "completion/audio_tokens": 0,
+            "input_token_count": 2201,
+            "completion/accepted_prediction_tokens": 0,
+            "reasoning_output_token_count": 0,
+            "prompt/audio_tokens": 0,
+            "prompt/cached_tokens": 0,
+            "completion/reasoning_tokens": 0,
+            "total_token_count": 2336
+          },
+          "error": null,
+          "stop_reason": "tool_budget",
+          "model_rounds": [
+            {
+              "tool_choice": "auto",
+              "tools_present": true,
+              "finish_reason": "tool_calls",
+              "usage": {
+                "input_token_count": 331,
+                "output_token_count": 14,
+                "total_token_count": 345,
+                "completion/accepted_prediction_tokens": 0,
+                "completion/audio_tokens": 0,
+                "completion/reasoning_tokens": 0,
+                "reasoning_output_token_count": 0,
+                "completion/rejected_prediction_tokens": 0,
+                "prompt/audio_tokens": 0,
+                "prompt/cached_tokens": 0,
+                "cache_read_input_token_count": 0
+              },
+              "function_calls": 1
+            },
+            {
+              "tool_choice": "auto",
+              "tools_present": true,
+              "finish_reason": "tool_calls",
+              "usage": {
+                "input_token_count": 385,
+                "output_token_count": 14,
+                "total_token_count": 399,
+                "completion/accepted_prediction_tokens": 0,
+                "completion/audio_tokens": 0,
+                "completion/reasoning_tokens": 0,
+                "reasoning_output_token_count": 0,
+                "completion/rejected_prediction_tokens": 0,
+                "prompt/audio_tokens": 0,
+                "prompt/cached_tokens": 0,
+                "cache_read_input_token_count": 0
+              },
+              "function_calls": 1
+            },
+            {
+              "tool_choice": "auto",
+              "tools_present": true,
+              "finish_reason": "tool_calls",
+              "usage": {
+                "input_token_count": 439,
+                "output_token_count": 14,
+                "total_token_count": 453,
+                "completion/accepted_prediction_tokens": 0,
+                "completion/audio_tokens": 0,
+                "completion/reasoning_tokens": 0,
+                "reasoning_output_token_count": 0,
+                "completion/rejected_prediction_tokens": 0,
+                "prompt/audio_tokens": 0,
+                "prompt/cached_tokens": 0,
+                "cache_read_input_token_count": 0
+              },
+              "function_calls": 1
+            },
+            {
+              "tool_choice": "auto",
+              "tools_present": true,
+              "finish_reason": "tool_calls",
+              "usage": {
+                "input_token_count": 493,
+                "output_token_count": 14,
+                "total_token_count": 507,
+                "completion/accepted_prediction_tokens": 0,
+                "completion/audio_tokens": 0,
+                "completion/reasoning_tokens": 0,
+                "reasoning_output_token_count": 0,
+                "completion/rejected_prediction_tokens": 0,
+                "prompt/audio_tokens": 0,
+                "prompt/cached_tokens": 0,
+                "cache_read_input_token_count": 0
+              },
+              "function_calls": 1
+            },
+            {
+              "tool_choice": "none",
+              "tools_present": true,
+              "finish_reason": "stop",
+              "usage": {
+                "input_token_count": 553,
+                "output_token_count": 79,
+                "total_token_count": 632,
+                "completion/accepted_prediction_tokens": 0,
+                "completion/audio_tokens": 0,
+                "completion/reasoning_tokens": 0,
+                "reasoning_output_token_count": 0,
+                "completion/rejected_prediction_tokens": 0,
+                "prompt/audio_tokens": 0,
+                "prompt/cached_tokens": 0,
+                "cache_read_input_token_count": 0
+              },
+              "function_calls": 0
+            }
+          ],
+          "model_settings": {
+            "temperature": 0.0,
+            "reasoning_effort": null,
+            "allow_multiple_tool_calls": false,
+            "max_iterations": 20
+          },
+          "prompt_sha256": "5b4dda77aa73fae889ed9b9e8187716a13599c8824e912ded92a20148da9dab6",
+          "runtime_sha256": "37acc2a1d1598117aa636a34141d0c83ccb423cb31a2c36bd06dd518668fd5da"
+        },
+        "metrics": {
+          "correct": false,
+          "diagnosis_correct": false,
+          "evidence_sufficient": false,
+          "required_evidence_count": 3,
+          "required_evidence_retrieved_count": 1,
+          "required_evidence_retrieved": [
+            "cache_status"
+          ],
+          "missing_required_evidence": [
+            "api_change",
+            "api_logs"
+          ],
+          "evidence_completeness": 0.3333333333333333,
+          "premature_stop": true,
+          "outside_required_supporting_evidence": [
+            "api_status",
+            "database_status",
+            "frontend_status"
+          ],
+          "outside_required_supporting_calls": 3,
+          "redundant_calls": 3,
+          "excess_calls": 0,
+          "repeated_calls": 0,
+          "unobserved_citations": []
+        },
+        "difficulty": "medium",
+        "trace_id": "5b201590fb7d2517e042efea4178f108",
+        "span_id": "48cb0a078a784b61"
+      },
+      "repetition_number": 1,
+      "start_time": "2026-09-28T01:13:59.971281+00:00",
+      "end_time": "2026-09-28T01:14:03.885341+00:00",
+      "trace_id": "5b201590fb7d2517e042efea4178f108",
+      "error": null,
+      "id": "RXhwZXJpbWVudFJ1bjoxNA==",
+      "experiment_id": "RXhwZXJpbWVudDoy"
+    },
+    {
+      "dataset_example_id": "RGF0YXNldEV4YW1wbGU6NQ==",
+      "output": {
+        "run": {
+          "scenario_id": "diag_005",
+          "user_report": "Writes intermittently fail while existing records can still be read.",
+          "model_name": "gpt-4.1-mini-2025-04-14",
+          "model_provider": "openai",
+          "configured_tool_budget": 4,
+          "tool_calls": [
+            {
+              "tool_index": 1,
+              "tool_name": "check_status",
+              "arguments": {
+                "component": "api"
+              },
+              "output": {
+                "component": "api",
+                "status": "healthy",
+                "detail": "Availability and latency are within baseline.",
+                "evidence_id": "api_status"
+              },
+              "executed": true,
+              "elapsed_seconds": 8.525401062797755e-05
+            },
+            {
+              "tool_index": 2,
+              "tool_name": "check_status",
+              "arguments": {
+                "component": "database"
+              },
+              "output": {
+                "component": "database",
+                "status": "healthy",
+                "detail": "Availability and latency are within baseline.",
+                "evidence_id": "database_status"
+              },
+              "executed": true,
+              "elapsed_seconds": 0.00013850300456397235
+            },
+            {
+              "tool_index": 3,
+              "tool_name": "read_logs",
+              "arguments": {
+                "component": "database"
+              },
+              "output": {
+                "component": "database",
+                "log_summary": "New connections from the API fail TLS handshake; running queries and capacity are normal.",
+                "evidence_id": "database_logs"
+              },
+              "executed": true,
+              "elapsed_seconds": 0.00024256401229649782
+            },
+            {
+              "tool_index": 4,
+              "tool_name": "check_status",
+              "arguments": {
+                "component": "cache"
+              },
+              "output": {
+                "component": "cache",
+                "status": "healthy",
+                "detail": "Availability and latency are within baseline.",
+                "evidence_id": "cache_status"
+              },
+              "executed": true,
+              "elapsed_seconds": 9.52099944697693e-05
+            }
+          ],
+          "evidence_ids_retrieved": [
+            "api_status",
+            "database_status",
+            "database_logs",
+            "cache_status"
+          ],
+          "number_of_tool_calls": 4,
+          "final_diagnosis": {
+            "predicted_root_cause": "database_connection_regression",
+            "explanation": "The database logs show that new connections from the API fail TLS handshake, while running queries and capacity are normal. This indicates a regression in the database connection setup, causing intermittent write failures despite reads working fine.",
+            "evidence_used": [
+              "api_status",
+              "database_status",
+              "database_logs"
+            ]
+          },
+          "elapsed_seconds": 3.51237121700251,
+          "usage": {
+            "cache_read_input_token_count": 0,
+            "completion/rejected_prediction_tokens": 0,
+            "output_token_count": 126,
+            "completion/audio_tokens": 0,
+            "input_token_count": 2212,
+            "completion/accepted_prediction_tokens": 0,
+            "reasoning_output_token_count": 0,
+            "prompt/audio_tokens": 0,
+            "prompt/cached_tokens": 0,
+            "completion/reasoning_tokens": 0,
+            "total_token_count": 2338
+          },
+          "error": null,
+          "stop_reason": "tool_budget",
+          "model_rounds": [
+            {
+              "tool_choice": "auto",
+              "tools_present": true,
+              "finish_reason": "tool_calls",
+              "usage": {
+                "input_token_count": 332,
+                "output_token_count": 14,
+                "total_token_count": 346,
+                "completion/accepted_prediction_tokens": 0,
+                "completion/audio_tokens": 0,
+                "completion/reasoning_tokens": 0,
+                "reasoning_output_token_count": 0,
+                "completion/rejected_prediction_tokens": 0,
+                "prompt/audio_tokens": 0,
+                "prompt/cached_tokens": 0,
+                "cache_read_input_token_count": 0
+              },
+              "function_calls": 1
+            },
+            {
+              "tool_choice": "auto",
+              "tools_present": true,
+              "finish_reason": "tool_calls",
+              "usage": {
+                "input_token_count": 386,
+                "output_token_count": 14,
+                "total_token_count": 400,
+                "completion/accepted_prediction_tokens": 0,
+                "completion/audio_tokens": 0,
+                "completion/reasoning_tokens": 0,
+                "reasoning_output_token_count": 0,
+                "completion/rejected_prediction_tokens": 0,
+                "prompt/audio_tokens": 0,
+                "prompt/cached_tokens": 0,
+                "cache_read_input_token_count": 0
+              },
+              "function_calls": 1
+            },
+            {
+              "tool_choice": "auto",
+              "tools_present": true,
+              "finish_reason": "tool_calls",
+              "usage": {
+                "input_token_count": 440,
+                "output_token_count": 14,
+                "total_token_count": 454,
+                "completion/accepted_prediction_tokens": 0,
+                "completion/audio_tokens": 0,
+                "completion/reasoning_tokens": 0,
+                "reasoning_output_token_count": 0,
+                "completion/rejected_prediction_tokens": 0,
+                "prompt/audio_tokens": 0,
+                "prompt/cached_tokens": 0,
+                "cache_read_input_token_count": 0
+              },
+              "function_calls": 1
+            },
+            {
+              "tool_choice": "auto",
+              "tools_present": true,
+              "finish_reason": "tool_calls",
+              "usage": {
+                "input_token_count": 498,
+                "output_token_count": 14,
+                "total_token_count": 512,
+                "completion/accepted_prediction_tokens": 0,
+                "completion/audio_tokens": 0,
+                "completion/reasoning_tokens": 0,
+                "reasoning_output_token_count": 0,
+                "completion/rejected_prediction_tokens": 0,
+                "prompt/audio_tokens": 0,
+                "prompt/cached_tokens": 0,
+                "cache_read_input_token_count": 0
+              },
+              "function_calls": 1
+            },
+            {
+              "tool_choice": "none",
+              "tools_present": true,
+              "finish_reason": "stop",
+              "usage": {
+                "input_token_count": 556,
+                "output_token_count": 70,
+                "total_token_count": 626,
+                "completion/accepted_prediction_tokens": 0,
+                "completion/audio_tokens": 0,
+                "completion/reasoning_tokens": 0,
+                "reasoning_output_token_count": 0,
+                "completion/rejected_prediction_tokens": 0,
+                "prompt/audio_tokens": 0,
+                "prompt/cached_tokens": 0,
+                "cache_read_input_token_count": 0
+              },
+              "function_calls": 0
+            }
+          ],
+          "model_settings": {
+            "temperature": 0.0,
+            "reasoning_effort": null,
+            "allow_multiple_tool_calls": false,
+            "max_iterations": 20
+          },
+          "prompt_sha256": "5b4dda77aa73fae889ed9b9e8187716a13599c8824e912ded92a20148da9dab6",
+          "runtime_sha256": "6aabb790f0aeb46e8119b530999a24e6b75defb303c4f780f6931c3b234e3ef6"
+        },
+        "metrics": {
+          "correct": true,
+          "diagnosis_correct": true,
+          "evidence_sufficient": false,
+          "required_evidence_count": 2,
+          "required_evidence_retrieved_count": 1,
+          "required_evidence_retrieved": [
+            "database_logs"
+          ],
+          "missing_required_evidence": [
+            "database_change"
+          ],
+          "evidence_completeness": 0.5,
+          "premature_stop": true,
+          "outside_required_supporting_evidence": [
+            "api_status",
+            "cache_status",
+            "database_status"
+          ],
+          "outside_required_supporting_calls": 3,
+          "redundant_calls": 3,
+          "excess_calls": 0,
+          "repeated_calls": 0,
+          "unobserved_citations": []
+        },
+        "difficulty": "medium",
+        "trace_id": "d7df10b1b2051e8f851208c2b5479cf1",
+        "span_id": "bcb8e43a544efa70"
+      },
+      "repetition_number": 1,
+      "start_time": "2026-09-28T01:13:56.362978+00:00",
+      "end_time": "2026-09-28T01:13:59.887529+00:00",
+      "trace_id": "d7df10b1b2051e8f851208c2b5479cf1",
+      "error": null,
+      "id": "RXhwZXJpbWVudFJ1bjoxMw==",
+      "experiment_id": "RXhwZXJpbWVudDoy"
+    },
+    {
+      "dataset_example_id": "RGF0YXNldEV4YW1wbGU6NA==",
+      "output": {
+        "run": {
+          "scenario_id": "diag_004",
+          "user_report": "Users report that the application is unusually slow.",
+          "model_name": "gpt-4.1-mini-2025-04-14",
+          "model_provider": "openai",
+          "configured_tool_budget": 4,
+          "tool_calls": [
+            {
+              "tool_index": 1,
+              "tool_name": "check_status",
+              "arguments": {
+                "component": "frontend"
+              },
+              "output": {
+                "component": "frontend",
+                "status": "healthy",
+                "detail": "CPU is 58% versus usual 50%; rendering latency remains normal.",
+                "evidence_id": "frontend_status"
+              },
+              "executed": true,
+              "elapsed_seconds": 8.848699508234859e-05
+            },
+            {
+              "tool_index": 2,
+              "tool_name": "check_status",
+              "arguments": {
+                "component": "api"
+              },
+              "output": {
+                "component": "api",
+                "status": "degraded",
+                "detail": "Read latency is 1.8 seconds; time is spent on repeated backend reads.",
+                "evidence_id": "api_status"
+              },
+              "executed": true,
+              "elapsed_seconds": 0.00011851299495901912
+            },
+            {
+              "tool_index": 3,
+              "tool_name": "check_status",
+              "arguments": {
+                "component": "database"
+              },
+              "output": {
+                "component": "database",
+                "status": "healthy",
+                "detail": "Availability and latency are within baseline.",
+                "evidence_id": "database_status"
+              },
+              "executed": true,
+              "elapsed_seconds": 0.0001254250091733411
+            },
+            {
+              "tool_index": 4,
+              "tool_name": "check_status",
+              "arguments": {
+                "component": "cache"
+              },
+              "output": {
+                "component": "cache",
+                "status": "healthy",
+                "detail": "Availability and latency are within baseline.",
+                "evidence_id": "cache_status"
+              },
+              "executed": true,
+              "elapsed_seconds": 0.0006295069906627759
+            }
+          ],
+          "evidence_ids_retrieved": [
+            "frontend_status",
+            "api_status",
+            "database_status",
+            "cache_status"
+          ],
+          "number_of_tool_calls": 4,
+          "final_diagnosis": {
+            "predicted_root_cause": "api_dependency_issue",
+            "explanation": "The API component shows degraded status with high read latency due to repeated backend reads, while frontend, database, and cache are healthy and within normal latency. This suggests the API is experiencing issues likely related to its dependencies or how it interacts with backend services, causing the overall application slowness.",
+            "evidence_used": [
+              "api_status",
+              "frontend_status",
+              "database_status",
+              "cache_status"
+            ]
+          },
+          "elapsed_seconds": 3.7679277309944155,
+          "usage": {
+            "cache_read_input_token_count": 0,
+            "completion/rejected_prediction_tokens": 0,
+            "output_token_count": 145,
+            "completion/audio_tokens": 0,
+            "input_token_count": 2254,
+            "completion/accepted_prediction_tokens": 0,
+            "reasoning_output_token_count": 0,
+            "prompt/audio_tokens": 0,
+            "prompt/cached_tokens": 0,
+            "completion/reasoning_tokens": 0,
+            "total_token_count": 2399
+          },
+          "error": null,
+          "stop_reason": "tool_budget",
+          "model_rounds": [
+            {
+              "tool_choice": "auto",
+              "tools_present": true,
+              "finish_reason": "tool_calls",
+              "usage": {
+                "input_token_count": 329,
+                "output_token_count": 14,
+                "total_token_count": 343,
+                "completion/accepted_prediction_tokens": 0,
+                "completion/audio_tokens": 0,
+                "completion/reasoning_tokens": 0,
+                "reasoning_output_token_count": 0,
+                "completion/rejected_prediction_tokens": 0,
+                "prompt/audio_tokens": 0,
+                "prompt/cached_tokens": 0,
+                "cache_read_input_token_count": 0
+              },
+              "function_calls": 1
+            },
+            {
+              "tool_choice": "auto",
+              "tools_present": true,
+              "finish_reason": "tool_calls",
+              "usage": {
+                "input_token_count": 391,
+                "output_token_count": 14,
+                "total_token_count": 405,
+                "completion/accepted_prediction_tokens": 0,
+                "completion/audio_tokens": 0,
+                "completion/reasoning_tokens": 0,
+                "reasoning_output_token_count": 0,
+                "completion/rejected_prediction_tokens": 0,
+                "prompt/audio_tokens": 0,
+                "prompt/cached_tokens": 0,
+                "cache_read_input_token_count": 0
+              },
+              "function_calls": 1
+            },
+            {
+              "tool_choice": "auto",
+              "tools_present": true,
+              "finish_reason": "tool_calls",
+              "usage": {
+                "input_token_count": 456,
+                "output_token_count": 14,
+                "total_token_count": 470,
+                "completion/accepted_prediction_tokens": 0,
+                "completion/audio_tokens": 0,
+                "completion/reasoning_tokens": 0,
+                "reasoning_output_token_count": 0,
+                "completion/rejected_prediction_tokens": 0,
+                "prompt/audio_tokens": 0,
+                "prompt/cached_tokens": 0,
+                "cache_read_input_token_count": 0
+              },
+              "function_calls": 1
+            },
+            {
+              "tool_choice": "auto",
+              "tools_present": true,
+              "finish_reason": "tool_calls",
+              "usage": {
+                "input_token_count": 510,
+                "output_token_count": 14,
+                "total_token_count": 524,
+                "completion/accepted_prediction_tokens": 0,
+                "completion/audio_tokens": 0,
+                "completion/reasoning_tokens": 0,
+                "reasoning_output_token_count": 0,
+                "completion/rejected_prediction_tokens": 0,
+                "prompt/audio_tokens": 0,
+                "prompt/cached_tokens": 0,
+                "cache_read_input_token_count": 0
+              },
+              "function_calls": 1
+            },
+            {
+              "tool_choice": "none",
+              "tools_present": true,
+              "finish_reason": "stop",
+              "usage": {
+                "input_token_count": 568,
+                "output_token_count": 89,
+                "total_token_count": 657,
+                "completion/accepted_prediction_tokens": 0,
+                "completion/audio_tokens": 0,
+                "completion/reasoning_tokens": 0,
+                "reasoning_output_token_count": 0,
+                "completion/rejected_prediction_tokens": 0,
+                "prompt/audio_tokens": 0,
+                "prompt/cached_tokens": 0,
+                "cache_read_input_token_count": 0
+              },
+              "function_calls": 0
+            }
+          ],
+          "model_settings": {
+            "temperature": 0.0,
+            "reasoning_effort": null,
+            "allow_multiple_tool_calls": false,
+            "max_iterations": 20
+          },
+          "prompt_sha256": "5b4dda77aa73fae889ed9b9e8187716a13599c8824e912ded92a20148da9dab6",
+          "runtime_sha256": "c215f58e6cc374bb9e350cd5483c96b6eb6d4358f08b96a7dfb9fad25fd4ed49"
+        },
+        "metrics": {
+          "correct": false,
+          "diagnosis_correct": false,
+          "evidence_sufficient": false,
+          "required_evidence_count": 4,
+          "required_evidence_retrieved_count": 2,
+          "required_evidence_retrieved": [
+            "api_status",
+            "database_status"
+          ],
+          "missing_required_evidence": [
+            "cache_change",
+            "cache_logs"
+          ],
+          "evidence_completeness": 0.5,
+          "premature_stop": true,
+          "outside_required_supporting_evidence": [
+            "cache_status",
+            "frontend_status"
+          ],
+          "outside_required_supporting_calls": 2,
+          "redundant_calls": 2,
+          "excess_calls": 0,
+          "repeated_calls": 0,
+          "unobserved_citations": []
+        },
+        "difficulty": "medium",
+        "trace_id": "749da3414d21961ac4418d32cd7b0213",
+        "span_id": "f3303d8d3bd9984b"
+      },
+      "repetition_number": 1,
+      "start_time": "2026-09-28T01:13:52.507733+00:00",
+      "end_time": "2026-09-28T01:13:56.285570+00:00",
+      "trace_id": "749da3414d21961ac4418d32cd7b0213",
+      "error": null,
+      "id": "RXhwZXJpbWVudFJ1bjoxMg==",
+      "experiment_id": "RXhwZXJpbWVudDoy"
+    },
+    {
+      "dataset_example_id": "RGF0YXNldEV4YW1wbGU6Mw==",
+      "output": {
+        "run": {
+          "scenario_id": "diag_003",
+          "user_report": "Saved records take a long time to appear in search.",
+          "model_name": "gpt-4.1-mini-2025-04-14",
+          "model_provider": "openai",
+          "configured_tool_budget": 4,
+          "tool_calls": [
+            {
+              "tool_index": 1,
+              "tool_name": "check_status",
+              "arguments": {
+                "component": "frontend"
+              },
+              "output": {
+                "component": "frontend",
+                "status": "healthy",
+                "detail": "Availability and latency are within baseline.",
+                "evidence_id": "frontend_status"
+              },
+              "executed": true,
+              "elapsed_seconds": 0.00012501300079748034
+            },
+            {
+              "tool_index": 2,
+              "tool_name": "check_status",
+              "arguments": {
+                "component": "api"
+              },
+              "output": {
+                "component": "api",
+                "status": "healthy",
+                "detail": "Availability and latency are within baseline.",
+                "evidence_id": "api_status"
+              },
+              "executed": true,
+              "elapsed_seconds": 0.0001310359948547557
+            },
+            {
+              "tool_index": 3,
+              "tool_name": "check_status",
+              "arguments": {
+                "component": "database"
+              },
+              "output": {
+                "component": "database",
+                "status": "degraded",
+                "detail": "CPU is 100%; active queries are 240 against capacity of 40.",
+                "evidence_id": "database_status"
+              },
+              "executed": true,
+              "elapsed_seconds": 0.00014157099940348417
+            },
+            {
+              "tool_index": 4,
+              "tool_name": "read_logs",
+              "arguments": {
+                "component": "database"
+              },
+              "output": {
+                "component": "database",
+                "log_summary": "Query execution queues are growing; CPU time is dominated by full-table scans, with no connection or lock errors.",
+                "evidence_id": "database_logs"
+              },
+              "executed": true,
+              "elapsed_seconds": 9.011299698613584e-05
+            }
+          ],
+          "evidence_ids_retrieved": [
+            "frontend_status",
+            "api_status",
+            "database_status",
+            "database_logs"
+          ],
+          "number_of_tool_calls": 4,
+          "final_diagnosis": {
+            "predicted_root_cause": "database_saturation",
+            "explanation": "The database is saturated with CPU at 100% and active queries far exceeding capacity, causing delays in processing saved records and making them appear late in search. Logs show growing query queues and CPU dominated by full-table scans, indicating performance bottleneck at the database level.",
+            "evidence_used": [
+              "database_status",
+              "database_logs"
+            ]
+          },
+          "elapsed_seconds": 3.6098409320111386,
+          "usage": {
+            "cache_read_input_token_count": 0,
+            "completion/rejected_prediction_tokens": 0,
+            "output_token_count": 134,
+            "completion/audio_tokens": 0,
+            "input_token_count": 2229,
+            "completion/accepted_prediction_tokens": 0,
+            "reasoning_output_token_count": 0,
+            "prompt/audio_tokens": 0,
+            "prompt/cached_tokens": 0,
+            "completion/reasoning_tokens": 0,
+            "total_token_count": 2363
+          },
+          "error": null,
+          "stop_reason": "tool_budget",
+          "model_rounds": [
+            {
+              "tool_choice": "auto",
+              "tools_present": true,
+              "finish_reason": "tool_calls",
+              "usage": {
+                "input_token_count": 331,
+                "output_token_count": 14,
+                "total_token_count": 345,
+                "completion/accepted_prediction_tokens": 0,
+                "completion/audio_tokens": 0,
+                "completion/reasoning_tokens": 0,
+                "reasoning_output_token_count": 0,
+                "completion/rejected_prediction_tokens": 0,
+                "prompt/audio_tokens": 0,
+                "prompt/cached_tokens": 0,
+                "cache_read_input_token_count": 0
+              },
+              "function_calls": 1
+            },
+            {
+              "tool_choice": "auto",
+              "tools_present": true,
+              "finish_reason": "tool_calls",
+              "usage": {
+                "input_token_count": 385,
+                "output_token_count": 14,
+                "total_token_count": 399,
+                "completion/accepted_prediction_tokens": 0,
+                "completion/audio_tokens": 0,
+                "completion/reasoning_tokens": 0,
+                "reasoning_output_token_count": 0,
+                "completion/rejected_prediction_tokens": 0,
+                "prompt/audio_tokens": 0,
+                "prompt/cached_tokens": 0,
+                "cache_read_input_token_count": 0
+              },
+              "function_calls": 1
+            },
+            {
+              "tool_choice": "auto",
+              "tools_present": true,
+              "finish_reason": "tool_calls",
+              "usage": {
+                "input_token_count": 439,
+                "output_token_count": 14,
+                "total_token_count": 453,
+                "completion/accepted_prediction_tokens": 0,
+                "completion/audio_tokens": 0,
+                "completion/reasoning_tokens": 0,
+                "reasoning_output_token_count": 0,
+                "completion/rejected_prediction_tokens": 0,
+                "prompt/audio_tokens": 0,
+                "prompt/cached_tokens": 0,
+                "cache_read_input_token_count": 0
+              },
+              "function_calls": 1
+            },
+            {
+              "tool_choice": "auto",
+              "tools_present": true,
+              "finish_reason": "tool_calls",
+              "usage": {
+                "input_token_count": 503,
+                "output_token_count": 14,
+                "total_token_count": 517,
+                "completion/accepted_prediction_tokens": 0,
+                "completion/audio_tokens": 0,
+                "completion/reasoning_tokens": 0,
+                "reasoning_output_token_count": 0,
+                "completion/rejected_prediction_tokens": 0,
+                "prompt/audio_tokens": 0,
+                "prompt/cached_tokens": 0,
+                "cache_read_input_token_count": 0
+              },
+              "function_calls": 1
+            },
+            {
+              "tool_choice": "none",
+              "tools_present": true,
+              "finish_reason": "stop",
+              "usage": {
+                "input_token_count": 571,
+                "output_token_count": 78,
+                "total_token_count": 649,
+                "completion/accepted_prediction_tokens": 0,
+                "completion/audio_tokens": 0,
+                "completion/reasoning_tokens": 0,
+                "reasoning_output_token_count": 0,
+                "completion/rejected_prediction_tokens": 0,
+                "prompt/audio_tokens": 0,
+                "prompt/cached_tokens": 0,
+                "cache_read_input_token_count": 0
+              },
+              "function_calls": 0
+            }
+          ],
+          "model_settings": {
+            "temperature": 0.0,
+            "reasoning_effort": null,
+            "allow_multiple_tool_calls": false,
+            "max_iterations": 20
+          },
+          "prompt_sha256": "5b4dda77aa73fae889ed9b9e8187716a13599c8824e912ded92a20148da9dab6",
+          "runtime_sha256": "f66c5db4978ae0e055af6ed435755d60bb9fc5e6a8d8c5aaeb696188ae7da8e8"
+        },
+        "metrics": {
+          "correct": true,
+          "diagnosis_correct": true,
+          "evidence_sufficient": true,
+          "required_evidence_count": 2,
+          "required_evidence_retrieved_count": 2,
+          "required_evidence_retrieved": [
+            "database_logs",
+            "database_status"
+          ],
+          "missing_required_evidence": [],
+          "evidence_completeness": 1.0,
+          "premature_stop": false,
+          "outside_required_supporting_evidence": [
+            "api_status",
+            "frontend_status"
+          ],
+          "outside_required_supporting_calls": 2,
+          "redundant_calls": 2,
+          "excess_calls": 0,
+          "repeated_calls": 0,
+          "unobserved_citations": []
+        },
+        "difficulty": "easy",
+        "trace_id": "52833d44891976c427527b21495ea611",
+        "span_id": "e93b4bd18ccb449e"
+      },
+      "repetition_number": 1,
+      "start_time": "2026-09-28T01:13:48.836459+00:00",
+      "end_time": "2026-09-28T01:13:52.454637+00:00",
+      "trace_id": "52833d44891976c427527b21495ea611",
+      "error": null,
+      "id": "RXhwZXJpbWVudFJ1bjoxMQ==",
+      "experiment_id": "RXhwZXJpbWVudDoy"
+    },
+    {
+      "dataset_example_id": "RGF0YXNldEV4YW1wbGU6Mg==",
+      "output": {
+        "run": {
+          "scenario_id": "diag_002",
+          "user_report": "Users see a blank page when opening the application.",
+          "model_name": "gpt-4.1-mini-2025-04-14",
+          "model_provider": "openai",
+          "configured_tool_budget": 4,
+          "tool_calls": [
+            {
+              "tool_index": 1,
+              "tool_name": "check_status",
+              "arguments": {
+                "component": "frontend"
+              },
+              "output": {
+                "component": "frontend",
+                "status": "degraded",
+                "detail": "Page shell loads, but client initialization fails.",
+                "evidence_id": "frontend_status"
+              },
+              "executed": true,
+              "elapsed_seconds": 0.0002402259997325018
+            },
+            {
+              "tool_index": 2,
+              "tool_name": "read_logs",
+              "arguments": {
+                "component": "frontend"
+              },
+              "output": {
+                "component": "frontend",
+                "log_summary": "All page loads fail with missing asset app.91.js. The bundle manifest references that file.",
+                "evidence_id": "frontend_logs"
+              },
+              "executed": true,
+              "elapsed_seconds": 8.991900540422648e-05
+            },
+            {
+              "tool_index": 3,
+              "tool_name": "check_recent_change",
+              "arguments": {
+                "component": "frontend"
+              },
+              "output": {
+                "component": "frontend",
+                "changed": true,
+                "description": "Frontend release replaced the asset directory; app.91.js was omitted from the release artifact.",
+                "evidence_id": "frontend_change"
+              },
+              "executed": true,
+              "elapsed_seconds": 0.0002123930025845766
+            }
+          ],
+          "evidence_ids_retrieved": [
+            "frontend_status",
+            "frontend_logs",
+            "frontend_change"
+          ],
+          "number_of_tool_calls": 3,
+          "final_diagnosis": {
+            "predicted_root_cause": "frontend_deployment_regression",
+            "explanation": "The frontend is degraded with client initialization failure due to a missing asset app.91.js. The recent frontend deployment replaced the asset directory but omitted this file, causing the blank page issue.",
+            "evidence_used": [
+              "frontend_status",
+              "frontend_logs",
+              "frontend_change"
+            ]
+          },
+          "elapsed_seconds": 3.0884649119980168,
+          "usage": {
+            "cache_read_input_token_count": 0,
+            "completion/rejected_prediction_tokens": 0,
+            "output_token_count": 114,
+            "completion/audio_tokens": 0,
+            "input_token_count": 1679,
+            "completion/accepted_prediction_tokens": 0,
+            "reasoning_output_token_count": 0,
+            "prompt/audio_tokens": 0,
+            "prompt/cached_tokens": 0,
+            "completion/reasoning_tokens": 0,
+            "total_token_count": 1793
+          },
+          "error": null,
+          "stop_reason": "agent_answered",
+          "model_rounds": [
+            {
+              "tool_choice": "auto",
+              "tools_present": true,
+              "finish_reason": "tool_calls",
+              "usage": {
+                "input_token_count": 330,
+                "output_token_count": 14,
+                "total_token_count": 344,
+                "completion/accepted_prediction_tokens": 0,
+                "completion/audio_tokens": 0,
+                "completion/reasoning_tokens": 0,
+                "reasoning_output_token_count": 0,
+                "completion/rejected_prediction_tokens": 0,
+                "prompt/audio_tokens": 0,
+                "prompt/cached_tokens": 0,
+                "cache_read_input_token_count": 0
+              },
+              "function_calls": 1
+            },
+            {
+              "tool_choice": "auto",
+              "tools_present": true,
+              "finish_reason": "tool_calls",
+              "usage": {
+                "input_token_count": 387,
+                "output_token_count": 14,
+                "total_token_count": 401,
+                "completion/accepted_prediction_tokens": 0,
+                "completion/audio_tokens": 0,
+                "completion/reasoning_tokens": 0,
+                "reasoning_output_token_count": 0,
+                "completion/rejected_prediction_tokens": 0,
+                "prompt/audio_tokens": 0,
+                "prompt/cached_tokens": 0,
+                "cache_read_input_token_count": 0
+              },
+              "function_calls": 1
+            },
+            {
+              "tool_choice": "auto",
+              "tools_present": true,
+              "finish_reason": "tool_calls",
+              "usage": {
+                "input_token_count": 448,
+                "output_token_count": 15,
+                "total_token_count": 463,
+                "completion/accepted_prediction_tokens": 0,
+                "completion/audio_tokens": 0,
+                "completion/reasoning_tokens": 0,
+                "reasoning_output_token_count": 0,
+                "completion/rejected_prediction_tokens": 0,
+                "prompt/audio_tokens": 0,
+                "prompt/cached_tokens": 0,
+                "cache_read_input_token_count": 0
+              },
+              "function_calls": 1
+            },
+            {
+              "tool_choice": "auto",
+              "tools_present": true,
+              "finish_reason": "stop",
+              "usage": {
+                "input_token_count": 514,
+                "output_token_count": 71,
+                "total_token_count": 585,
+                "completion/accepted_prediction_tokens": 0,
+                "completion/audio_tokens": 0,
+                "completion/reasoning_tokens": 0,
+                "reasoning_output_token_count": 0,
+                "completion/rejected_prediction_tokens": 0,
+                "prompt/audio_tokens": 0,
+                "prompt/cached_tokens": 0,
+                "cache_read_input_token_count": 0
+              },
+              "function_calls": 0
+            }
+          ],
+          "model_settings": {
+            "temperature": 0.0,
+            "reasoning_effort": null,
+            "allow_multiple_tool_calls": false,
+            "max_iterations": 20
+          },
+          "prompt_sha256": "5b4dda77aa73fae889ed9b9e8187716a13599c8824e912ded92a20148da9dab6",
+          "runtime_sha256": "11261813027f46e298cf8aa6d8adb9e2bc66b7a6bb562561a5b54e07ac10970d"
+        },
+        "metrics": {
+          "correct": true,
+          "diagnosis_correct": true,
+          "evidence_sufficient": true,
+          "required_evidence_count": 2,
+          "required_evidence_retrieved_count": 2,
+          "required_evidence_retrieved": [
+            "frontend_change",
+            "frontend_logs"
+          ],
+          "missing_required_evidence": [],
+          "evidence_completeness": 1.0,
+          "premature_stop": false,
+          "outside_required_supporting_evidence": [],
+          "outside_required_supporting_calls": 0,
+          "redundant_calls": 0,
+          "excess_calls": 0,
+          "repeated_calls": 0,
+          "unobserved_citations": []
+        },
+        "difficulty": "easy",
+        "trace_id": "fecc5b5459f651d49c116ab3119078f8",
+        "span_id": "5387e1673f885ab9"
+      },
+      "repetition_number": 1,
+      "start_time": "2026-09-28T01:13:45.701369+00:00",
+      "end_time": "2026-09-28T01:13:48.799987+00:00",
+      "trace_id": "fecc5b5459f651d49c116ab3119078f8",
+      "error": null,
+      "id": "RXhwZXJpbWVudFJ1bjoxMA==",
+      "experiment_id": "RXhwZXJpbWVudDoy"
+    },
+    {
+      "dataset_example_id": "RGF0YXNldEV4YW1wbGU6MQ==",
+      "output": {
+        "run": {
+          "scenario_id": "diag_001",
+          "user_report": "API requests are being rejected for all users.",
+          "model_name": "gpt-4.1-mini-2025-04-14",
+          "model_provider": "openai",
+          "configured_tool_budget": 4,
+          "tool_calls": [
+            {
+              "tool_index": 1,
+              "tool_name": "check_status",
+              "arguments": {
+                "component": "api"
+              },
+              "output": {
+                "component": "api",
+                "status": "unavailable",
+                "detail": "Startup validation failed: configured request limit is zero; all requests are rejected.",
+                "evidence_id": "api_status"
+              },
+              "executed": true,
+              "elapsed_seconds": 0.00014357699546962976
+            },
+            {
+              "tool_index": 2,
+              "tool_name": "check_recent_change",
+              "arguments": {
+                "component": "api"
+              },
+              "output": {
+                "component": "api",
+                "changed": false,
+                "description": "No configuration or deployment changes in the incident window.",
+                "evidence_id": "api_change"
+              },
+              "executed": true,
+              "elapsed_seconds": 0.00013951399887446314
+            },
+            {
+              "tool_index": 3,
+              "tool_name": "read_logs",
+              "arguments": {
+                "component": "api"
+              },
+              "output": {
+                "component": "api",
+                "log_summary": "No errors or unusual traffic in the incident window.",
+                "evidence_id": "api_logs"
+              },
+              "executed": true,
+              "elapsed_seconds": 0.0001499130012234673
+            }
+          ],
+          "evidence_ids_retrieved": [
+            "api_status",
+            "api_change",
+            "api_logs"
+          ],
+          "number_of_tool_calls": 3,
+          "final_diagnosis": {
+            "predicted_root_cause": "api_configuration_issue",
+            "explanation": "The API is rejecting all requests due to a configuration setting that limits requests to zero. There have been no recent changes, but the configuration is currently invalid, causing the API to be unavailable.",
+            "evidence_used": [
+              "api_status",
+              "api_change",
+              "api_logs"
+            ]
+          },
+          "elapsed_seconds": 3.4595887159957783,
+          "usage": {
+            "cache_read_input_token_count": 0,
+            "completion/rejected_prediction_tokens": 0,
+            "output_token_count": 113,
+            "completion/audio_tokens": 0,
+            "input_token_count": 1673,
+            "completion/accepted_prediction_tokens": 0,
+            "reasoning_output_token_count": 0,
+            "prompt/audio_tokens": 0,
+            "prompt/cached_tokens": 0,
+            "completion/reasoning_tokens": 0,
+            "total_token_count": 1786
+          },
+          "error": null,
+          "stop_reason": "agent_answered",
+          "model_rounds": [
+            {
+              "tool_choice": "auto",
+              "tools_present": true,
+              "finish_reason": "tool_calls",
+              "usage": {
+                "input_token_count": 329,
+                "output_token_count": 14,
+                "total_token_count": 343,
+                "completion/accepted_prediction_tokens": 0,
+                "completion/audio_tokens": 0,
+                "completion/reasoning_tokens": 0,
+                "reasoning_output_token_count": 0,
+                "completion/rejected_prediction_tokens": 0,
+                "prompt/audio_tokens": 0,
+                "prompt/cached_tokens": 0,
+                "cache_read_input_token_count": 0
+              },
+              "function_calls": 1
+            },
+            {
+              "tool_choice": "auto",
+              "tools_present": true,
+              "finish_reason": "tool_calls",
+              "usage": {
+                "input_token_count": 392,
+                "output_token_count": 15,
+                "total_token_count": 407,
+                "completion/accepted_prediction_tokens": 0,
+                "completion/audio_tokens": 0,
+                "completion/reasoning_tokens": 0,
+                "reasoning_output_token_count": 0,
+                "completion/rejected_prediction_tokens": 0,
+                "prompt/audio_tokens": 0,
+                "prompt/cached_tokens": 0,
+                "cache_read_input_token_count": 0
+              },
+              "function_calls": 1
+            },
+            {
+              "tool_choice": "auto",
+              "tools_present": true,
+              "finish_reason": "tool_calls",
+              "usage": {
+                "input_token_count": 450,
+                "output_token_count": 14,
+                "total_token_count": 464,
+                "completion/accepted_prediction_tokens": 0,
+                "completion/audio_tokens": 0,
+                "completion/reasoning_tokens": 0,
+                "reasoning_output_token_count": 0,
+                "completion/rejected_prediction_tokens": 0,
+                "prompt/audio_tokens": 0,
+                "prompt/cached_tokens": 0,
+                "cache_read_input_token_count": 0
+              },
+              "function_calls": 1
+            },
+            {
+              "tool_choice": "auto",
+              "tools_present": true,
+              "finish_reason": "stop",
+              "usage": {
+                "input_token_count": 502,
+                "output_token_count": 70,
+                "total_token_count": 572,
+                "completion/accepted_prediction_tokens": 0,
+                "completion/audio_tokens": 0,
+                "completion/reasoning_tokens": 0,
+                "reasoning_output_token_count": 0,
+                "completion/rejected_prediction_tokens": 0,
+                "prompt/audio_tokens": 0,
+                "prompt/cached_tokens": 0,
+                "cache_read_input_token_count": 0
+              },
+              "function_calls": 0
+            }
+          ],
+          "model_settings": {
+            "temperature": 0.0,
+            "reasoning_effort": null,
+            "allow_multiple_tool_calls": false,
+            "max_iterations": 20
+          },
+          "prompt_sha256": "5b4dda77aa73fae889ed9b9e8187716a13599c8824e912ded92a20148da9dab6",
+          "runtime_sha256": "724e8bfab26736ad73b885da2a61f6519ce0205013acfe22079ad737666fc71b"
+        },
+        "metrics": {
+          "correct": true,
+          "diagnosis_correct": true,
+          "evidence_sufficient": true,
+          "required_evidence_count": 1,
+          "required_evidence_retrieved_count": 1,
+          "required_evidence_retrieved": [
+            "api_status"
+          ],
+          "missing_required_evidence": [],
+          "evidence_completeness": 1.0,
+          "premature_stop": false,
+          "outside_required_supporting_evidence": [
+            "api_change",
+            "api_logs"
+          ],
+          "outside_required_supporting_calls": 2,
+          "redundant_calls": 2,
+          "excess_calls": 2,
+          "repeated_calls": 0,
+          "unobserved_citations": []
+        },
+        "difficulty": "easy",
+        "trace_id": "f8cbc867fe2fad5d127800dc619966a5",
+        "span_id": "ad025a6debce114b"
+      },
+      "repetition_number": 1,
+      "start_time": "2026-09-28T01:13:40.582937+00:00",
+      "end_time": "2026-09-28T01:13:45.641521+00:00",
+      "trace_id": "f8cbc867fe2fad5d127800dc619966a5",
+      "error": null,
+      "id": "RXhwZXJpbWVudFJ1bjo5",
+      "experiment_id": "RXhwZXJpbWVudDoy"
+    }
+  ],
+  "evaluation_runs": [
+    {
+      "experiment_run_id": "RXhwZXJpbWVudFJ1bjoxNg==",
+      "start_time": "2026-09-28 01:14:13.232490+00:00",
+      "end_time": "2026-09-28 01:14:13.233781+00:00",
+      "name": "diagnosis_correct",
+      "annotator_kind": "CODE",
+      "error": null,
+      "result": {
+        "score": 1,
+        "label": "1",
+        "explanation": "Deterministic rubric v2; stop_reason=tool_budget"
+      },
+      "id": "RXhwZXJpbWVudEV2YWx1YXRpb246ODk=",
+      "trace_id": "a8f556d26a696ea465fb7f9401dfa790",
+      "metadata": {}
+    },
+    {
+      "experiment_run_id": "RXhwZXJpbWVudFJ1bjoxNg==",
+      "start_time": "2026-09-28 01:14:13.246543+00:00",
+      "end_time": "2026-09-28 01:14:13.248257+00:00",
+      "name": "evidence_completeness",
+      "annotator_kind": "CODE",
+      "error": null,
+      "result": {
+        "score": 0.3333333333333333,
+        "label": "0.3333333333333333",
+        "explanation": "Deterministic rubric v2; stop_reason=tool_budget"
+      },
+      "id": "RXhwZXJpbWVudEV2YWx1YXRpb246OTA=",
+      "trace_id": "81179ba6915b11af14adc5b09adbb1b6",
+      "metadata": {}
+    },
+    {
+      "experiment_run_id": "RXhwZXJpbWVudFJ1bjoxNg==",
+      "start_time": "2026-09-28 01:14:13.263167+00:00",
+      "end_time": "2026-09-28 01:14:13.265017+00:00",
+      "name": "evidence_sufficient",
+      "annotator_kind": "CODE",
+      "error": null,
+      "result": {
+        "score": 0,
+        "label": "0",
+        "explanation": "Deterministic rubric v2; stop_reason=tool_budget"
+      },
+      "id": "RXhwZXJpbWVudEV2YWx1YXRpb246OTE=",
+      "trace_id": "1c38cd2e57d170a7b294a00b7ad95f1f",
+      "metadata": {}
+    },
+    {
+      "experiment_run_id": "RXhwZXJpbWVudFJ1bjoxNg==",
+      "start_time": "2026-09-28 01:14:13.327031+00:00",
+      "end_time": "2026-09-28 01:14:13.328877+00:00",
+      "name": "premature_stop",
+      "annotator_kind": "CODE",
+      "error": null,
+      "result": {
+        "score": 1,
+        "label": "1",
+        "explanation": "Deterministic rubric v2; stop_reason=tool_budget"
+      },
+      "id": "RXhwZXJpbWVudEV2YWx1YXRpb246OTI=",
+      "trace_id": "2fbca936782a496cbdc868015f6f4e33",
+      "metadata": {}
+    },
+    {
+      "experiment_run_id": "RXhwZXJpbWVudFJ1bjoxNg==",
+      "start_time": "2026-09-28 01:14:13.460371+00:00",
+      "end_time": "2026-09-28 01:14:13.463511+00:00",
+      "name": "tool_calls_used",
+      "annotator_kind": "CODE",
+      "error": null,
+      "result": {
+        "score": 4,
+        "label": "4",
+        "explanation": "Deterministic rubric v2; stop_reason=tool_budget"
+      },
+      "id": "RXhwZXJpbWVudEV2YWx1YXRpb246OTM=",
+      "trace_id": "15337d495441c22ac817a7d52e45d8d9",
+      "metadata": {}
+    },
+    {
+      "experiment_run_id": "RXhwZXJpbWVudFJ1bjoxNg==",
+      "start_time": "2026-09-28 01:14:13.506212+00:00",
+      "end_time": "2026-09-28 01:14:13.507645+00:00",
+      "name": "redundant_investigation",
+      "annotator_kind": "CODE",
+      "error": null,
+      "result": {
+        "score": 2,
+        "label": "2",
+        "explanation": "Deterministic rubric v2; stop_reason=tool_budget"
+      },
+      "id": "RXhwZXJpbWVudEV2YWx1YXRpb246OTQ=",
+      "trace_id": "13e210270eff0412139df9a37f7d3e75",
+      "metadata": {}
+    },
+    {
+      "experiment_run_id": "RXhwZXJpbWVudFJ1bjoxNg==",
+      "start_time": "2026-09-28 01:14:13.606555+00:00",
+      "end_time": "2026-09-28 01:14:13.607755+00:00",
+      "name": "irrelevant_calls",
+      "annotator_kind": "CODE",
+      "error": null,
+      "result": {
+        "score": 2,
+        "label": "2",
+        "explanation": "Deterministic rubric v2; stop_reason=tool_budget"
+      },
+      "id": "RXhwZXJpbWVudEV2YWx1YXRpb246OTU=",
+      "trace_id": "28391e59556b4eb6c53cbd04cd47476b",
+      "metadata": {}
+    },
+    {
+      "experiment_run_id": "RXhwZXJpbWVudFJ1bjoxNg==",
+      "start_time": "2026-09-28 01:14:13.641084+00:00",
+      "end_time": "2026-09-28 01:14:13.644203+00:00",
+      "name": "post_sufficiency_calls",
+      "annotator_kind": "CODE",
+      "error": null,
+      "result": {
+        "score": 0,
+        "label": "0",
+        "explanation": "Deterministic rubric v2; stop_reason=tool_budget"
+      },
+      "id": "RXhwZXJpbWVudEV2YWx1YXRpb246OTY=",
+      "trace_id": "b4116a247e4d0ecb3c29a31bce52ce24",
+      "metadata": {}
+    },
+    {
+      "experiment_run_id": "RXhwZXJpbWVudFJ1bjoxNg==",
+      "start_time": "2026-09-28 01:14:13.682574+00:00",
+      "end_time": "2026-09-28 01:14:13.683919+00:00",
+      "name": "identical_repeated_calls",
+      "annotator_kind": "CODE",
+      "error": null,
+      "result": {
+        "score": 0,
+        "label": "0",
+        "explanation": "Deterministic rubric v2; stop_reason=tool_budget"
+      },
+      "id": "RXhwZXJpbWVudEV2YWx1YXRpb246OTc=",
+      "trace_id": "29c5566d984b3fa7368fe26bb3eeae31",
+      "metadata": {}
+    },
+    {
+      "experiment_run_id": "RXhwZXJpbWVudFJ1bjoxNg==",
+      "start_time": "2026-09-28 01:14:14.232879+00:00",
+      "end_time": "2026-09-28 01:14:14.234032+00:00",
+      "name": "latency_seconds",
+      "annotator_kind": "CODE",
+      "error": null,
+      "result": {
+        "score": 4.264419952989556,
+        "label": "4.264419952989556",
+        "explanation": "Deterministic rubric v2; stop_reason=tool_budget"
+      },
+      "id": "RXhwZXJpbWVudEV2YWx1YXRpb246OTg=",
+      "trace_id": "07867ea6e33c55410adc135869790587",
+      "metadata": {}
+    },
+    {
+      "experiment_run_id": "RXhwZXJpbWVudFJ1bjoxNg==",
+      "start_time": "2026-09-28 01:14:14.246541+00:00",
+      "end_time": "2026-09-28 01:14:14.248094+00:00",
+      "name": "token_usage",
+      "annotator_kind": "CODE",
+      "error": null,
+      "result": {
+        "score": 2402,
+        "label": "2402",
+        "explanation": "Deterministic rubric v2; stop_reason=tool_budget"
+      },
+      "id": "RXhwZXJpbWVudEV2YWx1YXRpb246MTAw",
+      "trace_id": "5e760289b5dcc338f7af62eae6c8a293",
+      "metadata": {}
+    },
+    {
+      "experiment_run_id": "RXhwZXJpbWVudFJ1bjoxNQ==",
+      "start_time": "2026-09-28 01:14:14.259622+00:00",
+      "end_time": "2026-09-28 01:14:14.261283+00:00",
+      "name": "diagnosis_correct",
+      "annotator_kind": "CODE",
+      "error": null,
+      "result": {
+        "score": 0,
+        "label": "0",
+        "explanation": "Deterministic rubric v2; stop_reason=tool_budget"
+      },
+      "id": "RXhwZXJpbWVudEV2YWx1YXRpb246OTk=",
+      "trace_id": "3bee917d91384378cdfdcdfaa0c9cb95",
+      "metadata": {}
+    },
+    {
+      "experiment_run_id": "RXhwZXJpbWVudFJ1bjoxNQ==",
+      "start_time": "2026-09-28 01:14:14.312942+00:00",
+      "end_time": "2026-09-28 01:14:14.314004+00:00",
+      "name": "evidence_completeness",
+      "annotator_kind": "CODE",
+      "error": null,
+      "result": {
+        "score": 0.5,
+        "label": "0.5",
+        "explanation": "Deterministic rubric v2; stop_reason=tool_budget"
+      },
+      "id": "RXhwZXJpbWVudEV2YWx1YXRpb246MTAx",
+      "trace_id": "035076c750e58c6795b5f51a0731b14a",
+      "metadata": {}
+    },
+    {
+      "experiment_run_id": "RXhwZXJpbWVudFJ1bjoxNQ==",
+      "start_time": "2026-09-28 01:14:14.339522+00:00",
+      "end_time": "2026-09-28 01:14:14.340505+00:00",
+      "name": "evidence_sufficient",
+      "annotator_kind": "CODE",
+      "error": null,
+      "result": {
+        "score": 0,
+        "label": "0",
+        "explanation": "Deterministic rubric v2; stop_reason=tool_budget"
+      },
+      "id": "RXhwZXJpbWVudEV2YWx1YXRpb246MTAy",
+      "trace_id": "92177c861b400d7b644e9054293e5d01",
+      "metadata": {}
+    },
+    {
+      "experiment_run_id": "RXhwZXJpbWVudFJ1bjoxNQ==",
+      "start_time": "2026-09-28 01:14:14.367239+00:00",
+      "end_time": "2026-09-28 01:14:14.368100+00:00",
+      "name": "premature_stop",
+      "annotator_kind": "CODE",
+      "error": null,
+      "result": {
+        "score": 1,
+        "label": "1",
+        "explanation": "Deterministic rubric v2; stop_reason=tool_budget"
+      },
+      "id": "RXhwZXJpbWVudEV2YWx1YXRpb246MTAz",
+      "trace_id": "1999828552c4d8c1f9672d31d1a64f4d",
+      "metadata": {}
+    },
+    {
+      "experiment_run_id": "RXhwZXJpbWVudFJ1bjoxNQ==",
+      "start_time": "2026-09-28 01:14:14.477921+00:00",
+      "end_time": "2026-09-28 01:14:14.479452+00:00",
+      "name": "tool_calls_used",
+      "annotator_kind": "CODE",
+      "error": null,
+      "result": {
+        "score": 4,
+        "label": "4",
+        "explanation": "Deterministic rubric v2; stop_reason=tool_budget"
+      },
+      "id": "RXhwZXJpbWVudEV2YWx1YXRpb246MTA0",
+      "trace_id": "8e4c63a6267e7ea3709adaf86559dd25",
+      "metadata": {}
+    },
+    {
+      "experiment_run_id": "RXhwZXJpbWVudFJ1bjoxNQ==",
+      "start_time": "2026-09-28 01:14:14.504108+00:00",
+      "end_time": "2026-09-28 01:14:14.505416+00:00",
+      "name": "redundant_investigation",
+      "annotator_kind": "CODE",
+      "error": null,
+      "result": {
+        "score": 2,
+        "label": "2",
+        "explanation": "Deterministic rubric v2; stop_reason=tool_budget"
+      },
+      "id": "RXhwZXJpbWVudEV2YWx1YXRpb246MTA1",
+      "trace_id": "6527700e9da0ca58f243e6cb4ee6e464",
+      "metadata": {}
+    },
+    {
+      "experiment_run_id": "RXhwZXJpbWVudFJ1bjoxNQ==",
+      "start_time": "2026-09-28 01:14:14.529755+00:00",
+      "end_time": "2026-09-28 01:14:14.532208+00:00",
+      "name": "irrelevant_calls",
+      "annotator_kind": "CODE",
+      "error": null,
+      "result": {
+        "score": 2,
+        "label": "2",
+        "explanation": "Deterministic rubric v2; stop_reason=tool_budget"
+      },
+      "id": "RXhwZXJpbWVudEV2YWx1YXRpb246MTA2",
+      "trace_id": "67cb58f0a1261484f8fbd8c3616c1bfd",
+      "metadata": {}
+    },
+    {
+      "experiment_run_id": "RXhwZXJpbWVudFJ1bjoxNQ==",
+      "start_time": "2026-09-28 01:14:15.232939+00:00",
+      "end_time": "2026-09-28 01:14:15.233723+00:00",
+      "name": "post_sufficiency_calls",
+      "annotator_kind": "CODE",
+      "error": null,
+      "result": {
+        "score": 0,
+        "label": "0",
+        "explanation": "Deterministic rubric v2; stop_reason=tool_budget"
+      },
+      "id": "RXhwZXJpbWVudEV2YWx1YXRpb246MTA3",
+      "trace_id": "12204f1b75942e5dea92770f044329a1",
+      "metadata": {}
+    },
+    {
+      "experiment_run_id": "RXhwZXJpbWVudFJ1bjoxNQ==",
+      "start_time": "2026-09-28 01:14:15.246386+00:00",
+      "end_time": "2026-09-28 01:14:15.247687+00:00",
+      "name": "identical_repeated_calls",
+      "annotator_kind": "CODE",
+      "error": null,
+      "result": {
+        "score": 0,
+        "label": "0",
+        "explanation": "Deterministic rubric v2; stop_reason=tool_budget"
+      },
+      "id": "RXhwZXJpbWVudEV2YWx1YXRpb246MTA4",
+      "trace_id": "f212a4e879906049a77049b1653ee4cd",
+      "metadata": {}
+    },
+    {
+      "experiment_run_id": "RXhwZXJpbWVudFJ1bjoxNQ==",
+      "start_time": "2026-09-28 01:14:15.257676+00:00",
+      "end_time": "2026-09-28 01:14:15.258894+00:00",
+      "name": "latency_seconds",
+      "annotator_kind": "CODE",
+      "error": null,
+      "result": {
+        "score": 3.8320913880015723,
+        "label": "3.8320913880015723",
+        "explanation": "Deterministic rubric v2; stop_reason=tool_budget"
+      },
+      "id": "RXhwZXJpbWVudEV2YWx1YXRpb246MTA5",
+      "trace_id": "b5de1ac350cdf1919dd63e7ea2c28459",
+      "metadata": {}
+    },
+    {
+      "experiment_run_id": "RXhwZXJpbWVudFJ1bjoxNQ==",
+      "start_time": "2026-09-28 01:14:15.369526+00:00",
+      "end_time": "2026-09-28 01:14:15.370818+00:00",
+      "name": "token_usage",
+      "annotator_kind": "CODE",
+      "error": null,
+      "result": {
+        "score": 2405,
+        "label": "2405",
+        "explanation": "Deterministic rubric v2; stop_reason=tool_budget"
+      },
+      "id": "RXhwZXJpbWVudEV2YWx1YXRpb246MTEw",
+      "trace_id": "d990d734f2edacf8573978563b7a4cb3",
+      "metadata": {}
+    },
+    {
+      "experiment_run_id": "RXhwZXJpbWVudFJ1bjoxNA==",
+      "start_time": "2026-09-28 01:14:15.396644+00:00",
+      "end_time": "2026-09-28 01:14:15.397977+00:00",
+      "name": "diagnosis_correct",
+      "annotator_kind": "CODE",
+      "error": null,
+      "result": {
+        "score": 0,
+        "label": "0",
+        "explanation": "Deterministic rubric v2; stop_reason=tool_budget"
+      },
+      "id": "RXhwZXJpbWVudEV2YWx1YXRpb246MTEx",
+      "trace_id": "963116ee2a09943ceb0429c6d24d3d41",
+      "metadata": {}
+    },
+    {
+      "experiment_run_id": "RXhwZXJpbWVudFJ1bjoxNA==",
+      "start_time": "2026-09-28 01:14:15.422875+00:00",
+      "end_time": "2026-09-28 01:14:15.424031+00:00",
+      "name": "evidence_completeness",
+      "annotator_kind": "CODE",
+      "error": null,
+      "result": {
+        "score": 0.3333333333333333,
+        "label": "0.3333333333333333",
+        "explanation": "Deterministic rubric v2; stop_reason=tool_budget"
+      },
+      "id": "RXhwZXJpbWVudEV2YWx1YXRpb246MTEy",
+      "trace_id": "b80d92e01d698d1dd1af20d61f495d4c",
+      "metadata": {}
+    },
+    {
+      "experiment_run_id": "RXhwZXJpbWVudFJ1bjoxNA==",
+      "start_time": "2026-09-28 01:14:15.440920+00:00",
+      "end_time": "2026-09-28 01:14:15.441950+00:00",
+      "name": "evidence_sufficient",
+      "annotator_kind": "CODE",
+      "error": null,
+      "result": {
+        "score": 0,
+        "label": "0",
+        "explanation": "Deterministic rubric v2; stop_reason=tool_budget"
+      },
+      "id": "RXhwZXJpbWVudEV2YWx1YXRpb246MTEz",
+      "trace_id": "ac775b9f3850a081debde1b00de8ec10",
+      "metadata": {}
+    },
+    {
+      "experiment_run_id": "RXhwZXJpbWVudFJ1bjoxNA==",
+      "start_time": "2026-09-28 01:14:15.470666+00:00",
+      "end_time": "2026-09-28 01:14:15.472710+00:00",
+      "name": "premature_stop",
+      "annotator_kind": "CODE",
+      "error": null,
+      "result": {
+        "score": 1,
+        "label": "1",
+        "explanation": "Deterministic rubric v2; stop_reason=tool_budget"
+      },
+      "id": "RXhwZXJpbWVudEV2YWx1YXRpb246MTE0",
+      "trace_id": "0f1f166e724612536cc896c66c54ab1e",
+      "metadata": {}
+    },
+    {
+      "experiment_run_id": "RXhwZXJpbWVudFJ1bjoxNA==",
+      "start_time": "2026-09-28 01:14:15.580303+00:00",
+      "end_time": "2026-09-28 01:14:15.582079+00:00",
+      "name": "tool_calls_used",
+      "annotator_kind": "CODE",
+      "error": null,
+      "result": {
+        "score": 4,
+        "label": "4",
+        "explanation": "Deterministic rubric v2; stop_reason=tool_budget"
+      },
+      "id": "RXhwZXJpbWVudEV2YWx1YXRpb246MTE1",
+      "trace_id": "2c8835a72dd54165042edf39f60173fe",
+      "metadata": {}
+    },
+    {
+      "experiment_run_id": "RXhwZXJpbWVudFJ1bjoxNA==",
+      "start_time": "2026-09-28 01:14:16.233194+00:00",
+      "end_time": "2026-09-28 01:14:16.234027+00:00",
+      "name": "redundant_investigation",
+      "annotator_kind": "CODE",
+      "error": null,
+      "result": {
+        "score": 3,
+        "label": "3",
+        "explanation": "Deterministic rubric v2; stop_reason=tool_budget"
+      },
+      "id": "RXhwZXJpbWVudEV2YWx1YXRpb246MTE2",
+      "trace_id": "6cedf3fdab012b434081e0d48a748fb6",
+      "metadata": {}
+    },
+    {
+      "experiment_run_id": "RXhwZXJpbWVudFJ1bjoxNA==",
+      "start_time": "2026-09-28 01:14:16.245498+00:00",
+      "end_time": "2026-09-28 01:14:16.246440+00:00",
+      "name": "irrelevant_calls",
+      "annotator_kind": "CODE",
+      "error": null,
+      "result": {
+        "score": 3,
+        "label": "3",
+        "explanation": "Deterministic rubric v2; stop_reason=tool_budget"
+      },
+      "id": "RXhwZXJpbWVudEV2YWx1YXRpb246MTE3",
+      "trace_id": "f32e5de3fbbb83857c2d1d3181b55406",
+      "metadata": {}
+    },
+    {
+      "experiment_run_id": "RXhwZXJpbWVudFJ1bjoxNA==",
+      "start_time": "2026-09-28 01:14:16.255606+00:00",
+      "end_time": "2026-09-28 01:14:16.256493+00:00",
+      "name": "post_sufficiency_calls",
+      "annotator_kind": "CODE",
+      "error": null,
+      "result": {
+        "score": 0,
+        "label": "0",
+        "explanation": "Deterministic rubric v2; stop_reason=tool_budget"
+      },
+      "id": "RXhwZXJpbWVudEV2YWx1YXRpb246MTE4",
+      "trace_id": "2ad95e20031317050a6c52d369e796e9",
+      "metadata": {}
+    },
+    {
+      "experiment_run_id": "RXhwZXJpbWVudFJ1bjoxNA==",
+      "start_time": "2026-09-28 01:14:16.308164+00:00",
+      "end_time": "2026-09-28 01:14:16.310468+00:00",
+      "name": "identical_repeated_calls",
+      "annotator_kind": "CODE",
+      "error": null,
+      "result": {
+        "score": 0,
+        "label": "0",
+        "explanation": "Deterministic rubric v2; stop_reason=tool_budget"
+      },
+      "id": "RXhwZXJpbWVudEV2YWx1YXRpb246MTE5",
+      "trace_id": "34970178f4d2dfdb0ff31f4378f57b22",
+      "metadata": {}
+    },
+    {
+      "experiment_run_id": "RXhwZXJpbWVudFJ1bjoxNA==",
+      "start_time": "2026-09-28 01:14:16.339895+00:00",
+      "end_time": "2026-09-28 01:14:16.341203+00:00",
+      "name": "latency_seconds",
+      "annotator_kind": "CODE",
+      "error": null,
+      "result": {
+        "score": 3.9012340089975623,
+        "label": "3.9012340089975623",
+        "explanation": "Deterministic rubric v2; stop_reason=tool_budget"
+      },
+      "id": "RXhwZXJpbWVudEV2YWx1YXRpb246MTIw",
+      "trace_id": "6d1746f0cb94d8e9c614b63b3b3a574b",
+      "metadata": {}
+    },
+    {
+      "experiment_run_id": "RXhwZXJpbWVudFJ1bjoxNA==",
+      "start_time": "2026-09-28 01:14:16.379729+00:00",
+      "end_time": "2026-09-28 01:14:16.381903+00:00",
+      "name": "token_usage",
+      "annotator_kind": "CODE",
+      "error": null,
+      "result": {
+        "score": 2336,
+        "label": "2336",
+        "explanation": "Deterministic rubric v2; stop_reason=tool_budget"
+      },
+      "id": "RXhwZXJpbWVudEV2YWx1YXRpb246MTIx",
+      "trace_id": "8a00e1837bae1b3302953a82ea2b3687",
+      "metadata": {}
+    },
+    {
+      "experiment_run_id": "RXhwZXJpbWVudFJ1bjoxMw==",
+      "start_time": "2026-09-28 01:14:16.582752+00:00",
+      "end_time": "2026-09-28 01:14:16.584283+00:00",
+      "name": "diagnosis_correct",
+      "annotator_kind": "CODE",
+      "error": null,
+      "result": {
+        "score": 1,
+        "label": "1",
+        "explanation": "Deterministic rubric v2; stop_reason=tool_budget"
+      },
+      "id": "RXhwZXJpbWVudEV2YWx1YXRpb246MTIy",
+      "trace_id": "eba300d0b5082d9b4b55cca6e41fe3ef",
+      "metadata": {}
+    },
+    {
+      "experiment_run_id": "RXhwZXJpbWVudFJ1bjoxMw==",
+      "start_time": "2026-09-28 01:14:16.622545+00:00",
+      "end_time": "2026-09-28 01:14:16.624139+00:00",
+      "name": "evidence_completeness",
+      "annotator_kind": "CODE",
+      "error": null,
+      "result": {
+        "score": 0.5,
+        "label": "0.5",
+        "explanation": "Deterministic rubric v2; stop_reason=tool_budget"
+      },
+      "id": "RXhwZXJpbWVudEV2YWx1YXRpb246MTIz",
+      "trace_id": "5376c0ffe3aff0fe79541698051dd82f",
+      "metadata": {}
+    },
+    {
+      "experiment_run_id": "RXhwZXJpbWVudFJ1bjoxMw==",
+      "start_time": "2026-09-28 01:14:16.699096+00:00",
+      "end_time": "2026-09-28 01:14:16.701155+00:00",
+      "name": "evidence_sufficient",
+      "annotator_kind": "CODE",
+      "error": null,
+      "result": {
+        "score": 0,
+        "label": "0",
+        "explanation": "Deterministic rubric v2; stop_reason=tool_budget"
+      },
+      "id": "RXhwZXJpbWVudEV2YWx1YXRpb246MTI0",
+      "trace_id": "b5e0e99e3110f687246f00b95e630ebb",
+      "metadata": {}
+    },
+    {
+      "experiment_run_id": "RXhwZXJpbWVudFJ1bjoxMw==",
+      "start_time": "2026-09-28 01:14:17.233529+00:00",
+      "end_time": "2026-09-28 01:14:17.234713+00:00",
+      "name": "premature_stop",
+      "annotator_kind": "CODE",
+      "error": null,
+      "result": {
+        "score": 1,
+        "label": "1",
+        "explanation": "Deterministic rubric v2; stop_reason=tool_budget"
+      },
+      "id": "RXhwZXJpbWVudEV2YWx1YXRpb246MTI1",
+      "trace_id": "851207cf513af17372594f07a03ca62e",
+      "metadata": {}
+    },
+    {
+      "experiment_run_id": "RXhwZXJpbWVudFJ1bjoxMw==",
+      "start_time": "2026-09-28 01:14:17.252118+00:00",
+      "end_time": "2026-09-28 01:14:17.253458+00:00",
+      "name": "tool_calls_used",
+      "annotator_kind": "CODE",
+      "error": null,
+      "result": {
+        "score": 4,
+        "label": "4",
+        "explanation": "Deterministic rubric v2; stop_reason=tool_budget"
+      },
+      "id": "RXhwZXJpbWVudEV2YWx1YXRpb246MTI2",
+      "trace_id": "c397ec3123d8e0a0088e704202cff385",
+      "metadata": {}
+    },
+    {
+      "experiment_run_id": "RXhwZXJpbWVudFJ1bjoxMw==",
+      "start_time": "2026-09-28 01:14:17.268555+00:00",
+      "end_time": "2026-09-28 01:14:17.269879+00:00",
+      "name": "redundant_investigation",
+      "annotator_kind": "CODE",
+      "error": null,
+      "result": {
+        "score": 3,
+        "label": "3",
+        "explanation": "Deterministic rubric v2; stop_reason=tool_budget"
+      },
+      "id": "RXhwZXJpbWVudEV2YWx1YXRpb246MTI3",
+      "trace_id": "390d9530f1a993e0c82f5c766c5992d5",
+      "metadata": {}
+    },
+    {
+      "experiment_run_id": "RXhwZXJpbWVudFJ1bjoxMw==",
+      "start_time": "2026-09-28 01:14:17.441693+00:00",
+      "end_time": "2026-09-28 01:14:17.444584+00:00",
+      "name": "irrelevant_calls",
+      "annotator_kind": "CODE",
+      "error": null,
+      "result": {
+        "score": 3,
+        "label": "3",
+        "explanation": "Deterministic rubric v2; stop_reason=tool_budget"
+      },
+      "id": "RXhwZXJpbWVudEV2YWx1YXRpb246MTI4",
+      "trace_id": "25ffa836b658c3f5e176637d851c5a12",
+      "metadata": {}
+    },
+    {
+      "experiment_run_id": "RXhwZXJpbWVudFJ1bjoxMw==",
+      "start_time": "2026-09-28 01:14:17.483953+00:00",
+      "end_time": "2026-09-28 01:14:17.485380+00:00",
+      "name": "post_sufficiency_calls",
+      "annotator_kind": "CODE",
+      "error": null,
+      "result": {
+        "score": 0,
+        "label": "0",
+        "explanation": "Deterministic rubric v2; stop_reason=tool_budget"
+      },
+      "id": "RXhwZXJpbWVudEV2YWx1YXRpb246MTI5",
+      "trace_id": "359968de6a1c88002fb3deda8ef39c8c",
+      "metadata": {}
+    },
+    {
+      "experiment_run_id": "RXhwZXJpbWVudFJ1bjoxMw==",
+      "start_time": "2026-09-28 01:14:17.518564+00:00",
+      "end_time": "2026-09-28 01:14:17.519936+00:00",
+      "name": "identical_repeated_calls",
+      "annotator_kind": "CODE",
+      "error": null,
+      "result": {
+        "score": 0,
+        "label": "0",
+        "explanation": "Deterministic rubric v2; stop_reason=tool_budget"
+      },
+      "id": "RXhwZXJpbWVudEV2YWx1YXRpb246MTMw",
+      "trace_id": "9121c6d31618061eec8eb420928ff5c8",
+      "metadata": {}
+    },
+    {
+      "experiment_run_id": "RXhwZXJpbWVudFJ1bjoxMw==",
+      "start_time": "2026-09-28 01:14:17.550610+00:00",
+      "end_time": "2026-09-28 01:14:17.552399+00:00",
+      "name": "latency_seconds",
+      "annotator_kind": "CODE",
+      "error": null,
+      "result": {
+        "score": 3.51237121700251,
+        "label": "3.51237121700251",
+        "explanation": "Deterministic rubric v2; stop_reason=tool_budget"
+      },
+      "id": "RXhwZXJpbWVudEV2YWx1YXRpb246MTMx",
+      "trace_id": "8c7be4f2c647e81834607a8309d364cd",
+      "metadata": {}
+    },
+    {
+      "experiment_run_id": "RXhwZXJpbWVudFJ1bjoxMw==",
+      "start_time": "2026-09-28 01:14:17.648424+00:00",
+      "end_time": "2026-09-28 01:14:17.650285+00:00",
+      "name": "token_usage",
+      "annotator_kind": "CODE",
+      "error": null,
+      "result": {
+        "score": 2338,
+        "label": "2338",
+        "explanation": "Deterministic rubric v2; stop_reason=tool_budget"
+      },
+      "id": "RXhwZXJpbWVudEV2YWx1YXRpb246MTMy",
+      "trace_id": "5db4f29712286046fe1afc1f3e1e88ff",
+      "metadata": {}
+    },
+    {
+      "experiment_run_id": "RXhwZXJpbWVudFJ1bjoxMg==",
+      "start_time": "2026-09-28 01:14:17.682848+00:00",
+      "end_time": "2026-09-28 01:14:17.684094+00:00",
+      "name": "diagnosis_correct",
+      "annotator_kind": "CODE",
+      "error": null,
+      "result": {
+        "score": 0,
+        "label": "0",
+        "explanation": "Deterministic rubric v2; stop_reason=tool_budget"
+      },
+      "id": "RXhwZXJpbWVudEV2YWx1YXRpb246MTMz",
+      "trace_id": "735541ca243fb28e899746cc43ff4d5d",
+      "metadata": {}
+    },
+    {
+      "experiment_run_id": "RXhwZXJpbWVudFJ1bjoxMg==",
+      "start_time": "2026-09-28 01:14:18.233809+00:00",
+      "end_time": "2026-09-28 01:14:18.235042+00:00",
+      "name": "evidence_completeness",
+      "annotator_kind": "CODE",
+      "error": null,
+      "result": {
+        "score": 0.5,
+        "label": "0.5",
+        "explanation": "Deterministic rubric v2; stop_reason=tool_budget"
+      },
+      "id": "RXhwZXJpbWVudEV2YWx1YXRpb246MTM0",
+      "trace_id": "20d468752ab442d78f2c585608c31225",
+      "metadata": {}
+    },
+    {
+      "experiment_run_id": "RXhwZXJpbWVudFJ1bjoxMg==",
+      "start_time": "2026-09-28 01:14:18.249013+00:00",
+      "end_time": "2026-09-28 01:14:18.250314+00:00",
+      "name": "evidence_sufficient",
+      "annotator_kind": "CODE",
+      "error": null,
+      "result": {
+        "score": 0,
+        "label": "0",
+        "explanation": "Deterministic rubric v2; stop_reason=tool_budget"
+      },
+      "id": "RXhwZXJpbWVudEV2YWx1YXRpb246MTM1",
+      "trace_id": "60dda0d5bfe163376715c452126c65cd",
+      "metadata": {}
+    },
+    {
+      "experiment_run_id": "RXhwZXJpbWVudFJ1bjoxMg==",
+      "start_time": "2026-09-28 01:14:18.265633+00:00",
+      "end_time": "2026-09-28 01:14:18.266962+00:00",
+      "name": "premature_stop",
+      "annotator_kind": "CODE",
+      "error": null,
+      "result": {
+        "score": 1,
+        "label": "1",
+        "explanation": "Deterministic rubric v2; stop_reason=tool_budget"
+      },
+      "id": "RXhwZXJpbWVudEV2YWx1YXRpb246MTM2",
+      "trace_id": "f78f786d574d05c7d7b66c55942010cd",
+      "metadata": {}
+    },
+    {
+      "experiment_run_id": "RXhwZXJpbWVudFJ1bjoxMg==",
+      "start_time": "2026-09-28 01:14:18.385000+00:00",
+      "end_time": "2026-09-28 01:14:18.386203+00:00",
+      "name": "tool_calls_used",
+      "annotator_kind": "CODE",
+      "error": null,
+      "result": {
+        "score": 4,
+        "label": "4",
+        "explanation": "Deterministic rubric v2; stop_reason=tool_budget"
+      },
+      "id": "RXhwZXJpbWVudEV2YWx1YXRpb246MTM3",
+      "trace_id": "7b67e1faeefe6e4e43ccb7a12f1543c0",
+      "metadata": {}
+    },
+    {
+      "experiment_run_id": "RXhwZXJpbWVudFJ1bjoxMg==",
+      "start_time": "2026-09-28 01:14:18.419515+00:00",
+      "end_time": "2026-09-28 01:14:18.420712+00:00",
+      "name": "redundant_investigation",
+      "annotator_kind": "CODE",
+      "error": null,
+      "result": {
+        "score": 2,
+        "label": "2",
+        "explanation": "Deterministic rubric v2; stop_reason=tool_budget"
+      },
+      "id": "RXhwZXJpbWVudEV2YWx1YXRpb246MTM4",
+      "trace_id": "5b9a56ec2c9fa37596e11adf92d1d995",
+      "metadata": {}
+    },
+    {
+      "experiment_run_id": "RXhwZXJpbWVudFJ1bjoxMg==",
+      "start_time": "2026-09-28 01:14:18.447055+00:00",
+      "end_time": "2026-09-28 01:14:18.448865+00:00",
+      "name": "irrelevant_calls",
+      "annotator_kind": "CODE",
+      "error": null,
+      "result": {
+        "score": 2,
+        "label": "2",
+        "explanation": "Deterministic rubric v2; stop_reason=tool_budget"
+      },
+      "id": "RXhwZXJpbWVudEV2YWx1YXRpb246MTM5",
+      "trace_id": "beb584e803762a9f9b900194479e7106",
+      "metadata": {}
+    },
+    {
+      "experiment_run_id": "RXhwZXJpbWVudFJ1bjoxMg==",
+      "start_time": "2026-09-28 01:14:18.467570+00:00",
+      "end_time": "2026-09-28 01:14:18.468747+00:00",
+      "name": "post_sufficiency_calls",
+      "annotator_kind": "CODE",
+      "error": null,
+      "result": {
+        "score": 0,
+        "label": "0",
+        "explanation": "Deterministic rubric v2; stop_reason=tool_budget"
+      },
+      "id": "RXhwZXJpbWVudEV2YWx1YXRpb246MTQw",
+      "trace_id": "41587484d796cd4e66a042781bda3afc",
+      "metadata": {}
+    },
+    {
+      "experiment_run_id": "RXhwZXJpbWVudFJ1bjoxMg==",
+      "start_time": "2026-09-28 01:14:18.514808+00:00",
+      "end_time": "2026-09-28 01:14:18.516484+00:00",
+      "name": "identical_repeated_calls",
+      "annotator_kind": "CODE",
+      "error": null,
+      "result": {
+        "score": 0,
+        "label": "0",
+        "explanation": "Deterministic rubric v2; stop_reason=tool_budget"
+      },
+      "id": "RXhwZXJpbWVudEV2YWx1YXRpb246MTQx",
+      "trace_id": "b05f6041e9c14ce4c9aec6a68892c6eb",
+      "metadata": {}
+    },
+    {
+      "experiment_run_id": "RXhwZXJpbWVudFJ1bjoxMg==",
+      "start_time": "2026-09-28 01:14:18.669009+00:00",
+      "end_time": "2026-09-28 01:14:18.670234+00:00",
+      "name": "latency_seconds",
+      "annotator_kind": "CODE",
+      "error": null,
+      "result": {
+        "score": 3.7679277309944155,
+        "label": "3.7679277309944155",
+        "explanation": "Deterministic rubric v2; stop_reason=tool_budget"
+      },
+      "id": "RXhwZXJpbWVudEV2YWx1YXRpb246MTQy",
+      "trace_id": "77bc127d495c1f85b41fdcd194e30156",
+      "metadata": {}
+    },
+    {
+      "experiment_run_id": "RXhwZXJpbWVudFJ1bjoxMg==",
+      "start_time": "2026-09-28 01:14:19.234100+00:00",
+      "end_time": "2026-09-28 01:14:19.234993+00:00",
+      "name": "token_usage",
+      "annotator_kind": "CODE",
+      "error": null,
+      "result": {
+        "score": 2399,
+        "label": "2399",
+        "explanation": "Deterministic rubric v2; stop_reason=tool_budget"
+      },
+      "id": "RXhwZXJpbWVudEV2YWx1YXRpb246MTQz",
+      "trace_id": "bda58ef8b70280bd7f4dc12799c9d2fd",
+      "metadata": {}
+    },
+    {
+      "experiment_run_id": "RXhwZXJpbWVudFJ1bjoxMQ==",
+      "start_time": "2026-09-28 01:14:19.247840+00:00",
+      "end_time": "2026-09-28 01:14:19.249369+00:00",
+      "name": "diagnosis_correct",
+      "annotator_kind": "CODE",
+      "error": null,
+      "result": {
+        "score": 1,
+        "label": "1",
+        "explanation": "Deterministic rubric v2; stop_reason=tool_budget"
+      },
+      "id": "RXhwZXJpbWVudEV2YWx1YXRpb246MTQ0",
+      "trace_id": "a978d6cc02a5fff5fbec0c8c76ab6301",
+      "metadata": {}
+    },
+    {
+      "experiment_run_id": "RXhwZXJpbWVudFJ1bjoxMQ==",
+      "start_time": "2026-09-28 01:14:19.259631+00:00",
+      "end_time": "2026-09-28 01:14:19.261461+00:00",
+      "name": "evidence_completeness",
+      "annotator_kind": "CODE",
+      "error": null,
+      "result": {
+        "score": 1.0,
+        "label": "1.0",
+        "explanation": "Deterministic rubric v2; stop_reason=tool_budget"
+      },
+      "id": "RXhwZXJpbWVudEV2YWx1YXRpb246MTQ1",
+      "trace_id": "4dc26457f477b41fe0cdea4f2ca8202e",
+      "metadata": {}
+    },
+    {
+      "experiment_run_id": "RXhwZXJpbWVudFJ1bjoxMQ==",
+      "start_time": "2026-09-28 01:14:19.318191+00:00",
+      "end_time": "2026-09-28 01:14:19.319525+00:00",
+      "name": "evidence_sufficient",
+      "annotator_kind": "CODE",
+      "error": null,
+      "result": {
+        "score": 1,
+        "label": "1",
+        "explanation": "Deterministic rubric v2; stop_reason=tool_budget"
+      },
+      "id": "RXhwZXJpbWVudEV2YWx1YXRpb246MTQ2",
+      "trace_id": "e23e384b7dac716a6aa9d939d4ddb7d4",
+      "metadata": {}
+    },
+    {
+      "experiment_run_id": "RXhwZXJpbWVudFJ1bjoxMQ==",
+      "start_time": "2026-09-28 01:14:19.350339+00:00",
+      "end_time": "2026-09-28 01:14:19.351145+00:00",
+      "name": "premature_stop",
+      "annotator_kind": "CODE",
+      "error": null,
+      "result": {
+        "score": 0,
+        "label": "0",
+        "explanation": "Deterministic rubric v2; stop_reason=tool_budget"
+      },
+      "id": "RXhwZXJpbWVudEV2YWx1YXRpb246MTQ3",
+      "trace_id": "44d8efdcc312be5dc4a76765addb8f1e",
+      "metadata": {}
+    },
+    {
+      "experiment_run_id": "RXhwZXJpbWVudFJ1bjoxMQ==",
+      "start_time": "2026-09-28 01:14:19.376651+00:00",
+      "end_time": "2026-09-28 01:14:19.378536+00:00",
+      "name": "tool_calls_used",
+      "annotator_kind": "CODE",
+      "error": null,
+      "result": {
+        "score": 4,
+        "label": "4",
+        "explanation": "Deterministic rubric v2; stop_reason=tool_budget"
+      },
+      "id": "RXhwZXJpbWVudEV2YWx1YXRpb246MTQ4",
+      "trace_id": "bdc9f831ea7e321b5ab65b7b682edb43",
+      "metadata": {}
+    },
+    {
+      "experiment_run_id": "RXhwZXJpbWVudFJ1bjoxMQ==",
+      "start_time": "2026-09-28 01:14:19.461800+00:00",
+      "end_time": "2026-09-28 01:14:19.463360+00:00",
+      "name": "redundant_investigation",
+      "annotator_kind": "CODE",
+      "error": null,
+      "result": {
+        "score": 2,
+        "label": "2",
+        "explanation": "Deterministic rubric v2; stop_reason=tool_budget"
+      },
+      "id": "RXhwZXJpbWVudEV2YWx1YXRpb246MTQ5",
+      "trace_id": "6c913e51839da5cbeee78c12111dcbe5",
+      "metadata": {}
+    },
+    {
+      "experiment_run_id": "RXhwZXJpbWVudFJ1bjoxMQ==",
+      "start_time": "2026-09-28 01:14:19.488849+00:00",
+      "end_time": "2026-09-28 01:14:19.489680+00:00",
+      "name": "irrelevant_calls",
+      "annotator_kind": "CODE",
+      "error": null,
+      "result": {
+        "score": 2,
+        "label": "2",
+        "explanation": "Deterministic rubric v2; stop_reason=tool_budget"
+      },
+      "id": "RXhwZXJpbWVudEV2YWx1YXRpb246MTUw",
+      "trace_id": "949b84f256a655501694b8d735472afa",
+      "metadata": {}
+    },
+    {
+      "experiment_run_id": "RXhwZXJpbWVudFJ1bjoxMQ==",
+      "start_time": "2026-09-28 01:14:19.517241+00:00",
+      "end_time": "2026-09-28 01:14:19.518607+00:00",
+      "name": "post_sufficiency_calls",
+      "annotator_kind": "CODE",
+      "error": null,
+      "result": {
+        "score": 0,
+        "label": "0",
+        "explanation": "Deterministic rubric v2; stop_reason=tool_budget"
+      },
+      "id": "RXhwZXJpbWVudEV2YWx1YXRpb246MTUx",
+      "trace_id": "255e2d3b4ff2cb7462c5bbc0e3acda7a",
+      "metadata": {}
+    },
+    {
+      "experiment_run_id": "RXhwZXJpbWVudFJ1bjoxMQ==",
+      "start_time": "2026-09-28 01:14:20.235459+00:00",
+      "end_time": "2026-09-28 01:14:20.236454+00:00",
+      "name": "identical_repeated_calls",
+      "annotator_kind": "CODE",
+      "error": null,
+      "result": {
+        "score": 0,
+        "label": "0",
+        "explanation": "Deterministic rubric v2; stop_reason=tool_budget"
+      },
+      "id": "RXhwZXJpbWVudEV2YWx1YXRpb246MTUy",
+      "trace_id": "924562288f2c4ab99487814cc512f010",
+      "metadata": {}
+    },
+    {
+      "experiment_run_id": "RXhwZXJpbWVudFJ1bjoxMQ==",
+      "start_time": "2026-09-28 01:14:20.249276+00:00",
+      "end_time": "2026-09-28 01:14:20.250161+00:00",
+      "name": "latency_seconds",
+      "annotator_kind": "CODE",
+      "error": null,
+      "result": {
+        "score": 3.6098409320111386,
+        "label": "3.6098409320111386",
+        "explanation": "Deterministic rubric v2; stop_reason=tool_budget"
+      },
+      "id": "RXhwZXJpbWVudEV2YWx1YXRpb246MTUz",
+      "trace_id": "4934a44b503f230b14874e9acb4accea",
+      "metadata": {}
+    },
+    {
+      "experiment_run_id": "RXhwZXJpbWVudFJ1bjoxMQ==",
+      "start_time": "2026-09-28 01:14:20.261287+00:00",
+      "end_time": "2026-09-28 01:14:20.262967+00:00",
+      "name": "token_usage",
+      "annotator_kind": "CODE",
+      "error": null,
+      "result": {
+        "score": 2363,
+        "label": "2363",
+        "explanation": "Deterministic rubric v2; stop_reason=tool_budget"
+      },
+      "id": "RXhwZXJpbWVudEV2YWx1YXRpb246MTU0",
+      "trace_id": "7614f3b832dc935b3b4134c3438e0040",
+      "metadata": {}
+    },
+    {
+      "experiment_run_id": "RXhwZXJpbWVudFJ1bjoxMA==",
+      "start_time": "2026-09-28 01:14:20.310659+00:00",
+      "end_time": "2026-09-28 01:14:20.313122+00:00",
+      "name": "diagnosis_correct",
+      "annotator_kind": "CODE",
+      "error": null,
+      "result": {
+        "score": 1,
+        "label": "1",
+        "explanation": "Deterministic rubric v2; stop_reason=agent_answered"
+      },
+      "id": "RXhwZXJpbWVudEV2YWx1YXRpb246MTU1",
+      "trace_id": "56ec36193c435b8b3a4838f08500108b",
+      "metadata": {}
+    },
+    {
+      "experiment_run_id": "RXhwZXJpbWVudFJ1bjoxMA==",
+      "start_time": "2026-09-28 01:14:20.343926+00:00",
+      "end_time": "2026-09-28 01:14:20.345102+00:00",
+      "name": "evidence_completeness",
+      "annotator_kind": "CODE",
+      "error": null,
+      "result": {
+        "score": 1.0,
+        "label": "1.0",
+        "explanation": "Deterministic rubric v2; stop_reason=agent_answered"
+      },
+      "id": "RXhwZXJpbWVudEV2YWx1YXRpb246MTU2",
+      "trace_id": "7b885b415f8df5bce2b1ff1bb895f85d",
+      "metadata": {}
+    },
+    {
+      "experiment_run_id": "RXhwZXJpbWVudFJ1bjoxMA==",
+      "start_time": "2026-09-28 01:14:20.424902+00:00",
+      "end_time": "2026-09-28 01:14:20.429336+00:00",
+      "name": "evidence_sufficient",
+      "annotator_kind": "CODE",
+      "error": null,
+      "result": {
+        "score": 1,
+        "label": "1",
+        "explanation": "Deterministic rubric v2; stop_reason=agent_answered"
+      },
+      "id": "RXhwZXJpbWVudEV2YWx1YXRpb246MTU3",
+      "trace_id": "e2e12dc624a43d1a441a1c8f5fbdb551",
+      "metadata": {}
+    },
+    {
+      "experiment_run_id": "RXhwZXJpbWVudFJ1bjoxMA==",
+      "start_time": "2026-09-28 01:14:20.707352+00:00",
+      "end_time": "2026-09-28 01:14:20.709118+00:00",
+      "name": "premature_stop",
+      "annotator_kind": "CODE",
+      "error": null,
+      "result": {
+        "score": 0,
+        "label": "0",
+        "explanation": "Deterministic rubric v2; stop_reason=agent_answered"
+      },
+      "id": "RXhwZXJpbWVudEV2YWx1YXRpb246MTU4",
+      "trace_id": "c8011d9a86d291f095899edb4be30680",
+      "metadata": {}
+    },
+    {
+      "experiment_run_id": "RXhwZXJpbWVudFJ1bjoxMA==",
+      "start_time": "2026-09-28 01:14:20.745079+00:00",
+      "end_time": "2026-09-28 01:14:20.747293+00:00",
+      "name": "tool_calls_used",
+      "annotator_kind": "CODE",
+      "error": null,
+      "result": {
+        "score": 3,
+        "label": "3",
+        "explanation": "Deterministic rubric v2; stop_reason=agent_answered"
+      },
+      "id": "RXhwZXJpbWVudEV2YWx1YXRpb246MTU5",
+      "trace_id": "87bcdb7fc097913160be368c48edadbf",
+      "metadata": {}
+    },
+    {
+      "experiment_run_id": "RXhwZXJpbWVudFJ1bjoxMA==",
+      "start_time": "2026-09-28 01:14:20.846111+00:00",
+      "end_time": "2026-09-28 01:14:20.848051+00:00",
+      "name": "redundant_investigation",
+      "annotator_kind": "CODE",
+      "error": null,
+      "result": {
+        "score": 0,
+        "label": "0",
+        "explanation": "Deterministic rubric v2; stop_reason=agent_answered"
+      },
+      "id": "RXhwZXJpbWVudEV2YWx1YXRpb246MTYw",
+      "trace_id": "4aff925d7f610a950c9e375e016f1580",
+      "metadata": {}
+    },
+    {
+      "experiment_run_id": "RXhwZXJpbWVudFJ1bjoxMA==",
+      "start_time": "2026-09-28 01:14:21.236622+00:00",
+      "end_time": "2026-09-28 01:14:21.238230+00:00",
+      "name": "irrelevant_calls",
+      "annotator_kind": "CODE",
+      "error": null,
+      "result": {
+        "score": 0,
+        "label": "0",
+        "explanation": "Deterministic rubric v2; stop_reason=agent_answered"
+      },
+      "id": "RXhwZXJpbWVudEV2YWx1YXRpb246MTYx",
+      "trace_id": "62ac49d8fb5e6b63c019f388ffbfee07",
+      "metadata": {}
+    },
+    {
+      "experiment_run_id": "RXhwZXJpbWVudFJ1bjoxMA==",
+      "start_time": "2026-09-28 01:14:21.256417+00:00",
+      "end_time": "2026-09-28 01:14:21.257401+00:00",
+      "name": "post_sufficiency_calls",
+      "annotator_kind": "CODE",
+      "error": null,
+      "result": {
+        "score": 0,
+        "label": "0",
+        "explanation": "Deterministic rubric v2; stop_reason=agent_answered"
+      },
+      "id": "RXhwZXJpbWVudEV2YWx1YXRpb246MTYy",
+      "trace_id": "8b35cf7b04b24dbde9d7d292b8036ca5",
+      "metadata": {}
+    },
+    {
+      "experiment_run_id": "RXhwZXJpbWVudFJ1bjoxMA==",
+      "start_time": "2026-09-28 01:14:21.270671+00:00",
+      "end_time": "2026-09-28 01:14:21.272297+00:00",
+      "name": "identical_repeated_calls",
+      "annotator_kind": "CODE",
+      "error": null,
+      "result": {
+        "score": 0,
+        "label": "0",
+        "explanation": "Deterministic rubric v2; stop_reason=agent_answered"
+      },
+      "id": "RXhwZXJpbWVudEV2YWx1YXRpb246MTYz",
+      "trace_id": "87d33ff54131cb60e56a99c743b0d59b",
+      "metadata": {}
+    },
+    {
+      "experiment_run_id": "RXhwZXJpbWVudFJ1bjoxMA==",
+      "start_time": "2026-09-28 01:14:21.375298+00:00",
+      "end_time": "2026-09-28 01:14:21.377395+00:00",
+      "name": "latency_seconds",
+      "annotator_kind": "CODE",
+      "error": null,
+      "result": {
+        "score": 3.0884649119980168,
+        "label": "3.0884649119980168",
+        "explanation": "Deterministic rubric v2; stop_reason=agent_answered"
+      },
+      "id": "RXhwZXJpbWVudEV2YWx1YXRpb246MTY0",
+      "trace_id": "9507d45e45d1176a01ac0053d9e71874",
+      "metadata": {}
+    },
+    {
+      "experiment_run_id": "RXhwZXJpbWVudFJ1bjoxMA==",
+      "start_time": "2026-09-28 01:14:21.406191+00:00",
+      "end_time": "2026-09-28 01:14:21.407323+00:00",
+      "name": "token_usage",
+      "annotator_kind": "CODE",
+      "error": null,
+      "result": {
+        "score": 1793,
+        "label": "1793",
+        "explanation": "Deterministic rubric v2; stop_reason=agent_answered"
+      },
+      "id": "RXhwZXJpbWVudEV2YWx1YXRpb246MTY1",
+      "trace_id": "7a5ef4bacaa291340b96e6ca53785efd",
+      "metadata": {}
+    },
+    {
+      "experiment_run_id": "RXhwZXJpbWVudFJ1bjo5",
+      "start_time": "2026-09-28 01:14:21.438150+00:00",
+      "end_time": "2026-09-28 01:14:21.440153+00:00",
+      "name": "diagnosis_correct",
+      "annotator_kind": "CODE",
+      "error": null,
+      "result": {
+        "score": 1,
+        "label": "1",
+        "explanation": "Deterministic rubric v2; stop_reason=agent_answered"
+      },
+      "id": "RXhwZXJpbWVudEV2YWx1YXRpb246MTY2",
+      "trace_id": "b2f2a4fb58833b77338ae49b2306b194",
+      "metadata": {}
+    },
+    {
+      "experiment_run_id": "RXhwZXJpbWVudFJ1bjo5",
+      "start_time": "2026-09-28 01:14:21.459854+00:00",
+      "end_time": "2026-09-28 01:14:21.461727+00:00",
+      "name": "evidence_completeness",
+      "annotator_kind": "CODE",
+      "error": null,
+      "result": {
+        "score": 1.0,
+        "label": "1.0",
+        "explanation": "Deterministic rubric v2; stop_reason=agent_answered"
+      },
+      "id": "RXhwZXJpbWVudEV2YWx1YXRpb246MTY3",
+      "trace_id": "3485bba39a61e7bd4fd900a9a88d76c4",
+      "metadata": {}
+    },
+    {
+      "experiment_run_id": "RXhwZXJpbWVudFJ1bjo5",
+      "start_time": "2026-09-28 01:14:21.619112+00:00",
+      "end_time": "2026-09-28 01:14:21.619925+00:00",
+      "name": "evidence_sufficient",
+      "annotator_kind": "CODE",
+      "error": null,
+      "result": {
+        "score": 1,
+        "label": "1",
+        "explanation": "Deterministic rubric v2; stop_reason=agent_answered"
+      },
+      "id": "RXhwZXJpbWVudEV2YWx1YXRpb246MTY4",
+      "trace_id": "73096d57849ac2cdda69e887b6d25d66",
+      "metadata": {}
+    },
+    {
+      "experiment_run_id": "RXhwZXJpbWVudFJ1bjo5",
+      "start_time": "2026-09-28 01:14:21.818434+00:00",
+      "end_time": "2026-09-28 01:14:21.819493+00:00",
+      "name": "premature_stop",
+      "annotator_kind": "CODE",
+      "error": null,
+      "result": {
+        "score": 0,
+        "label": "0",
+        "explanation": "Deterministic rubric v2; stop_reason=agent_answered"
+      },
+      "id": "RXhwZXJpbWVudEV2YWx1YXRpb246MTY5",
+      "trace_id": "35d2fece894631c8324599f1e2cc4dd4",
+      "metadata": {}
+    },
+    {
+      "experiment_run_id": "RXhwZXJpbWVudFJ1bjo5",
+      "start_time": "2026-09-28 01:14:22.237895+00:00",
+      "end_time": "2026-09-28 01:14:22.239068+00:00",
+      "name": "tool_calls_used",
+      "annotator_kind": "CODE",
+      "error": null,
+      "result": {
+        "score": 3,
+        "label": "3",
+        "explanation": "Deterministic rubric v2; stop_reason=agent_answered"
+      },
+      "id": "RXhwZXJpbWVudEV2YWx1YXRpb246MTcw",
+      "trace_id": "8073fc0265fa545f7ddc8d18822e912e",
+      "metadata": {}
+    },
+    {
+      "experiment_run_id": "RXhwZXJpbWVudFJ1bjo5",
+      "start_time": "2026-09-28 01:14:22.255661+00:00",
+      "end_time": "2026-09-28 01:14:22.256482+00:00",
+      "name": "redundant_investigation",
+      "annotator_kind": "CODE",
+      "error": null,
+      "result": {
+        "score": 2,
+        "label": "2",
+        "explanation": "Deterministic rubric v2; stop_reason=agent_answered"
+      },
+      "id": "RXhwZXJpbWVudEV2YWx1YXRpb246MTcx",
+      "trace_id": "e2ee706d8fa01f71a5632b8fd42d60ae",
+      "metadata": {}
+    },
+    {
+      "experiment_run_id": "RXhwZXJpbWVudFJ1bjo5",
+      "start_time": "2026-09-28 01:14:22.275767+00:00",
+      "end_time": "2026-09-28 01:14:22.280588+00:00",
+      "name": "irrelevant_calls",
+      "annotator_kind": "CODE",
+      "error": null,
+      "result": {
+        "score": 2,
+        "label": "2",
+        "explanation": "Deterministic rubric v2; stop_reason=agent_answered"
+      },
+      "id": "RXhwZXJpbWVudEV2YWx1YXRpb246MTcy",
+      "trace_id": "4e9acd711da7f68aedeab2fb6df92776",
+      "metadata": {}
+    },
+    {
+      "experiment_run_id": "RXhwZXJpbWVudFJ1bjo5",
+      "start_time": "2026-09-28 01:14:22.353085+00:00",
+      "end_time": "2026-09-28 01:14:22.354170+00:00",
+      "name": "post_sufficiency_calls",
+      "annotator_kind": "CODE",
+      "error": null,
+      "result": {
+        "score": 2,
+        "label": "2",
+        "explanation": "Deterministic rubric v2; stop_reason=agent_answered"
+      },
+      "id": "RXhwZXJpbWVudEV2YWx1YXRpb246MTcz",
+      "trace_id": "0b6c695b91ba658c4a1fb962b7901a14",
+      "metadata": {}
+    },
+    {
+      "experiment_run_id": "RXhwZXJpbWVudFJ1bjo5",
+      "start_time": "2026-09-28 01:14:22.456400+00:00",
+      "end_time": "2026-09-28 01:14:22.457739+00:00",
+      "name": "identical_repeated_calls",
+      "annotator_kind": "CODE",
+      "error": null,
+      "result": {
+        "score": 0,
+        "label": "0",
+        "explanation": "Deterministic rubric v2; stop_reason=agent_answered"
+      },
+      "id": "RXhwZXJpbWVudEV2YWx1YXRpb246MTc0",
+      "trace_id": "a0017f9535391f8f0469e601033295c4",
+      "metadata": {}
+    },
+    {
+      "experiment_run_id": "RXhwZXJpbWVudFJ1bjo5",
+      "start_time": "2026-09-28 01:14:22.485831+00:00",
+      "end_time": "2026-09-28 01:14:22.486524+00:00",
+      "name": "latency_seconds",
+      "annotator_kind": "CODE",
+      "error": null,
+      "result": {
+        "score": 3.4595887159957783,
+        "label": "3.4595887159957783",
+        "explanation": "Deterministic rubric v2; stop_reason=agent_answered"
+      },
+      "id": "RXhwZXJpbWVudEV2YWx1YXRpb246MTc1",
+      "trace_id": "6da4bed0940f8b226b5c4531810e08b0",
+      "metadata": {}
+    },
+    {
+      "experiment_run_id": "RXhwZXJpbWVudFJ1bjo5",
+      "start_time": "2026-09-28 01:14:22.511798+00:00",
+      "end_time": "2026-09-28 01:14:22.515263+00:00",
+      "name": "token_usage",
+      "annotator_kind": "CODE",
+      "error": null,
+      "result": {
+        "score": 1786,
+        "label": "1786",
+        "explanation": "Deterministic rubric v2; stop_reason=agent_answered"
+      },
+      "id": "RXhwZXJpbWVudEV2YWx1YXRpb246MTc2",
+      "trace_id": "f580f8d9c9ed8517de6ff55f50993450",
+      "metadata": {}
+    }
+  ],
+  "experiment_metadata": {
+    "tool_budget": 4,
+    "model_name": "gpt-4.1-mini-2025-04-14",
+    "temperature": 0.0,
+    "prompt_sha256": "5b4dda77aa73fae889ed9b9e8187716a13599c8824e912ded92a20148da9dab6",
+    "dataset_sha256": "2d92afebe6926f4828adff5a15d7428d835972bf446f4b299989442fae25b70d",
+    "rubric_version": 2
+  },
+  "project_name": "Experiment-6d6fe7db02624f90d99b0931"
+}

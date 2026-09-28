@@ -1,0 +1,2776 @@
+{
+  "experiment_id": "RXhwZXJpbWVudDox",
+  "dataset_id": "RGF0YXNldDox",
+  "dataset_version_id": "RGF0YXNldFZlcnNpb246MQ==",
+  "task_runs": [
+    {
+      "dataset_example_id": "RGF0YXNldEV4YW1wbGU6OA==",
+      "output": {
+        "run": {
+          "scenario_id": "diag_008",
+          "user_report": "Some users see old values after saving, while others see current values.",
+          "model_name": "gpt-4.1-mini-2025-04-14",
+          "model_provider": "openai",
+          "configured_tool_budget": 2,
+          "tool_calls": [
+            {
+              "tool_index": 1,
+              "tool_name": "check_status",
+              "arguments": {
+                "component": "frontend"
+              },
+              "output": {
+                "component": "frontend",
+                "status": "healthy",
+                "detail": "Availability and latency are within baseline.",
+                "evidence_id": "frontend_status"
+              },
+              "executed": true,
+              "elapsed_seconds": 9.250600123777986e-05
+            },
+            {
+              "tool_index": 2,
+              "tool_name": "check_status",
+              "arguments": {
+                "component": "api"
+              },
+              "output": {
+                "component": "api",
+                "status": "healthy",
+                "detail": "Availability and latency are within baseline.",
+                "evidence_id": "api_status"
+              },
+              "executed": true,
+              "elapsed_seconds": 9.014800889417529e-05
+            }
+          ],
+          "evidence_ids_retrieved": [
+            "frontend_status",
+            "api_status"
+          ],
+          "number_of_tool_calls": 2,
+          "final_diagnosis": {
+            "predicted_root_cause": "cache_configuration_regression",
+            "explanation": "The frontend and API components are healthy, indicating no deployment or API issues. The symptom of some users seeing old values while others see current values suggests a caching inconsistency. This points to a likely cache configuration regression causing stale data to be served to some users.",
+            "evidence_used": [
+              "frontend_status",
+              "api_status"
+            ]
+          },
+          "elapsed_seconds": 2.4874305549892597,
+          "usage": {
+            "total_token_count": 1274,
+            "completion/rejected_prediction_tokens": 0,
+            "output_token_count": 106,
+            "completion/accepted_prediction_tokens": 0,
+            "completion/reasoning_tokens": 0,
+            "input_token_count": 1168,
+            "completion/audio_tokens": 0,
+            "prompt/cached_tokens": 0,
+            "prompt/audio_tokens": 0,
+            "reasoning_output_token_count": 0,
+            "cache_read_input_token_count": 0
+          },
+          "error": null,
+          "stop_reason": "tool_budget",
+          "model_rounds": [
+            {
+              "tool_choice": "auto",
+              "tools_present": true,
+              "finish_reason": "tool_calls",
+              "usage": {
+                "input_token_count": 334,
+                "output_token_count": 14,
+                "total_token_count": 348,
+                "completion/accepted_prediction_tokens": 0,
+                "completion/audio_tokens": 0,
+                "completion/reasoning_tokens": 0,
+                "reasoning_output_token_count": 0,
+                "completion/rejected_prediction_tokens": 0,
+                "prompt/audio_tokens": 0,
+                "prompt/cached_tokens": 0,
+                "cache_read_input_token_count": 0
+              },
+              "function_calls": 1
+            },
+            {
+              "tool_choice": "auto",
+              "tools_present": true,
+              "finish_reason": "tool_calls",
+              "usage": {
+                "input_token_count": 388,
+                "output_token_count": 14,
+                "total_token_count": 402,
+                "completion/accepted_prediction_tokens": 0,
+                "completion/audio_tokens": 0,
+                "completion/reasoning_tokens": 0,
+                "reasoning_output_token_count": 0,
+                "completion/rejected_prediction_tokens": 0,
+                "prompt/audio_tokens": 0,
+                "prompt/cached_tokens": 0,
+                "cache_read_input_token_count": 0
+              },
+              "function_calls": 1
+            },
+            {
+              "tool_choice": "none",
+              "tools_present": true,
+              "finish_reason": "stop",
+              "usage": {
+                "input_token_count": 446,
+                "output_token_count": 78,
+                "total_token_count": 524,
+                "completion/accepted_prediction_tokens": 0,
+                "completion/audio_tokens": 0,
+                "completion/reasoning_tokens": 0,
+                "reasoning_output_token_count": 0,
+                "completion/rejected_prediction_tokens": 0,
+                "prompt/audio_tokens": 0,
+                "prompt/cached_tokens": 0,
+                "cache_read_input_token_count": 0
+              },
+              "function_calls": 0
+            }
+          ],
+          "model_settings": {
+            "temperature": 0.0,
+            "reasoning_effort": null,
+            "allow_multiple_tool_calls": false,
+            "max_iterations": 20
+          },
+          "prompt_sha256": "5b4dda77aa73fae889ed9b9e8187716a13599c8824e912ded92a20148da9dab6",
+          "runtime_sha256": "a04af1ded91c1626e9e489fe732e1ef03e706b9474ba7db0f31e9a255be9c65e"
+        },
+        "metrics": {
+          "correct": true,
+          "diagnosis_correct": true,
+          "evidence_sufficient": false,
+          "required_evidence_count": 6,
+          "required_evidence_retrieved_count": 0,
+          "required_evidence_retrieved": [],
+          "missing_required_evidence": [
+            "api_logs",
+            "cache_change",
+            "cache_logs",
+            "cache_status",
+            "database_status",
+            "frontend_logs"
+          ],
+          "evidence_completeness": 0.0,
+          "premature_stop": true,
+          "outside_required_supporting_evidence": [
+            "api_status",
+            "frontend_status"
+          ],
+          "outside_required_supporting_calls": 2,
+          "redundant_calls": 2,
+          "excess_calls": 0,
+          "repeated_calls": 0,
+          "unobserved_citations": []
+        },
+        "difficulty": "hard",
+        "trace_id": "8075d33936651437da7c48f9a21a909d",
+        "span_id": "cce3666500ac2897"
+      },
+      "repetition_number": 1,
+      "start_time": "2026-09-28T01:12:15.141819+00:00",
+      "end_time": "2026-09-28T01:12:17.639138+00:00",
+      "trace_id": "8075d33936651437da7c48f9a21a909d",
+      "error": null,
+      "id": "RXhwZXJpbWVudFJ1bjo4",
+      "experiment_id": "RXhwZXJpbWVudDox"
+    },
+    {
+      "dataset_example_id": "RGF0YXNldEV4YW1wbGU6Nw==",
+      "output": {
+        "run": {
+          "scenario_id": "diag_007",
+          "user_report": "The application intermittently stalls during normal traffic.",
+          "model_name": "gpt-4.1-mini-2025-04-14",
+          "model_provider": "openai",
+          "configured_tool_budget": 2,
+          "tool_calls": [
+            {
+              "tool_index": 1,
+              "tool_name": "check_status",
+              "arguments": {
+                "component": "frontend"
+              },
+              "output": {
+                "component": "frontend",
+                "status": "degraded",
+                "detail": "CPU is 78%; rendering itself remains under 20 ms.",
+                "evidence_id": "frontend_status"
+              },
+              "executed": true,
+              "elapsed_seconds": 0.00012322999828029424
+            },
+            {
+              "tool_index": 2,
+              "tool_name": "check_status",
+              "arguments": {
+                "component": "api"
+              },
+              "output": {
+                "component": "api",
+                "status": "degraded",
+                "detail": "Request handlers wait for a downstream resource; API CPU is normal.",
+                "evidence_id": "api_status"
+              },
+              "executed": true,
+              "elapsed_seconds": 0.00021428099717013538
+            }
+          ],
+          "evidence_ids_retrieved": [
+            "frontend_status",
+            "api_status"
+          ],
+          "number_of_tool_calls": 2,
+          "final_diagnosis": {
+            "predicted_root_cause": "api_dependency_issue",
+            "explanation": "The API is degraded and its request handlers are waiting for a downstream resource, indicating a dependency issue. The frontend is also degraded but its CPU and rendering times are normal, suggesting the problem is not in the frontend deployment. This points to an issue with the API's dependencies causing intermittent stalls.",
+            "evidence_used": [
+              "frontend_status",
+              "api_status"
+            ]
+          },
+          "elapsed_seconds": 2.286278660001699,
+          "usage": {
+            "total_token_count": 1285,
+            "completion/rejected_prediction_tokens": 0,
+            "output_token_count": 111,
+            "completion/accepted_prediction_tokens": 0,
+            "completion/reasoning_tokens": 0,
+            "input_token_count": 1174,
+            "completion/audio_tokens": 0,
+            "prompt/cached_tokens": 0,
+            "prompt/audio_tokens": 0,
+            "reasoning_output_token_count": 0,
+            "cache_read_input_token_count": 0
+          },
+          "error": null,
+          "stop_reason": "tool_budget",
+          "model_rounds": [
+            {
+              "tool_choice": "auto",
+              "tools_present": true,
+              "finish_reason": "tool_calls",
+              "usage": {
+                "input_token_count": 329,
+                "output_token_count": 14,
+                "total_token_count": 343,
+                "completion/accepted_prediction_tokens": 0,
+                "completion/audio_tokens": 0,
+                "completion/reasoning_tokens": 0,
+                "reasoning_output_token_count": 0,
+                "completion/rejected_prediction_tokens": 0,
+                "prompt/audio_tokens": 0,
+                "prompt/cached_tokens": 0,
+                "cache_read_input_token_count": 0
+              },
+              "function_calls": 1
+            },
+            {
+              "tool_choice": "auto",
+              "tools_present": true,
+              "finish_reason": "tool_calls",
+              "usage": {
+                "input_token_count": 390,
+                "output_token_count": 14,
+                "total_token_count": 404,
+                "completion/accepted_prediction_tokens": 0,
+                "completion/audio_tokens": 0,
+                "completion/reasoning_tokens": 0,
+                "reasoning_output_token_count": 0,
+                "completion/rejected_prediction_tokens": 0,
+                "prompt/audio_tokens": 0,
+                "prompt/cached_tokens": 0,
+                "cache_read_input_token_count": 0
+              },
+              "function_calls": 1
+            },
+            {
+              "tool_choice": "none",
+              "tools_present": true,
+              "finish_reason": "stop",
+              "usage": {
+                "input_token_count": 455,
+                "output_token_count": 83,
+                "total_token_count": 538,
+                "completion/accepted_prediction_tokens": 0,
+                "completion/audio_tokens": 0,
+                "completion/reasoning_tokens": 0,
+                "reasoning_output_token_count": 0,
+                "completion/rejected_prediction_tokens": 0,
+                "prompt/audio_tokens": 0,
+                "prompt/cached_tokens": 0,
+                "cache_read_input_token_count": 0
+              },
+              "function_calls": 0
+            }
+          ],
+          "model_settings": {
+            "temperature": 0.0,
+            "reasoning_effort": null,
+            "allow_multiple_tool_calls": false,
+            "max_iterations": 20
+          },
+          "prompt_sha256": "5b4dda77aa73fae889ed9b9e8187716a13599c8824e912ded92a20148da9dab6",
+          "runtime_sha256": "1121ade102b75e99ca3ec4e5609d544ef44daf5efb382c55ec946eb1e7883424"
+        },
+        "metrics": {
+          "correct": false,
+          "diagnosis_correct": false,
+          "evidence_sufficient": false,
+          "required_evidence_count": 4,
+          "required_evidence_retrieved_count": 1,
+          "required_evidence_retrieved": [
+            "api_status"
+          ],
+          "missing_required_evidence": [
+            "api_change",
+            "api_logs",
+            "database_status"
+          ],
+          "evidence_completeness": 0.25,
+          "premature_stop": true,
+          "outside_required_supporting_evidence": [
+            "frontend_status"
+          ],
+          "outside_required_supporting_calls": 1,
+          "redundant_calls": 1,
+          "excess_calls": 0,
+          "repeated_calls": 0,
+          "unobserved_citations": []
+        },
+        "difficulty": "hard",
+        "trace_id": "f43f839349da8a36f3a1874a368f6b34",
+        "span_id": "801c8ec3b676c801"
+      },
+      "repetition_number": 1,
+      "start_time": "2026-09-28T01:12:12.804121+00:00",
+      "end_time": "2026-09-28T01:12:15.103505+00:00",
+      "trace_id": "f43f839349da8a36f3a1874a368f6b34",
+      "error": null,
+      "id": "RXhwZXJpbWVudFJ1bjo3",
+      "experiment_id": "RXhwZXJpbWVudDox"
+    },
+    {
+      "dataset_example_id": "RGF0YXNldEV4YW1wbGU6Ng==",
+      "output": {
+        "run": {
+          "scenario_id": "diag_006",
+          "user_report": "Search requests fail after several seconds; other pages work.",
+          "model_name": "gpt-4.1-mini-2025-04-14",
+          "model_provider": "openai",
+          "configured_tool_budget": 2,
+          "tool_calls": [
+            {
+              "tool_index": 1,
+              "tool_name": "check_status",
+              "arguments": {
+                "component": "frontend"
+              },
+              "output": {
+                "component": "frontend",
+                "status": "healthy",
+                "detail": "Availability and latency are within baseline.",
+                "evidence_id": "frontend_status"
+              },
+              "executed": true,
+              "elapsed_seconds": 8.773400622885674e-05
+            },
+            {
+              "tool_index": 2,
+              "tool_name": "check_status",
+              "arguments": {
+                "component": "api"
+              },
+              "output": {
+                "component": "api",
+                "status": "healthy",
+                "detail": "Availability and latency are within baseline.",
+                "evidence_id": "api_status"
+              },
+              "executed": true,
+              "elapsed_seconds": 0.00012230599531903863
+            }
+          ],
+          "evidence_ids_retrieved": [
+            "frontend_status",
+            "api_status"
+          ],
+          "number_of_tool_calls": 2,
+          "final_diagnosis": {
+            "predicted_root_cause": "unknown",
+            "explanation": "Both frontend and API components are healthy with normal availability and latency. No evidence of failure or degradation in these components. Further evidence needed from database and cache to identify root cause.",
+            "evidence_used": [
+              "frontend_status",
+              "api_status"
+            ]
+          },
+          "elapsed_seconds": 2.142775387997972,
+          "usage": {
+            "total_token_count": 1245,
+            "completion/rejected_prediction_tokens": 0,
+            "output_token_count": 86,
+            "completion/accepted_prediction_tokens": 0,
+            "completion/reasoning_tokens": 0,
+            "input_token_count": 1159,
+            "completion/audio_tokens": 0,
+            "prompt/cached_tokens": 0,
+            "prompt/audio_tokens": 0,
+            "reasoning_output_token_count": 0,
+            "cache_read_input_token_count": 0
+          },
+          "error": null,
+          "stop_reason": "tool_budget",
+          "model_rounds": [
+            {
+              "tool_choice": "auto",
+              "tools_present": true,
+              "finish_reason": "tool_calls",
+              "usage": {
+                "input_token_count": 331,
+                "output_token_count": 14,
+                "total_token_count": 345,
+                "completion/accepted_prediction_tokens": 0,
+                "completion/audio_tokens": 0,
+                "completion/reasoning_tokens": 0,
+                "reasoning_output_token_count": 0,
+                "completion/rejected_prediction_tokens": 0,
+                "prompt/audio_tokens": 0,
+                "prompt/cached_tokens": 0,
+                "cache_read_input_token_count": 0
+              },
+              "function_calls": 1
+            },
+            {
+              "tool_choice": "auto",
+              "tools_present": true,
+              "finish_reason": "tool_calls",
+              "usage": {
+                "input_token_count": 385,
+                "output_token_count": 14,
+                "total_token_count": 399,
+                "completion/accepted_prediction_tokens": 0,
+                "completion/audio_tokens": 0,
+                "completion/reasoning_tokens": 0,
+                "reasoning_output_token_count": 0,
+                "completion/rejected_prediction_tokens": 0,
+                "prompt/audio_tokens": 0,
+                "prompt/cached_tokens": 0,
+                "cache_read_input_token_count": 0
+              },
+              "function_calls": 1
+            },
+            {
+              "tool_choice": "none",
+              "tools_present": true,
+              "finish_reason": "stop",
+              "usage": {
+                "input_token_count": 443,
+                "output_token_count": 58,
+                "total_token_count": 501,
+                "completion/accepted_prediction_tokens": 0,
+                "completion/audio_tokens": 0,
+                "completion/reasoning_tokens": 0,
+                "reasoning_output_token_count": 0,
+                "completion/rejected_prediction_tokens": 0,
+                "prompt/audio_tokens": 0,
+                "prompt/cached_tokens": 0,
+                "cache_read_input_token_count": 0
+              },
+              "function_calls": 0
+            }
+          ],
+          "model_settings": {
+            "temperature": 0.0,
+            "reasoning_effort": null,
+            "allow_multiple_tool_calls": false,
+            "max_iterations": 20
+          },
+          "prompt_sha256": "5b4dda77aa73fae889ed9b9e8187716a13599c8824e912ded92a20148da9dab6",
+          "runtime_sha256": "37acc2a1d1598117aa636a34141d0c83ccb423cb31a2c36bd06dd518668fd5da"
+        },
+        "metrics": {
+          "correct": false,
+          "diagnosis_correct": false,
+          "evidence_sufficient": false,
+          "required_evidence_count": 3,
+          "required_evidence_retrieved_count": 0,
+          "required_evidence_retrieved": [],
+          "missing_required_evidence": [
+            "api_change",
+            "api_logs",
+            "cache_status"
+          ],
+          "evidence_completeness": 0.0,
+          "premature_stop": true,
+          "outside_required_supporting_evidence": [
+            "api_status",
+            "frontend_status"
+          ],
+          "outside_required_supporting_calls": 2,
+          "redundant_calls": 2,
+          "excess_calls": 0,
+          "repeated_calls": 0,
+          "unobserved_citations": []
+        },
+        "difficulty": "medium",
+        "trace_id": "b5608438e0c72a3d4fa501be11408c15",
+        "span_id": "8c28208096a6abf3"
+      },
+      "repetition_number": 1,
+      "start_time": "2026-09-28T01:12:10.601495+00:00",
+      "end_time": "2026-09-28T01:12:12.753959+00:00",
+      "trace_id": "b5608438e0c72a3d4fa501be11408c15",
+      "error": null,
+      "id": "RXhwZXJpbWVudFJ1bjo2",
+      "experiment_id": "RXhwZXJpbWVudDox"
+    },
+    {
+      "dataset_example_id": "RGF0YXNldEV4YW1wbGU6NQ==",
+      "output": {
+        "run": {
+          "scenario_id": "diag_005",
+          "user_report": "Writes intermittently fail while existing records can still be read.",
+          "model_name": "gpt-4.1-mini-2025-04-14",
+          "model_provider": "openai",
+          "configured_tool_budget": 2,
+          "tool_calls": [
+            {
+              "tool_index": 1,
+              "tool_name": "check_status",
+              "arguments": {
+                "component": "api"
+              },
+              "output": {
+                "component": "api",
+                "status": "healthy",
+                "detail": "Availability and latency are within baseline.",
+                "evidence_id": "api_status"
+              },
+              "executed": true,
+              "elapsed_seconds": 0.0001315669942414388
+            },
+            {
+              "tool_index": 2,
+              "tool_name": "check_status",
+              "arguments": {
+                "component": "database"
+              },
+              "output": {
+                "component": "database",
+                "status": "healthy",
+                "detail": "Availability and latency are within baseline.",
+                "evidence_id": "database_status"
+              },
+              "executed": true,
+              "elapsed_seconds": 0.0005737409956054762
+            }
+          ],
+          "evidence_ids_retrieved": [
+            "api_status",
+            "database_status"
+          ],
+          "number_of_tool_calls": 2,
+          "final_diagnosis": {
+            "predicted_root_cause": "unknown",
+            "explanation": "Both API and database components are healthy with normal availability and latency. There is no evidence of deployment regressions, configuration issues, or saturation in these components. More specific evidence is needed to identify the root cause of intermittent write failures.",
+            "evidence_used": [
+              "api_status",
+              "database_status"
+            ]
+          },
+          "elapsed_seconds": 2.3891778300021542,
+          "usage": {
+            "total_token_count": 1259,
+            "completion/rejected_prediction_tokens": 0,
+            "output_token_count": 97,
+            "completion/accepted_prediction_tokens": 0,
+            "completion/reasoning_tokens": 0,
+            "input_token_count": 1162,
+            "completion/audio_tokens": 0,
+            "prompt/cached_tokens": 0,
+            "prompt/audio_tokens": 0,
+            "reasoning_output_token_count": 0,
+            "cache_read_input_token_count": 0
+          },
+          "error": null,
+          "stop_reason": "tool_budget",
+          "model_rounds": [
+            {
+              "tool_choice": "auto",
+              "tools_present": true,
+              "finish_reason": "tool_calls",
+              "usage": {
+                "input_token_count": 332,
+                "output_token_count": 14,
+                "total_token_count": 346,
+                "completion/accepted_prediction_tokens": 0,
+                "completion/audio_tokens": 0,
+                "completion/reasoning_tokens": 0,
+                "reasoning_output_token_count": 0,
+                "completion/rejected_prediction_tokens": 0,
+                "prompt/audio_tokens": 0,
+                "prompt/cached_tokens": 0,
+                "cache_read_input_token_count": 0
+              },
+              "function_calls": 1
+            },
+            {
+              "tool_choice": "auto",
+              "tools_present": true,
+              "finish_reason": "tool_calls",
+              "usage": {
+                "input_token_count": 386,
+                "output_token_count": 14,
+                "total_token_count": 400,
+                "completion/accepted_prediction_tokens": 0,
+                "completion/audio_tokens": 0,
+                "completion/reasoning_tokens": 0,
+                "reasoning_output_token_count": 0,
+                "completion/rejected_prediction_tokens": 0,
+                "prompt/audio_tokens": 0,
+                "prompt/cached_tokens": 0,
+                "cache_read_input_token_count": 0
+              },
+              "function_calls": 1
+            },
+            {
+              "tool_choice": "none",
+              "tools_present": true,
+              "finish_reason": "stop",
+              "usage": {
+                "input_token_count": 444,
+                "output_token_count": 69,
+                "total_token_count": 513,
+                "completion/accepted_prediction_tokens": 0,
+                "completion/audio_tokens": 0,
+                "completion/reasoning_tokens": 0,
+                "reasoning_output_token_count": 0,
+                "completion/rejected_prediction_tokens": 0,
+                "prompt/audio_tokens": 0,
+                "prompt/cached_tokens": 0,
+                "cache_read_input_token_count": 0
+              },
+              "function_calls": 0
+            }
+          ],
+          "model_settings": {
+            "temperature": 0.0,
+            "reasoning_effort": null,
+            "allow_multiple_tool_calls": false,
+            "max_iterations": 20
+          },
+          "prompt_sha256": "5b4dda77aa73fae889ed9b9e8187716a13599c8824e912ded92a20148da9dab6",
+          "runtime_sha256": "6aabb790f0aeb46e8119b530999a24e6b75defb303c4f780f6931c3b234e3ef6"
+        },
+        "metrics": {
+          "correct": false,
+          "diagnosis_correct": false,
+          "evidence_sufficient": false,
+          "required_evidence_count": 2,
+          "required_evidence_retrieved_count": 0,
+          "required_evidence_retrieved": [],
+          "missing_required_evidence": [
+            "database_change",
+            "database_logs"
+          ],
+          "evidence_completeness": 0.0,
+          "premature_stop": true,
+          "outside_required_supporting_evidence": [
+            "api_status",
+            "database_status"
+          ],
+          "outside_required_supporting_calls": 2,
+          "redundant_calls": 2,
+          "excess_calls": 0,
+          "repeated_calls": 0,
+          "unobserved_citations": []
+        },
+        "difficulty": "medium",
+        "trace_id": "da4be4d10afcd6d1bfa7799e483ae1a7",
+        "span_id": "103e135c509bf7f9"
+      },
+      "repetition_number": 1,
+      "start_time": "2026-09-28T01:12:08.150297+00:00",
+      "end_time": "2026-09-28T01:12:10.551139+00:00",
+      "trace_id": "da4be4d10afcd6d1bfa7799e483ae1a7",
+      "error": null,
+      "id": "RXhwZXJpbWVudFJ1bjo1",
+      "experiment_id": "RXhwZXJpbWVudDox"
+    },
+    {
+      "dataset_example_id": "RGF0YXNldEV4YW1wbGU6NA==",
+      "output": {
+        "run": {
+          "scenario_id": "diag_004",
+          "user_report": "Users report that the application is unusually slow.",
+          "model_name": "gpt-4.1-mini-2025-04-14",
+          "model_provider": "openai",
+          "configured_tool_budget": 2,
+          "tool_calls": [
+            {
+              "tool_index": 1,
+              "tool_name": "check_status",
+              "arguments": {
+                "component": "frontend"
+              },
+              "output": {
+                "component": "frontend",
+                "status": "healthy",
+                "detail": "CPU is 58% versus usual 50%; rendering latency remains normal.",
+                "evidence_id": "frontend_status"
+              },
+              "executed": true,
+              "elapsed_seconds": 0.0003372509963810444
+            },
+            {
+              "tool_index": 2,
+              "tool_name": "check_status",
+              "arguments": {
+                "component": "api"
+              },
+              "output": {
+                "component": "api",
+                "status": "degraded",
+                "detail": "Read latency is 1.8 seconds; time is spent on repeated backend reads.",
+                "evidence_id": "api_status"
+              },
+              "executed": true,
+              "elapsed_seconds": 8.835099288262427e-05
+            }
+          ],
+          "evidence_ids_retrieved": [
+            "frontend_status",
+            "api_status"
+          ],
+          "number_of_tool_calls": 2,
+          "final_diagnosis": {
+            "predicted_root_cause": "api_dependency_issue",
+            "explanation": "The API component is degraded with high read latency due to repeated backend reads, indicating a dependency issue likely causing the overall application slowness. The frontend is healthy with normal rendering latency, so the problem is not in the frontend.",
+            "evidence_used": [
+              "frontend_status",
+              "api_status"
+            ]
+          },
+          "elapsed_seconds": 2.704436376996455,
+          "usage": {
+            "total_token_count": 1279,
+            "completion/rejected_prediction_tokens": 0,
+            "output_token_count": 99,
+            "completion/accepted_prediction_tokens": 0,
+            "completion/reasoning_tokens": 0,
+            "input_token_count": 1180,
+            "completion/audio_tokens": 0,
+            "prompt/cached_tokens": 0,
+            "prompt/audio_tokens": 0,
+            "reasoning_output_token_count": 0,
+            "cache_read_input_token_count": 0
+          },
+          "error": null,
+          "stop_reason": "tool_budget",
+          "model_rounds": [
+            {
+              "tool_choice": "auto",
+              "tools_present": true,
+              "finish_reason": "tool_calls",
+              "usage": {
+                "input_token_count": 329,
+                "output_token_count": 14,
+                "total_token_count": 343,
+                "completion/accepted_prediction_tokens": 0,
+                "completion/audio_tokens": 0,
+                "completion/reasoning_tokens": 0,
+                "reasoning_output_token_count": 0,
+                "completion/rejected_prediction_tokens": 0,
+                "prompt/audio_tokens": 0,
+                "prompt/cached_tokens": 0,
+                "cache_read_input_token_count": 0
+              },
+              "function_calls": 1
+            },
+            {
+              "tool_choice": "auto",
+              "tools_present": true,
+              "finish_reason": "tool_calls",
+              "usage": {
+                "input_token_count": 391,
+                "output_token_count": 14,
+                "total_token_count": 405,
+                "completion/accepted_prediction_tokens": 0,
+                "completion/audio_tokens": 0,
+                "completion/reasoning_tokens": 0,
+                "reasoning_output_token_count": 0,
+                "completion/rejected_prediction_tokens": 0,
+                "prompt/audio_tokens": 0,
+                "prompt/cached_tokens": 0,
+                "cache_read_input_token_count": 0
+              },
+              "function_calls": 1
+            },
+            {
+              "tool_choice": "none",
+              "tools_present": true,
+              "finish_reason": "stop",
+              "usage": {
+                "input_token_count": 460,
+                "output_token_count": 71,
+                "total_token_count": 531,
+                "completion/accepted_prediction_tokens": 0,
+                "completion/audio_tokens": 0,
+                "completion/reasoning_tokens": 0,
+                "reasoning_output_token_count": 0,
+                "completion/rejected_prediction_tokens": 0,
+                "prompt/audio_tokens": 0,
+                "prompt/cached_tokens": 0,
+                "cache_read_input_token_count": 0
+              },
+              "function_calls": 0
+            }
+          ],
+          "model_settings": {
+            "temperature": 0.0,
+            "reasoning_effort": null,
+            "allow_multiple_tool_calls": false,
+            "max_iterations": 20
+          },
+          "prompt_sha256": "5b4dda77aa73fae889ed9b9e8187716a13599c8824e912ded92a20148da9dab6",
+          "runtime_sha256": "c215f58e6cc374bb9e350cd5483c96b6eb6d4358f08b96a7dfb9fad25fd4ed49"
+        },
+        "metrics": {
+          "correct": false,
+          "diagnosis_correct": false,
+          "evidence_sufficient": false,
+          "required_evidence_count": 4,
+          "required_evidence_retrieved_count": 1,
+          "required_evidence_retrieved": [
+            "api_status"
+          ],
+          "missing_required_evidence": [
+            "cache_change",
+            "cache_logs",
+            "database_status"
+          ],
+          "evidence_completeness": 0.25,
+          "premature_stop": true,
+          "outside_required_supporting_evidence": [
+            "frontend_status"
+          ],
+          "outside_required_supporting_calls": 1,
+          "redundant_calls": 1,
+          "excess_calls": 0,
+          "repeated_calls": 0,
+          "unobserved_citations": []
+        },
+        "difficulty": "medium",
+        "trace_id": "5915f8cac8ea0cccb8ae24e0ff0c51e9",
+        "span_id": "84e0ea8a9b051b27"
+      },
+      "repetition_number": 1,
+      "start_time": "2026-09-28T01:12:05.385615+00:00",
+      "end_time": "2026-09-28T01:12:08.098159+00:00",
+      "trace_id": "5915f8cac8ea0cccb8ae24e0ff0c51e9",
+      "error": null,
+      "id": "RXhwZXJpbWVudFJ1bjo0",
+      "experiment_id": "RXhwZXJpbWVudDox"
+    },
+    {
+      "dataset_example_id": "RGF0YXNldEV4YW1wbGU6Mw==",
+      "output": {
+        "run": {
+          "scenario_id": "diag_003",
+          "user_report": "Saved records take a long time to appear in search.",
+          "model_name": "gpt-4.1-mini-2025-04-14",
+          "model_provider": "openai",
+          "configured_tool_budget": 2,
+          "tool_calls": [
+            {
+              "tool_index": 1,
+              "tool_name": "check_status",
+              "arguments": {
+                "component": "frontend"
+              },
+              "output": {
+                "component": "frontend",
+                "status": "healthy",
+                "detail": "Availability and latency are within baseline.",
+                "evidence_id": "frontend_status"
+              },
+              "executed": true,
+              "elapsed_seconds": 8.829600119497627e-05
+            },
+            {
+              "tool_index": 2,
+              "tool_name": "check_status",
+              "arguments": {
+                "component": "api"
+              },
+              "output": {
+                "component": "api",
+                "status": "healthy",
+                "detail": "Availability and latency are within baseline.",
+                "evidence_id": "api_status"
+              },
+              "executed": true,
+              "elapsed_seconds": 8.238499867729843e-05
+            }
+          ],
+          "evidence_ids_retrieved": [
+            "frontend_status",
+            "api_status"
+          ],
+          "number_of_tool_calls": 2,
+          "final_diagnosis": {
+            "predicted_root_cause": "database_saturation",
+            "explanation": "Frontend and API components are healthy with normal latency and availability, indicating the delay is likely due to the database. The symptom of saved records taking a long time to appear in search suggests the database might be saturated or slow in processing writes or queries.",
+            "evidence_used": [
+              "frontend_status",
+              "api_status"
+            ]
+          },
+          "elapsed_seconds": 2.2155187460011803,
+          "usage": {
+            "total_token_count": 1261,
+            "completion/rejected_prediction_tokens": 0,
+            "output_token_count": 102,
+            "completion/accepted_prediction_tokens": 0,
+            "completion/reasoning_tokens": 0,
+            "input_token_count": 1159,
+            "completion/audio_tokens": 0,
+            "prompt/cached_tokens": 0,
+            "prompt/audio_tokens": 0,
+            "reasoning_output_token_count": 0,
+            "cache_read_input_token_count": 0
+          },
+          "error": null,
+          "stop_reason": "tool_budget",
+          "model_rounds": [
+            {
+              "tool_choice": "auto",
+              "tools_present": true,
+              "finish_reason": "tool_calls",
+              "usage": {
+                "input_token_count": 331,
+                "output_token_count": 14,
+                "total_token_count": 345,
+                "completion/accepted_prediction_tokens": 0,
+                "completion/audio_tokens": 0,
+                "completion/reasoning_tokens": 0,
+                "reasoning_output_token_count": 0,
+                "completion/rejected_prediction_tokens": 0,
+                "prompt/audio_tokens": 0,
+                "prompt/cached_tokens": 0,
+                "cache_read_input_token_count": 0
+              },
+              "function_calls": 1
+            },
+            {
+              "tool_choice": "auto",
+              "tools_present": true,
+              "finish_reason": "tool_calls",
+              "usage": {
+                "input_token_count": 385,
+                "output_token_count": 14,
+                "total_token_count": 399,
+                "completion/accepted_prediction_tokens": 0,
+                "completion/audio_tokens": 0,
+                "completion/reasoning_tokens": 0,
+                "reasoning_output_token_count": 0,
+                "completion/rejected_prediction_tokens": 0,
+                "prompt/audio_tokens": 0,
+                "prompt/cached_tokens": 0,
+                "cache_read_input_token_count": 0
+              },
+              "function_calls": 1
+            },
+            {
+              "tool_choice": "none",
+              "tools_present": true,
+              "finish_reason": "stop",
+              "usage": {
+                "input_token_count": 443,
+                "output_token_count": 74,
+                "total_token_count": 517,
+                "completion/accepted_prediction_tokens": 0,
+                "completion/audio_tokens": 0,
+                "completion/reasoning_tokens": 0,
+                "reasoning_output_token_count": 0,
+                "completion/rejected_prediction_tokens": 0,
+                "prompt/audio_tokens": 0,
+                "prompt/cached_tokens": 0,
+                "cache_read_input_token_count": 0
+              },
+              "function_calls": 0
+            }
+          ],
+          "model_settings": {
+            "temperature": 0.0,
+            "reasoning_effort": null,
+            "allow_multiple_tool_calls": false,
+            "max_iterations": 20
+          },
+          "prompt_sha256": "5b4dda77aa73fae889ed9b9e8187716a13599c8824e912ded92a20148da9dab6",
+          "runtime_sha256": "f66c5db4978ae0e055af6ed435755d60bb9fc5e6a8d8c5aaeb696188ae7da8e8"
+        },
+        "metrics": {
+          "correct": true,
+          "diagnosis_correct": true,
+          "evidence_sufficient": false,
+          "required_evidence_count": 2,
+          "required_evidence_retrieved_count": 0,
+          "required_evidence_retrieved": [],
+          "missing_required_evidence": [
+            "database_logs",
+            "database_status"
+          ],
+          "evidence_completeness": 0.0,
+          "premature_stop": true,
+          "outside_required_supporting_evidence": [
+            "api_status",
+            "frontend_status"
+          ],
+          "outside_required_supporting_calls": 2,
+          "redundant_calls": 2,
+          "excess_calls": 0,
+          "repeated_calls": 0,
+          "unobserved_citations": []
+        },
+        "difficulty": "easy",
+        "trace_id": "3d4018a98f5be1bf5946fc9b8db00b16",
+        "span_id": "5b578bfd6cdf05e5"
+      },
+      "repetition_number": 1,
+      "start_time": "2026-09-28T01:12:03.103094+00:00",
+      "end_time": "2026-09-28T01:12:05.331109+00:00",
+      "trace_id": "3d4018a98f5be1bf5946fc9b8db00b16",
+      "error": null,
+      "id": "RXhwZXJpbWVudFJ1bjoz",
+      "experiment_id": "RXhwZXJpbWVudDox"
+    },
+    {
+      "dataset_example_id": "RGF0YXNldEV4YW1wbGU6Mg==",
+      "output": {
+        "run": {
+          "scenario_id": "diag_002",
+          "user_report": "Users see a blank page when opening the application.",
+          "model_name": "gpt-4.1-mini-2025-04-14",
+          "model_provider": "openai",
+          "configured_tool_budget": 2,
+          "tool_calls": [
+            {
+              "tool_index": 1,
+              "tool_name": "check_status",
+              "arguments": {
+                "component": "frontend"
+              },
+              "output": {
+                "component": "frontend",
+                "status": "degraded",
+                "detail": "Page shell loads, but client initialization fails.",
+                "evidence_id": "frontend_status"
+              },
+              "executed": true,
+              "elapsed_seconds": 0.00016916499589569867
+            },
+            {
+              "tool_index": 2,
+              "tool_name": "read_logs",
+              "arguments": {
+                "component": "frontend"
+              },
+              "output": {
+                "component": "frontend",
+                "log_summary": "All page loads fail with missing asset app.91.js. The bundle manifest references that file.",
+                "evidence_id": "frontend_logs"
+              },
+              "executed": true,
+              "elapsed_seconds": 0.00016116499318741262
+            }
+          ],
+          "evidence_ids_retrieved": [
+            "frontend_status",
+            "frontend_logs"
+          ],
+          "number_of_tool_calls": 2,
+          "final_diagnosis": {
+            "predicted_root_cause": "frontend_deployment_regression",
+            "explanation": "The frontend status shows degraded state with client initialization failure. Logs indicate missing asset app.91.js which is referenced in the bundle manifest, suggesting a deployment regression causing missing frontend assets.",
+            "evidence_used": [
+              "frontend_status",
+              "frontend_logs"
+            ]
+          },
+          "elapsed_seconds": 2.259314056005678,
+          "usage": {
+            "total_token_count": 1260,
+            "completion/rejected_prediction_tokens": 0,
+            "output_token_count": 91,
+            "completion/accepted_prediction_tokens": 0,
+            "completion/reasoning_tokens": 0,
+            "input_token_count": 1169,
+            "completion/audio_tokens": 0,
+            "prompt/cached_tokens": 0,
+            "prompt/audio_tokens": 0,
+            "reasoning_output_token_count": 0,
+            "cache_read_input_token_count": 0
+          },
+          "error": null,
+          "stop_reason": "tool_budget",
+          "model_rounds": [
+            {
+              "tool_choice": "auto",
+              "tools_present": true,
+              "finish_reason": "tool_calls",
+              "usage": {
+                "input_token_count": 330,
+                "output_token_count": 14,
+                "total_token_count": 344,
+                "completion/accepted_prediction_tokens": 0,
+                "completion/audio_tokens": 0,
+                "completion/reasoning_tokens": 0,
+                "reasoning_output_token_count": 0,
+                "completion/rejected_prediction_tokens": 0,
+                "prompt/audio_tokens": 0,
+                "prompt/cached_tokens": 0,
+                "cache_read_input_token_count": 0
+              },
+              "function_calls": 1
+            },
+            {
+              "tool_choice": "auto",
+              "tools_present": true,
+              "finish_reason": "tool_calls",
+              "usage": {
+                "input_token_count": 387,
+                "output_token_count": 14,
+                "total_token_count": 401,
+                "completion/accepted_prediction_tokens": 0,
+                "completion/audio_tokens": 0,
+                "completion/reasoning_tokens": 0,
+                "reasoning_output_token_count": 0,
+                "completion/rejected_prediction_tokens": 0,
+                "prompt/audio_tokens": 0,
+                "prompt/cached_tokens": 0,
+                "cache_read_input_token_count": 0
+              },
+              "function_calls": 1
+            },
+            {
+              "tool_choice": "none",
+              "tools_present": true,
+              "finish_reason": "stop",
+              "usage": {
+                "input_token_count": 452,
+                "output_token_count": 63,
+                "total_token_count": 515,
+                "completion/accepted_prediction_tokens": 0,
+                "completion/audio_tokens": 0,
+                "completion/reasoning_tokens": 0,
+                "reasoning_output_token_count": 0,
+                "completion/rejected_prediction_tokens": 0,
+                "prompt/audio_tokens": 0,
+                "prompt/cached_tokens": 0,
+                "cache_read_input_token_count": 0
+              },
+              "function_calls": 0
+            }
+          ],
+          "model_settings": {
+            "temperature": 0.0,
+            "reasoning_effort": null,
+            "allow_multiple_tool_calls": false,
+            "max_iterations": 20
+          },
+          "prompt_sha256": "5b4dda77aa73fae889ed9b9e8187716a13599c8824e912ded92a20148da9dab6",
+          "runtime_sha256": "11261813027f46e298cf8aa6d8adb9e2bc66b7a6bb562561a5b54e07ac10970d"
+        },
+        "metrics": {
+          "correct": true,
+          "diagnosis_correct": true,
+          "evidence_sufficient": false,
+          "required_evidence_count": 2,
+          "required_evidence_retrieved_count": 1,
+          "required_evidence_retrieved": [
+            "frontend_logs"
+          ],
+          "missing_required_evidence": [
+            "frontend_change"
+          ],
+          "evidence_completeness": 0.5,
+          "premature_stop": true,
+          "outside_required_supporting_evidence": [],
+          "outside_required_supporting_calls": 0,
+          "redundant_calls": 0,
+          "excess_calls": 0,
+          "repeated_calls": 0,
+          "unobserved_citations": []
+        },
+        "difficulty": "easy",
+        "trace_id": "bdf88b8399b56a58dc26a6a68c2ac2f8",
+        "span_id": "826d65fe9ca0e29c"
+      },
+      "repetition_number": 1,
+      "start_time": "2026-09-28T01:12:00.789919+00:00",
+      "end_time": "2026-09-28T01:12:03.063411+00:00",
+      "trace_id": "bdf88b8399b56a58dc26a6a68c2ac2f8",
+      "error": null,
+      "id": "RXhwZXJpbWVudFJ1bjoy",
+      "experiment_id": "RXhwZXJpbWVudDox"
+    },
+    {
+      "dataset_example_id": "RGF0YXNldEV4YW1wbGU6MQ==",
+      "output": {
+        "run": {
+          "scenario_id": "diag_001",
+          "user_report": "API requests are being rejected for all users.",
+          "model_name": "gpt-4.1-mini-2025-04-14",
+          "model_provider": "openai",
+          "configured_tool_budget": 2,
+          "tool_calls": [
+            {
+              "tool_index": 1,
+              "tool_name": "check_status",
+              "arguments": {
+                "component": "api"
+              },
+              "output": {
+                "component": "api",
+                "status": "unavailable",
+                "detail": "Startup validation failed: configured request limit is zero; all requests are rejected.",
+                "evidence_id": "api_status"
+              },
+              "executed": true,
+              "elapsed_seconds": 0.0002896130026783794
+            }
+          ],
+          "evidence_ids_retrieved": [
+            "api_status"
+          ],
+          "number_of_tool_calls": 1,
+          "final_diagnosis": {
+            "predicted_root_cause": "api_configuration_issue",
+            "explanation": "The API component is unavailable because its startup validation failed due to a configured request limit set to zero, causing all requests to be rejected.",
+            "evidence_used": [
+              "api_status"
+            ]
+          },
+          "elapsed_seconds": 1.8613827480003238,
+          "usage": {
+            "total_token_count": 788,
+            "completion/rejected_prediction_tokens": 0,
+            "output_token_count": 67,
+            "completion/accepted_prediction_tokens": 0,
+            "completion/reasoning_tokens": 0,
+            "input_token_count": 721,
+            "completion/audio_tokens": 0,
+            "prompt/cached_tokens": 0,
+            "prompt/audio_tokens": 0,
+            "reasoning_output_token_count": 0,
+            "cache_read_input_token_count": 0
+          },
+          "error": null,
+          "stop_reason": "agent_answered",
+          "model_rounds": [
+            {
+              "tool_choice": "auto",
+              "tools_present": true,
+              "finish_reason": "tool_calls",
+              "usage": {
+                "input_token_count": 329,
+                "output_token_count": 14,
+                "total_token_count": 343,
+                "completion/accepted_prediction_tokens": 0,
+                "completion/audio_tokens": 0,
+                "completion/reasoning_tokens": 0,
+                "reasoning_output_token_count": 0,
+                "completion/rejected_prediction_tokens": 0,
+                "prompt/audio_tokens": 0,
+                "prompt/cached_tokens": 0,
+                "cache_read_input_token_count": 0
+              },
+              "function_calls": 1
+            },
+            {
+              "tool_choice": "auto",
+              "tools_present": true,
+              "finish_reason": "stop",
+              "usage": {
+                "input_token_count": 392,
+                "output_token_count": 53,
+                "total_token_count": 445,
+                "completion/accepted_prediction_tokens": 0,
+                "completion/audio_tokens": 0,
+                "completion/reasoning_tokens": 0,
+                "reasoning_output_token_count": 0,
+                "completion/rejected_prediction_tokens": 0,
+                "prompt/audio_tokens": 0,
+                "prompt/cached_tokens": 0,
+                "cache_read_input_token_count": 0
+              },
+              "function_calls": 0
+            }
+          ],
+          "model_settings": {
+            "temperature": 0.0,
+            "reasoning_effort": null,
+            "allow_multiple_tool_calls": false,
+            "max_iterations": 20
+          },
+          "prompt_sha256": "5b4dda77aa73fae889ed9b9e8187716a13599c8824e912ded92a20148da9dab6",
+          "runtime_sha256": "724e8bfab26736ad73b885da2a61f6519ce0205013acfe22079ad737666fc71b"
+        },
+        "metrics": {
+          "correct": true,
+          "diagnosis_correct": true,
+          "evidence_sufficient": true,
+          "required_evidence_count": 1,
+          "required_evidence_retrieved_count": 1,
+          "required_evidence_retrieved": [
+            "api_status"
+          ],
+          "missing_required_evidence": [],
+          "evidence_completeness": 1.0,
+          "premature_stop": false,
+          "outside_required_supporting_evidence": [],
+          "outside_required_supporting_calls": 0,
+          "redundant_calls": 0,
+          "excess_calls": 0,
+          "repeated_calls": 0,
+          "unobserved_citations": []
+        },
+        "difficulty": "easy",
+        "trace_id": "f1498f0e1b999916bda4818e0ace44a0",
+        "span_id": "4a883ac3d3d68330"
+      },
+      "repetition_number": 1,
+      "start_time": "2026-09-28T01:11:56.374464+00:00",
+      "end_time": "2026-09-28T01:12:00.705147+00:00",
+      "trace_id": "f1498f0e1b999916bda4818e0ace44a0",
+      "error": null,
+      "id": "RXhwZXJpbWVudFJ1bjox",
+      "experiment_id": "RXhwZXJpbWVudDox"
+    }
+  ],
+  "evaluation_runs": [
+    {
+      "experiment_run_id": "RXhwZXJpbWVudFJ1bjo4",
+      "start_time": "2026-09-28 01:12:18.840768+00:00",
+      "end_time": "2026-09-28 01:12:18.847320+00:00",
+      "name": "diagnosis_correct",
+      "annotator_kind": "CODE",
+      "error": null,
+      "result": {
+        "label": "1",
+        "score": 1.0,
+        "explanation": "Deterministic rubric v2; stop_reason=tool_budget"
+      },
+      "id": "ExperimentEvaluation:1",
+      "trace_id": "513d5fd4063d915a52e30f7139744361",
+      "metadata": {}
+    },
+    {
+      "experiment_run_id": "RXhwZXJpbWVudFJ1bjo4",
+      "start_time": "2026-09-28 01:12:18.902557+00:00",
+      "end_time": "2026-09-28 01:12:18.903646+00:00",
+      "name": "evidence_completeness",
+      "annotator_kind": "CODE",
+      "error": null,
+      "result": {
+        "label": "0.0",
+        "score": 0.0,
+        "explanation": "Deterministic rubric v2; stop_reason=tool_budget"
+      },
+      "id": "ExperimentEvaluation:2",
+      "trace_id": "44fd381655a6f2a32e6f75ff60d6a744",
+      "metadata": {}
+    },
+    {
+      "experiment_run_id": "RXhwZXJpbWVudFJ1bjo4",
+      "start_time": "2026-09-28 01:12:18.922024+00:00",
+      "end_time": "2026-09-28 01:12:18.923209+00:00",
+      "name": "evidence_sufficient",
+      "annotator_kind": "CODE",
+      "error": null,
+      "result": {
+        "label": "0",
+        "score": 0.0,
+        "explanation": "Deterministic rubric v2; stop_reason=tool_budget"
+      },
+      "id": "ExperimentEvaluation:3",
+      "trace_id": "4464cc1d00d559997e605b9744bf12f7",
+      "metadata": {}
+    },
+    {
+      "experiment_run_id": "RXhwZXJpbWVudFJ1bjo4",
+      "start_time": "2026-09-28 01:12:19.401688+00:00",
+      "end_time": "2026-09-28 01:12:19.403038+00:00",
+      "name": "identical_repeated_calls",
+      "annotator_kind": "CODE",
+      "error": null,
+      "result": {
+        "label": "0",
+        "score": 0.0,
+        "explanation": "Deterministic rubric v2; stop_reason=tool_budget"
+      },
+      "id": "ExperimentEvaluation:4",
+      "trace_id": "bdb50d81c46833c3c87366c49588662f",
+      "metadata": {}
+    },
+    {
+      "experiment_run_id": "RXhwZXJpbWVudFJ1bjo4",
+      "start_time": "2026-09-28 01:12:19.277224+00:00",
+      "end_time": "2026-09-28 01:12:19.279401+00:00",
+      "name": "irrelevant_calls",
+      "annotator_kind": "CODE",
+      "error": null,
+      "result": {
+        "label": "2",
+        "score": 2.0,
+        "explanation": "Deterministic rubric v2; stop_reason=tool_budget"
+      },
+      "id": "ExperimentEvaluation:5",
+      "trace_id": "037fdd06d85cd23fc38e5168131fce6e",
+      "metadata": {}
+    },
+    {
+      "experiment_run_id": "RXhwZXJpbWVudFJ1bjo4",
+      "start_time": "2026-09-28 01:12:19.839594+00:00",
+      "end_time": "2026-09-28 01:12:19.840541+00:00",
+      "name": "latency_seconds",
+      "annotator_kind": "CODE",
+      "error": null,
+      "result": {
+        "label": "2.4874305549892597",
+        "score": 2.4874305549892597,
+        "explanation": "Deterministic rubric v2; stop_reason=tool_budget"
+      },
+      "id": "ExperimentEvaluation:6",
+      "trace_id": "d2fbf38fa4dfcd90ba460a283341d6c7",
+      "metadata": {}
+    },
+    {
+      "experiment_run_id": "RXhwZXJpbWVudFJ1bjo4",
+      "start_time": "2026-09-28 01:12:19.323228+00:00",
+      "end_time": "2026-09-28 01:12:19.324255+00:00",
+      "name": "post_sufficiency_calls",
+      "annotator_kind": "CODE",
+      "error": null,
+      "result": {
+        "label": "0",
+        "score": 0.0,
+        "explanation": "Deterministic rubric v2; stop_reason=tool_budget"
+      },
+      "id": "ExperimentEvaluation:7",
+      "trace_id": "b6cde7c9884f0e668828c36ed6d61805",
+      "metadata": {}
+    },
+    {
+      "experiment_run_id": "RXhwZXJpbWVudFJ1bjo4",
+      "start_time": "2026-09-28 01:12:19.010903+00:00",
+      "end_time": "2026-09-28 01:12:19.014298+00:00",
+      "name": "premature_stop",
+      "annotator_kind": "CODE",
+      "error": null,
+      "result": {
+        "label": "1",
+        "score": 1.0,
+        "explanation": "Deterministic rubric v2; stop_reason=tool_budget"
+      },
+      "id": "ExperimentEvaluation:8",
+      "trace_id": "dd25e51554366a7a2207063ab6980a4d",
+      "metadata": {}
+    },
+    {
+      "experiment_run_id": "RXhwZXJpbWVudFJ1bjo4",
+      "start_time": "2026-09-28 01:12:19.148386+00:00",
+      "end_time": "2026-09-28 01:12:19.152627+00:00",
+      "name": "redundant_investigation",
+      "annotator_kind": "CODE",
+      "error": null,
+      "result": {
+        "label": "2",
+        "score": 2.0,
+        "explanation": "Deterministic rubric v2; stop_reason=tool_budget"
+      },
+      "id": "ExperimentEvaluation:9",
+      "trace_id": "e51535e09d3d0def17a7391bcddd4436",
+      "metadata": {}
+    },
+    {
+      "experiment_run_id": "RXhwZXJpbWVudFJ1bjo4",
+      "start_time": "2026-09-28 01:12:19.857854+00:00",
+      "end_time": "2026-09-28 01:12:19.860215+00:00",
+      "name": "token_usage",
+      "annotator_kind": "CODE",
+      "error": null,
+      "result": {
+        "label": "1274",
+        "score": 1274.0,
+        "explanation": "Deterministic rubric v2; stop_reason=tool_budget"
+      },
+      "id": "ExperimentEvaluation:10",
+      "trace_id": "8f31af5e7c3ff82027798be7829dc2bf",
+      "metadata": {}
+    },
+    {
+      "experiment_run_id": "RXhwZXJpbWVudFJ1bjo4",
+      "start_time": "2026-09-28 01:12:19.088988+00:00",
+      "end_time": "2026-09-28 01:12:19.091617+00:00",
+      "name": "tool_calls_used",
+      "annotator_kind": "CODE",
+      "error": null,
+      "result": {
+        "label": "2",
+        "score": 2.0,
+        "explanation": "Deterministic rubric v2; stop_reason=tool_budget"
+      },
+      "id": "ExperimentEvaluation:11",
+      "trace_id": "1b7867bd555b12c7aa674edf3e95a0c9",
+      "metadata": {}
+    },
+    {
+      "experiment_run_id": "RXhwZXJpbWVudFJ1bjo3",
+      "start_time": "2026-09-28 01:12:19.875142+00:00",
+      "end_time": "2026-09-28 01:12:19.877188+00:00",
+      "name": "diagnosis_correct",
+      "annotator_kind": "CODE",
+      "error": null,
+      "result": {
+        "label": "0",
+        "score": 0.0,
+        "explanation": "Deterministic rubric v2; stop_reason=tool_budget"
+      },
+      "id": "ExperimentEvaluation:12",
+      "trace_id": "cd23b57342193664e02bd608ad8e3dc9",
+      "metadata": {}
+    },
+    {
+      "experiment_run_id": "RXhwZXJpbWVudFJ1bjo3",
+      "start_time": "2026-09-28 01:12:19.960608+00:00",
+      "end_time": "2026-09-28 01:12:19.962792+00:00",
+      "name": "evidence_completeness",
+      "annotator_kind": "CODE",
+      "error": null,
+      "result": {
+        "label": "0.25",
+        "score": 0.25,
+        "explanation": "Deterministic rubric v2; stop_reason=tool_budget"
+      },
+      "id": "ExperimentEvaluation:13",
+      "trace_id": "8089925e5768bea35345d7405010fe0c",
+      "metadata": {}
+    },
+    {
+      "experiment_run_id": "RXhwZXJpbWVudFJ1bjo3",
+      "start_time": "2026-09-28 01:12:19.989902+00:00",
+      "end_time": "2026-09-28 01:12:19.990948+00:00",
+      "name": "evidence_sufficient",
+      "annotator_kind": "CODE",
+      "error": null,
+      "result": {
+        "label": "0",
+        "score": 0.0,
+        "explanation": "Deterministic rubric v2; stop_reason=tool_budget"
+      },
+      "id": "ExperimentEvaluation:14",
+      "trace_id": "417d53714d63ad1d790ff6e02f28921a",
+      "metadata": {}
+    },
+    {
+      "experiment_run_id": "RXhwZXJpbWVudFJ1bjo3",
+      "start_time": "2026-09-28 01:12:20.868942+00:00",
+      "end_time": "2026-09-28 01:12:20.869951+00:00",
+      "name": "identical_repeated_calls",
+      "annotator_kind": "CODE",
+      "error": null,
+      "result": {
+        "label": "0",
+        "score": 0.0,
+        "explanation": "Deterministic rubric v2; stop_reason=tool_budget"
+      },
+      "id": "ExperimentEvaluation:15",
+      "trace_id": "4fd0159219aad9de828bf96621d55d54",
+      "metadata": {}
+    },
+    {
+      "experiment_run_id": "RXhwZXJpbWVudFJ1bjo3",
+      "start_time": "2026-09-28 01:12:20.257808+00:00",
+      "end_time": "2026-09-28 01:12:20.260271+00:00",
+      "name": "irrelevant_calls",
+      "annotator_kind": "CODE",
+      "error": null,
+      "result": {
+        "label": "1",
+        "score": 1.0,
+        "explanation": "Deterministic rubric v2; stop_reason=tool_budget"
+      },
+      "id": "ExperimentEvaluation:16",
+      "trace_id": "6ad7c8aee3b872cbdc3bb44de62500a9",
+      "metadata": {}
+    },
+    {
+      "experiment_run_id": "RXhwZXJpbWVudFJ1bjo3",
+      "start_time": "2026-09-28 01:12:20.893755+00:00",
+      "end_time": "2026-09-28 01:12:20.898305+00:00",
+      "name": "latency_seconds",
+      "annotator_kind": "CODE",
+      "error": null,
+      "result": {
+        "label": "2.286278660001699",
+        "score": 2.286278660001699,
+        "explanation": "Deterministic rubric v2; stop_reason=tool_budget"
+      },
+      "id": "ExperimentEvaluation:17",
+      "trace_id": "76cba06759b58613fd4ea8cc6b336595",
+      "metadata": {}
+    },
+    {
+      "experiment_run_id": "RXhwZXJpbWVudFJ1bjo3",
+      "start_time": "2026-09-28 01:12:20.840135+00:00",
+      "end_time": "2026-09-28 01:12:20.840876+00:00",
+      "name": "post_sufficiency_calls",
+      "annotator_kind": "CODE",
+      "error": null,
+      "result": {
+        "label": "0",
+        "score": 0.0,
+        "explanation": "Deterministic rubric v2; stop_reason=tool_budget"
+      },
+      "id": "ExperimentEvaluation:18",
+      "trace_id": "87ff5e40417a7ed2fea68872462eac1b",
+      "metadata": {}
+    },
+    {
+      "experiment_run_id": "RXhwZXJpbWVudFJ1bjo3",
+      "start_time": "2026-09-28 01:12:20.017350+00:00",
+      "end_time": "2026-09-28 01:12:20.018049+00:00",
+      "name": "premature_stop",
+      "annotator_kind": "CODE",
+      "error": null,
+      "result": {
+        "label": "1",
+        "score": 1.0,
+        "explanation": "Deterministic rubric v2; stop_reason=tool_budget"
+      },
+      "id": "ExperimentEvaluation:19",
+      "trace_id": "c2ef3d3eb17161a2da3389e3666e3a5c",
+      "metadata": {}
+    },
+    {
+      "experiment_run_id": "RXhwZXJpbWVudFJ1bjo3",
+      "start_time": "2026-09-28 01:12:20.068537+00:00",
+      "end_time": "2026-09-28 01:12:20.069975+00:00",
+      "name": "redundant_investigation",
+      "annotator_kind": "CODE",
+      "error": null,
+      "result": {
+        "label": "1",
+        "score": 1.0,
+        "explanation": "Deterministic rubric v2; stop_reason=tool_budget"
+      },
+      "id": "ExperimentEvaluation:20",
+      "trace_id": "ac8360873faaca8ab636b2560e94c7af",
+      "metadata": {}
+    },
+    {
+      "experiment_run_id": "RXhwZXJpbWVudFJ1bjo3",
+      "start_time": "2026-09-28 01:12:21.183434+00:00",
+      "end_time": "2026-09-28 01:12:21.184503+00:00",
+      "name": "token_usage",
+      "annotator_kind": "CODE",
+      "error": null,
+      "result": {
+        "label": "1285",
+        "score": 1285.0,
+        "explanation": "Deterministic rubric v2; stop_reason=tool_budget"
+      },
+      "id": "ExperimentEvaluation:21",
+      "trace_id": "b8b15fe30198342f5e645edc05faca41",
+      "metadata": {}
+    },
+    {
+      "experiment_run_id": "RXhwZXJpbWVudFJ1bjo3",
+      "start_time": "2026-09-28 01:12:20.034966+00:00",
+      "end_time": "2026-09-28 01:12:20.036333+00:00",
+      "name": "tool_calls_used",
+      "annotator_kind": "CODE",
+      "error": null,
+      "result": {
+        "label": "2",
+        "score": 2.0,
+        "explanation": "Deterministic rubric v2; stop_reason=tool_budget"
+      },
+      "id": "ExperimentEvaluation:22",
+      "trace_id": "a202b974b2ac4c4b4d81c196441c7963",
+      "metadata": {}
+    },
+    {
+      "experiment_run_id": "RXhwZXJpbWVudFJ1bjo2",
+      "start_time": "2026-09-28 01:12:21.219490+00:00",
+      "end_time": "2026-09-28 01:12:21.220239+00:00",
+      "name": "diagnosis_correct",
+      "annotator_kind": "CODE",
+      "error": null,
+      "result": {
+        "label": "0",
+        "score": 0.0,
+        "explanation": "Deterministic rubric v2; stop_reason=tool_budget"
+      },
+      "id": "ExperimentEvaluation:23",
+      "trace_id": "b2296b5ebcf41383a943e599d1ac6403",
+      "metadata": {}
+    },
+    {
+      "experiment_run_id": "RXhwZXJpbWVudFJ1bjo2",
+      "start_time": "2026-09-28 01:12:21.242767+00:00",
+      "end_time": "2026-09-28 01:12:21.244277+00:00",
+      "name": "evidence_completeness",
+      "annotator_kind": "CODE",
+      "error": null,
+      "result": {
+        "label": "0.0",
+        "score": 0.0,
+        "explanation": "Deterministic rubric v2; stop_reason=tool_budget"
+      },
+      "id": "ExperimentEvaluation:24",
+      "trace_id": "eec21d41c5dc80fb73a832407949b6b4",
+      "metadata": {}
+    },
+    {
+      "experiment_run_id": "RXhwZXJpbWVudFJ1bjo2",
+      "start_time": "2026-09-28 01:12:21.282379+00:00",
+      "end_time": "2026-09-28 01:12:21.283168+00:00",
+      "name": "evidence_sufficient",
+      "annotator_kind": "CODE",
+      "error": null,
+      "result": {
+        "label": "0",
+        "score": 0.0,
+        "explanation": "Deterministic rubric v2; stop_reason=tool_budget"
+      },
+      "id": "ExperimentEvaluation:25",
+      "trace_id": "58a1fc68e1a82d26e6c2050973b9b825",
+      "metadata": {}
+    },
+    {
+      "experiment_run_id": "RXhwZXJpbWVudFJ1bjo2",
+      "start_time": "2026-09-28 01:12:21.940020+00:00",
+      "end_time": "2026-09-28 01:12:21.941039+00:00",
+      "name": "identical_repeated_calls",
+      "annotator_kind": "CODE",
+      "error": null,
+      "result": {
+        "label": "0",
+        "score": 0.0,
+        "explanation": "Deterministic rubric v2; stop_reason=tool_budget"
+      },
+      "id": "ExperimentEvaluation:26",
+      "trace_id": "5c40a7fd30b5116d9991142e694e0e8e",
+      "metadata": {}
+    },
+    {
+      "experiment_run_id": "RXhwZXJpbWVudFJ1bjo2",
+      "start_time": "2026-09-28 01:12:21.862852+00:00",
+      "end_time": "2026-09-28 01:12:21.864020+00:00",
+      "name": "irrelevant_calls",
+      "annotator_kind": "CODE",
+      "error": null,
+      "result": {
+        "label": "2",
+        "score": 2.0,
+        "explanation": "Deterministic rubric v2; stop_reason=tool_budget"
+      },
+      "id": "ExperimentEvaluation:27",
+      "trace_id": "2f320684874b4576b8333ff9a7c66e82",
+      "metadata": {}
+    },
+    {
+      "experiment_run_id": "RXhwZXJpbWVudFJ1bjo2",
+      "start_time": "2026-09-28 01:12:22.064238+00:00",
+      "end_time": "2026-09-28 01:12:22.065431+00:00",
+      "name": "latency_seconds",
+      "annotator_kind": "CODE",
+      "error": null,
+      "result": {
+        "label": "2.142775387997972",
+        "score": 2.142775387997972,
+        "explanation": "Deterministic rubric v2; stop_reason=tool_budget"
+      },
+      "id": "ExperimentEvaluation:28",
+      "trace_id": "5589a44259fe399a41f87d15c8109578",
+      "metadata": {}
+    },
+    {
+      "experiment_run_id": "RXhwZXJpbWVudFJ1bjo2",
+      "start_time": "2026-09-28 01:12:21.882104+00:00",
+      "end_time": "2026-09-28 01:12:21.883355+00:00",
+      "name": "post_sufficiency_calls",
+      "annotator_kind": "CODE",
+      "error": null,
+      "result": {
+        "label": "0",
+        "score": 0.0,
+        "explanation": "Deterministic rubric v2; stop_reason=tool_budget"
+      },
+      "id": "ExperimentEvaluation:29",
+      "trace_id": "c471b638002abe94e768ffaf3ccaf287",
+      "metadata": {}
+    },
+    {
+      "experiment_run_id": "RXhwZXJpbWVudFJ1bjo2",
+      "start_time": "2026-09-28 01:12:21.316140+00:00",
+      "end_time": "2026-09-28 01:12:21.316823+00:00",
+      "name": "premature_stop",
+      "annotator_kind": "CODE",
+      "error": null,
+      "result": {
+        "label": "1",
+        "score": 1.0,
+        "explanation": "Deterministic rubric v2; stop_reason=tool_budget"
+      },
+      "id": "ExperimentEvaluation:30",
+      "trace_id": "81c90e6a6cbf243adf3c423d5c2cb633",
+      "metadata": {}
+    },
+    {
+      "experiment_run_id": "RXhwZXJpbWVudFJ1bjo2",
+      "start_time": "2026-09-28 01:12:21.841533+00:00",
+      "end_time": "2026-09-28 01:12:21.843989+00:00",
+      "name": "redundant_investigation",
+      "annotator_kind": "CODE",
+      "error": null,
+      "result": {
+        "label": "2",
+        "score": 2.0,
+        "explanation": "Deterministic rubric v2; stop_reason=tool_budget"
+      },
+      "id": "ExperimentEvaluation:31",
+      "trace_id": "6943c2a66f34ae36f07b6932cceb6a72",
+      "metadata": {}
+    },
+    {
+      "experiment_run_id": "RXhwZXJpbWVudFJ1bjo2",
+      "start_time": "2026-09-28 01:12:22.104512+00:00",
+      "end_time": "2026-09-28 01:12:22.106087+00:00",
+      "name": "token_usage",
+      "annotator_kind": "CODE",
+      "error": null,
+      "result": {
+        "label": "1245",
+        "score": 1245.0,
+        "explanation": "Deterministic rubric v2; stop_reason=tool_budget"
+      },
+      "id": "ExperimentEvaluation:32",
+      "trace_id": "6ca7c6ec0b71fa2c4aedd4df72217dab",
+      "metadata": {}
+    },
+    {
+      "experiment_run_id": "RXhwZXJpbWVudFJ1bjo2",
+      "start_time": "2026-09-28 01:12:21.347846+00:00",
+      "end_time": "2026-09-28 01:12:21.348551+00:00",
+      "name": "tool_calls_used",
+      "annotator_kind": "CODE",
+      "error": null,
+      "result": {
+        "label": "2",
+        "score": 2.0,
+        "explanation": "Deterministic rubric v2; stop_reason=tool_budget"
+      },
+      "id": "ExperimentEvaluation:33",
+      "trace_id": "f645fc706d6434b5a283bc5fece253d5",
+      "metadata": {}
+    },
+    {
+      "experiment_run_id": "RXhwZXJpbWVudFJ1bjo1",
+      "start_time": "2026-09-28 01:12:22.147457+00:00",
+      "end_time": "2026-09-28 01:12:22.148705+00:00",
+      "name": "diagnosis_correct",
+      "annotator_kind": "CODE",
+      "error": null,
+      "result": {
+        "label": "0",
+        "score": 0.0,
+        "explanation": "Deterministic rubric v2; stop_reason=tool_budget"
+      },
+      "id": "ExperimentEvaluation:34",
+      "trace_id": "40da90e5a58d45a40bec133143c18d2b",
+      "metadata": {}
+    },
+    {
+      "experiment_run_id": "RXhwZXJpbWVudFJ1bjo1",
+      "start_time": "2026-09-28 01:12:22.183695+00:00",
+      "end_time": "2026-09-28 01:12:22.184911+00:00",
+      "name": "evidence_completeness",
+      "annotator_kind": "CODE",
+      "error": null,
+      "result": {
+        "label": "0.0",
+        "score": 0.0,
+        "explanation": "Deterministic rubric v2; stop_reason=tool_budget"
+      },
+      "id": "ExperimentEvaluation:35",
+      "trace_id": "f62bb9dc49039171669db3c329db9ec6",
+      "metadata": {}
+    },
+    {
+      "experiment_run_id": "RXhwZXJpbWVudFJ1bjo1",
+      "start_time": "2026-09-28 01:12:22.297462+00:00",
+      "end_time": "2026-09-28 01:12:22.298444+00:00",
+      "name": "evidence_sufficient",
+      "annotator_kind": "CODE",
+      "error": null,
+      "result": {
+        "label": "0",
+        "score": 0.0,
+        "explanation": "Deterministic rubric v2; stop_reason=tool_budget"
+      },
+      "id": "ExperimentEvaluation:36",
+      "trace_id": "6cd75c47bfec2214a087c4ea148924e2",
+      "metadata": {}
+    },
+    {
+      "experiment_run_id": "RXhwZXJpbWVudFJ1bjo1",
+      "start_time": "2026-09-28 01:12:23.010575+00:00",
+      "end_time": "2026-09-28 01:12:23.012817+00:00",
+      "name": "identical_repeated_calls",
+      "annotator_kind": "CODE",
+      "error": null,
+      "result": {
+        "label": "0",
+        "score": 0.0,
+        "explanation": "Deterministic rubric v2; stop_reason=tool_budget"
+      },
+      "id": "ExperimentEvaluation:37",
+      "trace_id": "c7083727967e87fa8d485b331d08b284",
+      "metadata": {}
+    },
+    {
+      "experiment_run_id": "RXhwZXJpbWVudFJ1bjo1",
+      "start_time": "2026-09-28 01:12:22.956011+00:00",
+      "end_time": "2026-09-28 01:12:22.956870+00:00",
+      "name": "irrelevant_calls",
+      "annotator_kind": "CODE",
+      "error": null,
+      "result": {
+        "label": "2",
+        "score": 2.0,
+        "explanation": "Deterministic rubric v2; stop_reason=tool_budget"
+      },
+      "id": "ExperimentEvaluation:38",
+      "trace_id": "05aba62e169a8e311d4517e5d56a3831",
+      "metadata": {}
+    },
+    {
+      "experiment_run_id": "RXhwZXJpbWVudFJ1bjo1",
+      "start_time": "2026-09-28 01:12:23.025056+00:00",
+      "end_time": "2026-09-28 01:12:23.026759+00:00",
+      "name": "latency_seconds",
+      "annotator_kind": "CODE",
+      "error": null,
+      "result": {
+        "label": "2.3891778300021542",
+        "score": 2.3891778300021542,
+        "explanation": "Deterministic rubric v2; stop_reason=tool_budget"
+      },
+      "id": "ExperimentEvaluation:39",
+      "trace_id": "cc56945035cbda374068e372202d32d5",
+      "metadata": {}
+    },
+    {
+      "experiment_run_id": "RXhwZXJpbWVudFJ1bjo1",
+      "start_time": "2026-09-28 01:12:22.983069+00:00",
+      "end_time": "2026-09-28 01:12:22.983902+00:00",
+      "name": "post_sufficiency_calls",
+      "annotator_kind": "CODE",
+      "error": null,
+      "result": {
+        "label": "0",
+        "score": 0.0,
+        "explanation": "Deterministic rubric v2; stop_reason=tool_budget"
+      },
+      "id": "ExperimentEvaluation:40",
+      "trace_id": "a4d70e8cdf9b8e10490af741d340b920",
+      "metadata": {}
+    },
+    {
+      "experiment_run_id": "RXhwZXJpbWVudFJ1bjo1",
+      "start_time": "2026-09-28 01:12:22.842574+00:00",
+      "end_time": "2026-09-28 01:12:22.844005+00:00",
+      "name": "premature_stop",
+      "annotator_kind": "CODE",
+      "error": null,
+      "result": {
+        "label": "1",
+        "score": 1.0,
+        "explanation": "Deterministic rubric v2; stop_reason=tool_budget"
+      },
+      "id": "ExperimentEvaluation:41",
+      "trace_id": "19b05352160b63e88fdd3eafeff48bbd",
+      "metadata": {}
+    },
+    {
+      "experiment_run_id": "RXhwZXJpbWVudFJ1bjo1",
+      "start_time": "2026-09-28 01:12:22.867756+00:00",
+      "end_time": "2026-09-28 01:12:22.868975+00:00",
+      "name": "redundant_investigation",
+      "annotator_kind": "CODE",
+      "error": null,
+      "result": {
+        "label": "2",
+        "score": 2.0,
+        "explanation": "Deterministic rubric v2; stop_reason=tool_budget"
+      },
+      "id": "ExperimentEvaluation:42",
+      "trace_id": "d50f81446f26899663e7c948295502d0",
+      "metadata": {}
+    },
+    {
+      "experiment_run_id": "RXhwZXJpbWVudFJ1bjo1",
+      "start_time": "2026-09-28 01:12:23.140839+00:00",
+      "end_time": "2026-09-28 01:12:23.146470+00:00",
+      "name": "token_usage",
+      "annotator_kind": "CODE",
+      "error": null,
+      "result": {
+        "label": "1259",
+        "score": 1259.0,
+        "explanation": "Deterministic rubric v2; stop_reason=tool_budget"
+      },
+      "id": "ExperimentEvaluation:43",
+      "trace_id": "9ed82146cbf8656f05f3aaddfefc0ff0",
+      "metadata": {}
+    },
+    {
+      "experiment_run_id": "RXhwZXJpbWVudFJ1bjo1",
+      "start_time": "2026-09-28 01:12:22.854026+00:00",
+      "end_time": "2026-09-28 01:12:22.855161+00:00",
+      "name": "tool_calls_used",
+      "annotator_kind": "CODE",
+      "error": null,
+      "result": {
+        "label": "2",
+        "score": 2.0,
+        "explanation": "Deterministic rubric v2; stop_reason=tool_budget"
+      },
+      "id": "ExperimentEvaluation:44",
+      "trace_id": "96cb61a575475f4639fa9a4fbb6e03d2",
+      "metadata": {}
+    },
+    {
+      "experiment_run_id": "RXhwZXJpbWVudFJ1bjo0",
+      "start_time": "2026-09-28 01:12:23.275528+00:00",
+      "end_time": "2026-09-28 01:12:23.277525+00:00",
+      "name": "diagnosis_correct",
+      "annotator_kind": "CODE",
+      "error": null,
+      "result": {
+        "label": "0",
+        "score": 0.0,
+        "explanation": "Deterministic rubric v2; stop_reason=tool_budget"
+      },
+      "id": "ExperimentEvaluation:45",
+      "trace_id": "de9e1d97f35f77985a3d3d6b8c519369",
+      "metadata": {}
+    },
+    {
+      "experiment_run_id": "RXhwZXJpbWVudFJ1bjo0",
+      "start_time": "2026-09-28 01:12:23.846354+00:00",
+      "end_time": "2026-09-28 01:12:23.847328+00:00",
+      "name": "evidence_completeness",
+      "annotator_kind": "CODE",
+      "error": null,
+      "result": {
+        "label": "0.25",
+        "score": 0.25,
+        "explanation": "Deterministic rubric v2; stop_reason=tool_budget"
+      },
+      "id": "ExperimentEvaluation:46",
+      "trace_id": "d6ee77a246528fe93fb30c3d46ba132a",
+      "metadata": {}
+    },
+    {
+      "experiment_run_id": "RXhwZXJpbWVudFJ1bjo0",
+      "start_time": "2026-09-28 01:12:23.864392+00:00",
+      "end_time": "2026-09-28 01:12:23.865619+00:00",
+      "name": "evidence_sufficient",
+      "annotator_kind": "CODE",
+      "error": null,
+      "result": {
+        "label": "0",
+        "score": 0.0,
+        "explanation": "Deterministic rubric v2; stop_reason=tool_budget"
+      },
+      "id": "ExperimentEvaluation:47",
+      "trace_id": "f3612e4bc10b7de0d179f0d54c4d5a74",
+      "metadata": {}
+    },
+    {
+      "experiment_run_id": "RXhwZXJpbWVudFJ1bjo0",
+      "start_time": "2026-09-28 01:12:24.207423+00:00",
+      "end_time": "2026-09-28 01:12:24.209124+00:00",
+      "name": "identical_repeated_calls",
+      "annotator_kind": "CODE",
+      "error": null,
+      "result": {
+        "label": "0",
+        "score": 0.0,
+        "explanation": "Deterministic rubric v2; stop_reason=tool_budget"
+      },
+      "id": "ExperimentEvaluation:48",
+      "trace_id": "8d410bfca61fc9e49b3ecc290039e2eb",
+      "metadata": {}
+    },
+    {
+      "experiment_run_id": "RXhwZXJpbWVudFJ1bjo0",
+      "start_time": "2026-09-28 01:12:24.049354+00:00",
+      "end_time": "2026-09-28 01:12:24.050367+00:00",
+      "name": "irrelevant_calls",
+      "annotator_kind": "CODE",
+      "error": null,
+      "result": {
+        "label": "1",
+        "score": 1.0,
+        "explanation": "Deterministic rubric v2; stop_reason=tool_budget"
+      },
+      "id": "ExperimentEvaluation:49",
+      "trace_id": "249bdcc074a3678ec34b55f217fc5e0c",
+      "metadata": {}
+    },
+    {
+      "experiment_run_id": "RXhwZXJpbWVudFJ1bjo0",
+      "start_time": "2026-09-28 01:12:24.241685+00:00",
+      "end_time": "2026-09-28 01:12:24.244623+00:00",
+      "name": "latency_seconds",
+      "annotator_kind": "CODE",
+      "error": null,
+      "result": {
+        "label": "2.704436376996455",
+        "score": 2.704436376996455,
+        "explanation": "Deterministic rubric v2; stop_reason=tool_budget"
+      },
+      "id": "ExperimentEvaluation:50",
+      "trace_id": "db33787d33a6b77c204921100ae2f447",
+      "metadata": {}
+    },
+    {
+      "experiment_run_id": "RXhwZXJpbWVudFJ1bjo0",
+      "start_time": "2026-09-28 01:12:24.084894+00:00",
+      "end_time": "2026-09-28 01:12:24.085979+00:00",
+      "name": "post_sufficiency_calls",
+      "annotator_kind": "CODE",
+      "error": null,
+      "result": {
+        "label": "0",
+        "score": 0.0,
+        "explanation": "Deterministic rubric v2; stop_reason=tool_budget"
+      },
+      "id": "ExperimentEvaluation:51",
+      "trace_id": "a390452f287e6c170ba328487d98fb12",
+      "metadata": {}
+    },
+    {
+      "experiment_run_id": "RXhwZXJpbWVudFJ1bjo0",
+      "start_time": "2026-09-28 01:12:23.896745+00:00",
+      "end_time": "2026-09-28 01:12:23.897846+00:00",
+      "name": "premature_stop",
+      "annotator_kind": "CODE",
+      "error": null,
+      "result": {
+        "label": "1",
+        "score": 1.0,
+        "explanation": "Deterministic rubric v2; stop_reason=tool_budget"
+      },
+      "id": "ExperimentEvaluation:52",
+      "trace_id": "8f52af5b5f350c052bc0f1dcc2bf3a69",
+      "metadata": {}
+    },
+    {
+      "experiment_run_id": "RXhwZXJpbWVudFJ1bjo0",
+      "start_time": "2026-09-28 01:12:24.013748+00:00",
+      "end_time": "2026-09-28 01:12:24.015285+00:00",
+      "name": "redundant_investigation",
+      "annotator_kind": "CODE",
+      "error": null,
+      "result": {
+        "label": "1",
+        "score": 1.0,
+        "explanation": "Deterministic rubric v2; stop_reason=tool_budget"
+      },
+      "id": "ExperimentEvaluation:53",
+      "trace_id": "a5c2c06f0761b7e5d651616323a8748e",
+      "metadata": {}
+    },
+    {
+      "experiment_run_id": "RXhwZXJpbWVudFJ1bjo0",
+      "start_time": "2026-09-28 01:12:24.843900+00:00",
+      "end_time": "2026-09-28 01:12:24.846132+00:00",
+      "name": "token_usage",
+      "annotator_kind": "CODE",
+      "error": null,
+      "result": {
+        "label": "1279",
+        "score": 1279.0,
+        "explanation": "Deterministic rubric v2; stop_reason=tool_budget"
+      },
+      "id": "ExperimentEvaluation:54",
+      "trace_id": "c48649c705bc7754177f315411becbda",
+      "metadata": {}
+    },
+    {
+      "experiment_run_id": "RXhwZXJpbWVudFJ1bjo0",
+      "start_time": "2026-09-28 01:12:23.975293+00:00",
+      "end_time": "2026-09-28 01:12:23.980649+00:00",
+      "name": "tool_calls_used",
+      "annotator_kind": "CODE",
+      "error": null,
+      "result": {
+        "label": "2",
+        "score": 2.0,
+        "explanation": "Deterministic rubric v2; stop_reason=tool_budget"
+      },
+      "id": "ExperimentEvaluation:55",
+      "trace_id": "d3c5f33507bc0765a085a123e48461ca",
+      "metadata": {}
+    },
+    {
+      "experiment_run_id": "RXhwZXJpbWVudFJ1bjoz",
+      "start_time": "2026-09-28 01:12:24.856504+00:00",
+      "end_time": "2026-09-28 01:12:24.857165+00:00",
+      "name": "diagnosis_correct",
+      "annotator_kind": "CODE",
+      "error": null,
+      "result": {
+        "label": "1",
+        "score": 1.0,
+        "explanation": "Deterministic rubric v2; stop_reason=tool_budget"
+      },
+      "id": "ExperimentEvaluation:56",
+      "trace_id": "3df264026af5949ef076fb7329ccee1d",
+      "metadata": {}
+    },
+    {
+      "experiment_run_id": "RXhwZXJpbWVudFJ1bjoz",
+      "start_time": "2026-09-28 01:12:24.869342+00:00",
+      "end_time": "2026-09-28 01:12:24.870503+00:00",
+      "name": "evidence_completeness",
+      "annotator_kind": "CODE",
+      "error": null,
+      "result": {
+        "label": "0.0",
+        "score": 0.0,
+        "explanation": "Deterministic rubric v2; stop_reason=tool_budget"
+      },
+      "id": "ExperimentEvaluation:57",
+      "trace_id": "418d4c47f674d233036005cbc48a8c42",
+      "metadata": {}
+    },
+    {
+      "experiment_run_id": "RXhwZXJpbWVudFJ1bjoz",
+      "start_time": "2026-09-28 01:12:24.958035+00:00",
+      "end_time": "2026-09-28 01:12:24.960278+00:00",
+      "name": "evidence_sufficient",
+      "annotator_kind": "CODE",
+      "error": null,
+      "result": {
+        "label": "0",
+        "score": 0.0,
+        "explanation": "Deterministic rubric v2; stop_reason=tool_budget"
+      },
+      "id": "ExperimentEvaluation:58",
+      "trace_id": "b803bc3bde4e277de301dbd301a282b0",
+      "metadata": {}
+    },
+    {
+      "experiment_run_id": "RXhwZXJpbWVudFJ1bjoz",
+      "start_time": "2026-09-28 01:12:25.844144+00:00",
+      "end_time": "2026-09-28 01:12:25.846757+00:00",
+      "name": "identical_repeated_calls",
+      "annotator_kind": "CODE",
+      "error": null,
+      "result": {
+        "label": "0",
+        "score": 0.0,
+        "explanation": "Deterministic rubric v2; stop_reason=tool_budget"
+      },
+      "id": "ExperimentEvaluation:59",
+      "trace_id": "630b2b2697bcd05296505df14333b1c7",
+      "metadata": {}
+    },
+    {
+      "experiment_run_id": "RXhwZXJpbWVudFJ1bjoz",
+      "start_time": "2026-09-28 01:12:25.059886+00:00",
+      "end_time": "2026-09-28 01:12:25.064887+00:00",
+      "name": "irrelevant_calls",
+      "annotator_kind": "CODE",
+      "error": null,
+      "result": {
+        "label": "2",
+        "score": 2.0,
+        "explanation": "Deterministic rubric v2; stop_reason=tool_budget"
+      },
+      "id": "ExperimentEvaluation:60",
+      "trace_id": "b35e3b12a767f9718ade456fa06843d1",
+      "metadata": {}
+    },
+    {
+      "experiment_run_id": "RXhwZXJpbWVudFJ1bjoz",
+      "start_time": "2026-09-28 01:12:25.855537+00:00",
+      "end_time": "2026-09-28 01:12:25.856284+00:00",
+      "name": "latency_seconds",
+      "annotator_kind": "CODE",
+      "error": null,
+      "result": {
+        "label": "2.2155187460011803",
+        "score": 2.2155187460011803,
+        "explanation": "Deterministic rubric v2; stop_reason=tool_budget"
+      },
+      "id": "ExperimentEvaluation:61",
+      "trace_id": "059dc87b34fc8c2c4c4036a23e060f03",
+      "metadata": {}
+    },
+    {
+      "experiment_run_id": "RXhwZXJpbWVudFJ1bjoz",
+      "start_time": "2026-09-28 01:12:25.190450+00:00",
+      "end_time": "2026-09-28 01:12:25.191506+00:00",
+      "name": "post_sufficiency_calls",
+      "annotator_kind": "CODE",
+      "error": null,
+      "result": {
+        "label": "0",
+        "score": 0.0,
+        "explanation": "Deterministic rubric v2; stop_reason=tool_budget"
+      },
+      "id": "ExperimentEvaluation:62",
+      "trace_id": "47fb725c3480b43da98157c9ed678b2f",
+      "metadata": {}
+    },
+    {
+      "experiment_run_id": "RXhwZXJpbWVudFJ1bjoz",
+      "start_time": "2026-09-28 01:12:24.985464+00:00",
+      "end_time": "2026-09-28 01:12:24.986374+00:00",
+      "name": "premature_stop",
+      "annotator_kind": "CODE",
+      "error": null,
+      "result": {
+        "label": "1",
+        "score": 1.0,
+        "explanation": "Deterministic rubric v2; stop_reason=tool_budget"
+      },
+      "id": "ExperimentEvaluation:63",
+      "trace_id": "44b14b7c30f124f25c8dda6ad6b1cbde",
+      "metadata": {}
+    },
+    {
+      "experiment_run_id": "RXhwZXJpbWVudFJ1bjoz",
+      "start_time": "2026-09-28 01:12:25.026152+00:00",
+      "end_time": "2026-09-28 01:12:25.027520+00:00",
+      "name": "redundant_investigation",
+      "annotator_kind": "CODE",
+      "error": null,
+      "result": {
+        "label": "2",
+        "score": 2.0,
+        "explanation": "Deterministic rubric v2; stop_reason=tool_budget"
+      },
+      "id": "ExperimentEvaluation:64",
+      "trace_id": "55dd5e21b197843245e6c0bcc3c2f78a",
+      "metadata": {}
+    },
+    {
+      "experiment_run_id": "RXhwZXJpbWVudFJ1bjoz",
+      "start_time": "2026-09-28 01:12:25.869119+00:00",
+      "end_time": "2026-09-28 01:12:25.870141+00:00",
+      "name": "token_usage",
+      "annotator_kind": "CODE",
+      "error": null,
+      "result": {
+        "label": "1261",
+        "score": 1261.0,
+        "explanation": "Deterministic rubric v2; stop_reason=tool_budget"
+      },
+      "id": "ExperimentEvaluation:65",
+      "trace_id": "8ab0e021e1c5be35341ecd5749bbd04a",
+      "metadata": {}
+    },
+    {
+      "experiment_run_id": "RXhwZXJpbWVudFJ1bjoz",
+      "start_time": "2026-09-28 01:12:25.011328+00:00",
+      "end_time": "2026-09-28 01:12:25.013832+00:00",
+      "name": "tool_calls_used",
+      "annotator_kind": "CODE",
+      "error": null,
+      "result": {
+        "label": "2",
+        "score": 2.0,
+        "explanation": "Deterministic rubric v2; stop_reason=tool_budget"
+      },
+      "id": "ExperimentEvaluation:66",
+      "trace_id": "ef1789d95b332da94d6cb65cfa4fa487",
+      "metadata": {}
+    },
+    {
+      "experiment_run_id": "RXhwZXJpbWVudFJ1bjoy",
+      "start_time": "2026-09-28 01:12:25.957415+00:00",
+      "end_time": "2026-09-28 01:12:25.959737+00:00",
+      "name": "diagnosis_correct",
+      "annotator_kind": "CODE",
+      "error": null,
+      "result": {
+        "label": "1",
+        "score": 1.0,
+        "explanation": "Deterministic rubric v2; stop_reason=tool_budget"
+      },
+      "id": "ExperimentEvaluation:67",
+      "trace_id": "2afaef2394136f244b1587ac403b629f",
+      "metadata": {}
+    },
+    {
+      "experiment_run_id": "RXhwZXJpbWVudFJ1bjoy",
+      "start_time": "2026-09-28 01:12:25.984989+00:00",
+      "end_time": "2026-09-28 01:12:25.986112+00:00",
+      "name": "evidence_completeness",
+      "annotator_kind": "CODE",
+      "error": null,
+      "result": {
+        "label": "0.5",
+        "score": 0.5,
+        "explanation": "Deterministic rubric v2; stop_reason=tool_budget"
+      },
+      "id": "ExperimentEvaluation:68",
+      "trace_id": "5b0d6fc02eecbf1fb862e712524b32f8",
+      "metadata": {}
+    },
+    {
+      "experiment_run_id": "RXhwZXJpbWVudFJ1bjoy",
+      "start_time": "2026-09-28 01:12:26.017042+00:00",
+      "end_time": "2026-09-28 01:12:26.017789+00:00",
+      "name": "evidence_sufficient",
+      "annotator_kind": "CODE",
+      "error": null,
+      "result": {
+        "label": "0",
+        "score": 0.0,
+        "explanation": "Deterministic rubric v2; stop_reason=tool_budget"
+      },
+      "id": "ExperimentEvaluation:69",
+      "trace_id": "3411924478c8b6d122294c860fee58b5",
+      "metadata": {}
+    },
+    {
+      "experiment_run_id": "RXhwZXJpbWVudFJ1bjoy",
+      "start_time": "2026-09-28 01:12:26.884212+00:00",
+      "end_time": "2026-09-28 01:12:26.885133+00:00",
+      "name": "identical_repeated_calls",
+      "annotator_kind": "CODE",
+      "error": null,
+      "result": {
+        "label": "0",
+        "score": 0.0,
+        "explanation": "Deterministic rubric v2; stop_reason=tool_budget"
+      },
+      "id": "ExperimentEvaluation:70",
+      "trace_id": "3b382b6430519dad3c06adc21012de01",
+      "metadata": {}
+    },
+    {
+      "experiment_run_id": "RXhwZXJpbWVudFJ1bjoy",
+      "start_time": "2026-09-28 01:12:26.846139+00:00",
+      "end_time": "2026-09-28 01:12:26.847689+00:00",
+      "name": "irrelevant_calls",
+      "annotator_kind": "CODE",
+      "error": null,
+      "result": {
+        "label": "0",
+        "score": 0.0,
+        "explanation": "Deterministic rubric v2; stop_reason=tool_budget"
+      },
+      "id": "ExperimentEvaluation:71",
+      "trace_id": "6db1e9e657cd18545d781a55e7e201cf",
+      "metadata": {}
+    },
+    {
+      "experiment_run_id": "RXhwZXJpbWVudFJ1bjoy",
+      "start_time": "2026-09-28 01:12:26.955486+00:00",
+      "end_time": "2026-09-28 01:12:26.957136+00:00",
+      "name": "latency_seconds",
+      "annotator_kind": "CODE",
+      "error": null,
+      "result": {
+        "label": "2.259314056005678",
+        "score": 2.259314056005678,
+        "explanation": "Deterministic rubric v2; stop_reason=tool_budget"
+      },
+      "id": "ExperimentEvaluation:72",
+      "trace_id": "788d8dd6284fce7e0f8d817f026327bd",
+      "metadata": {}
+    },
+    {
+      "experiment_run_id": "RXhwZXJpbWVudFJ1bjoy",
+      "start_time": "2026-09-28 01:12:26.865565+00:00",
+      "end_time": "2026-09-28 01:12:26.866592+00:00",
+      "name": "post_sufficiency_calls",
+      "annotator_kind": "CODE",
+      "error": null,
+      "result": {
+        "label": "0",
+        "score": 0.0,
+        "explanation": "Deterministic rubric v2; stop_reason=tool_budget"
+      },
+      "id": "ExperimentEvaluation:73",
+      "trace_id": "897f2541d319f4b5006c7d892e46d797",
+      "metadata": {}
+    },
+    {
+      "experiment_run_id": "RXhwZXJpbWVudFJ1bjoy",
+      "start_time": "2026-09-28 01:12:26.033750+00:00",
+      "end_time": "2026-09-28 01:12:26.035053+00:00",
+      "name": "premature_stop",
+      "annotator_kind": "CODE",
+      "error": null,
+      "result": {
+        "label": "1",
+        "score": 1.0,
+        "explanation": "Deterministic rubric v2; stop_reason=tool_budget"
+      },
+      "id": "ExperimentEvaluation:74",
+      "trace_id": "8a659872a5f7556eff3289c0fbc14bc5",
+      "metadata": {}
+    },
+    {
+      "experiment_run_id": "RXhwZXJpbWVudFJ1bjoy",
+      "start_time": "2026-09-28 01:12:26.188648+00:00",
+      "end_time": "2026-09-28 01:12:26.189413+00:00",
+      "name": "redundant_investigation",
+      "annotator_kind": "CODE",
+      "error": null,
+      "result": {
+        "label": "0",
+        "score": 0.0,
+        "explanation": "Deterministic rubric v2; stop_reason=tool_budget"
+      },
+      "id": "ExperimentEvaluation:75",
+      "trace_id": "a72e97075f19cd4b2cf49cc3807c414d",
+      "metadata": {}
+    },
+    {
+      "experiment_run_id": "RXhwZXJpbWVudFJ1bjoy",
+      "start_time": "2026-09-28 01:12:27.005429+00:00",
+      "end_time": "2026-09-28 01:12:27.006549+00:00",
+      "name": "token_usage",
+      "annotator_kind": "CODE",
+      "error": null,
+      "result": {
+        "label": "1260",
+        "score": 1260.0,
+        "explanation": "Deterministic rubric v2; stop_reason=tool_budget"
+      },
+      "id": "ExperimentEvaluation:76",
+      "trace_id": "7bb04f385af4b42dc8960778e329fc88",
+      "metadata": {}
+    },
+    {
+      "experiment_run_id": "RXhwZXJpbWVudFJ1bjoy",
+      "start_time": "2026-09-28 01:12:26.065194+00:00",
+      "end_time": "2026-09-28 01:12:26.066075+00:00",
+      "name": "tool_calls_used",
+      "annotator_kind": "CODE",
+      "error": null,
+      "result": {
+        "label": "2",
+        "score": 2.0,
+        "explanation": "Deterministic rubric v2; stop_reason=tool_budget"
+      },
+      "id": "ExperimentEvaluation:77",
+      "trace_id": "8ae187d07854da9ac24ee7edf5373875",
+      "metadata": {}
+    },
+    {
+      "experiment_run_id": "RXhwZXJpbWVudFJ1bjox",
+      "start_time": "2026-09-28 01:12:27.048808+00:00",
+      "end_time": "2026-09-28 01:12:27.049742+00:00",
+      "name": "diagnosis_correct",
+      "annotator_kind": "CODE",
+      "error": null,
+      "result": {
+        "label": "1",
+        "score": 1.0,
+        "explanation": "Deterministic rubric v2; stop_reason=agent_answered"
+      },
+      "id": "ExperimentEvaluation:78",
+      "trace_id": "c8b218a8c588eef59d50752d16c34b6e",
+      "metadata": {}
+    },
+    {
+      "experiment_run_id": "RXhwZXJpbWVudFJ1bjox",
+      "start_time": "2026-09-28 01:12:27.185816+00:00",
+      "end_time": "2026-09-28 01:12:27.186671+00:00",
+      "name": "evidence_completeness",
+      "annotator_kind": "CODE",
+      "error": null,
+      "result": {
+        "label": "1.0",
+        "score": 1.0,
+        "explanation": "Deterministic rubric v2; stop_reason=agent_answered"
+      },
+      "id": "ExperimentEvaluation:79",
+      "trace_id": "1f35b3014210f46d40a2adfe3ccfad6b",
+      "metadata": {}
+    },
+    {
+      "experiment_run_id": "RXhwZXJpbWVudFJ1bjox",
+      "start_time": "2026-09-28 01:12:27.220870+00:00",
+      "end_time": "2026-09-28 01:12:27.222119+00:00",
+      "name": "evidence_sufficient",
+      "annotator_kind": "CODE",
+      "error": null,
+      "result": {
+        "label": "1",
+        "score": 1.0,
+        "explanation": "Deterministic rubric v2; stop_reason=agent_answered"
+      },
+      "id": "ExperimentEvaluation:80",
+      "trace_id": "a2e362de86808d4deec252f332ea6749",
+      "metadata": {}
+    },
+    {
+      "experiment_run_id": "RXhwZXJpbWVudFJ1bjox",
+      "start_time": "2026-09-28 01:12:28.040835+00:00",
+      "end_time": "2026-09-28 01:12:28.046779+00:00",
+      "name": "identical_repeated_calls",
+      "annotator_kind": "CODE",
+      "error": null,
+      "result": {
+        "label": "0",
+        "score": 0.0,
+        "explanation": "Deterministic rubric v2; stop_reason=agent_answered"
+      },
+      "id": "ExperimentEvaluation:81",
+      "trace_id": "a23769e16c32589232209b38caebc06e",
+      "metadata": {}
+    },
+    {
+      "experiment_run_id": "RXhwZXJpbWVudFJ1bjox",
+      "start_time": "2026-09-28 01:12:27.883075+00:00",
+      "end_time": "2026-09-28 01:12:27.883950+00:00",
+      "name": "irrelevant_calls",
+      "annotator_kind": "CODE",
+      "error": null,
+      "result": {
+        "label": "0",
+        "score": 0.0,
+        "explanation": "Deterministic rubric v2; stop_reason=agent_answered"
+      },
+      "id": "ExperimentEvaluation:82",
+      "trace_id": "3d05a0b513837c2ac0388b6c639b6731",
+      "metadata": {}
+    },
+    {
+      "experiment_run_id": "RXhwZXJpbWVudFJ1bjox",
+      "start_time": "2026-09-28 01:12:28.081632+00:00",
+      "end_time": "2026-09-28 01:12:28.083501+00:00",
+      "name": "latency_seconds",
+      "annotator_kind": "CODE",
+      "error": null,
+      "result": {
+        "label": "1.8613827480003238",
+        "score": 1.8613827480003238,
+        "explanation": "Deterministic rubric v2; stop_reason=agent_answered"
+      },
+      "id": "ExperimentEvaluation:83",
+      "trace_id": "d9f08aa2d5b805dfc6e2a36a5b3865b5",
+      "metadata": {}
+    },
+    {
+      "experiment_run_id": "RXhwZXJpbWVudFJ1bjox",
+      "start_time": "2026-09-28 01:12:28.000697+00:00",
+      "end_time": "2026-09-28 01:12:28.001639+00:00",
+      "name": "post_sufficiency_calls",
+      "annotator_kind": "CODE",
+      "error": null,
+      "result": {
+        "label": "0",
+        "score": 0.0,
+        "explanation": "Deterministic rubric v2; stop_reason=agent_answered"
+      },
+      "id": "ExperimentEvaluation:84",
+      "trace_id": "6952090fd6bf7a9f144c55ad2f9a2a36",
+      "metadata": {}
+    },
+    {
+      "experiment_run_id": "RXhwZXJpbWVudFJ1bjox",
+      "start_time": "2026-09-28 01:12:27.255920+00:00",
+      "end_time": "2026-09-28 01:12:27.256969+00:00",
+      "name": "premature_stop",
+      "annotator_kind": "CODE",
+      "error": null,
+      "result": {
+        "label": "0",
+        "score": 0.0,
+        "explanation": "Deterministic rubric v2; stop_reason=agent_answered"
+      },
+      "id": "ExperimentEvaluation:85",
+      "trace_id": "4ebd4dd65dcf69334ccedf388fdf7a86",
+      "metadata": {}
+    },
+    {
+      "experiment_run_id": "RXhwZXJpbWVudFJ1bjox",
+      "start_time": "2026-09-28 01:12:27.865308+00:00",
+      "end_time": "2026-09-28 01:12:27.866334+00:00",
+      "name": "redundant_investigation",
+      "annotator_kind": "CODE",
+      "error": null,
+      "result": {
+        "label": "0",
+        "score": 0.0,
+        "explanation": "Deterministic rubric v2; stop_reason=agent_answered"
+      },
+      "id": "ExperimentEvaluation:86",
+      "trace_id": "da26f8d30756b71e78c2a984e90f2e2a",
+      "metadata": {}
+    },
+    {
+      "experiment_run_id": "RXhwZXJpbWVudFJ1bjox",
+      "start_time": "2026-09-28 01:12:28.119589+00:00",
+      "end_time": "2026-09-28 01:12:28.120479+00:00",
+      "name": "token_usage",
+      "annotator_kind": "CODE",
+      "error": null,
+      "result": {
+        "label": "788",
+        "score": 788.0,
+        "explanation": "Deterministic rubric v2; stop_reason=agent_answered"
+      },
+      "id": "ExperimentEvaluation:87",
+      "trace_id": "6661b66d2aa1678155338c402710c138",
+      "metadata": {}
+    },
+    {
+      "experiment_run_id": "RXhwZXJpbWVudFJ1bjox",
+      "start_time": "2026-09-28 01:12:27.846570+00:00",
+      "end_time": "2026-09-28 01:12:27.847539+00:00",
+      "name": "tool_calls_used",
+      "annotator_kind": "CODE",
+      "error": null,
+      "result": {
+        "label": "1",
+        "score": 1.0,
+        "explanation": "Deterministic rubric v2; stop_reason=agent_answered"
+      },
+      "id": "ExperimentEvaluation:88",
+      "trace_id": "b69bceae04b6160eb281df223f130d3b",
+      "metadata": {}
+    }
+  ],
+  "experiment_metadata": {
+    "tool_budget": 2,
+    "model_name": "gpt-4.1-mini-2025-04-14",
+    "temperature": 0.0,
+    "prompt_sha256": "5b4dda77aa73fae889ed9b9e8187716a13599c8824e912ded92a20148da9dab6",
+    "dataset_sha256": "2d92afebe6926f4828adff5a15d7428d835972bf446f4b299989442fae25b70d",
+    "rubric_version": 2
+  },
+  "project_name": "Experiment-352a0f1dedc0c58cad787464"
+}

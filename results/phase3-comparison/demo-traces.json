@@ -1,0 +1,22 @@
+[
+  {
+    "title": "Fixed-6 premature stop",
+    "url": "http://localhost:6006/projects/UHJvamVjdDoxNA==/traces/4e99700a30d1dfba4ebf0fab79de23ad",
+    "trace_id": "4e99700a30d1dfba4ebf0fab79de23ad"
+  },
+  {
+    "title": "Fixed-8 successful but inefficient",
+    "url": "http://localhost:6006/projects/UHJvamVjdDoxNQ==/traces/361c347abe399281c863be871a56d5a0",
+    "trace_id": "361c347abe399281c863be871a56d5a0"
+  },
+  {
+    "title": "Adaptive supported early stop",
+    "url": "http://localhost:6006/projects/UHJvamVjdDoxNg==/traces/3f35a3762237ca33283dbc9048ef64a6",
+    "trace_id": "3f35a3762237ca33283dbc9048ef64a6"
+  },
+  {
+    "title": "Adaptive failure or edge case",
+    "url": "http://localhost:6006/projects/UHJvamVjdDoxNg==/traces/36feb4505b0fbe1b65eb5cfa51ca14a5",
+    "trace_id": "36feb4505b0fbe1b65eb5cfa51ca14a5"
+  }
+]
