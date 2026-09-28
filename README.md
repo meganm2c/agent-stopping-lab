@@ -1,24 +1,27 @@
 # Agent Tool-Budget Lab
 
-How does an AI agent's tool-call budget affect reliability, evidence gathering,
-and efficiency—and can an adaptive stopping controller improve that tradeoff?
-This project uses Microsoft Agent Framework for the agent loop and tool budget,
-Arize Phoenix for tracing, datasets, experiments, and evaluations, and a
-deterministic synthetic diagnostic environment. Its negative adaptive-stopping
-result shows why a controller's cost and failure modes must be measured alongside
-those of the agent it controls.
+A diagnostic agent built with Microsoft Agent Framework investigates eight
+synthetic incidents under fixed tool budgets and an adaptive stopping controller.
+Arize Phoenix organizes the dataset, controlled experiments, deterministic
+evaluations, and model/tool traces used to identify evidence gaps and explain
+stopping failures. **Fixed-8 was the most reliable configuration tested; adaptive
+stopping used fewer tools but reduced accuracy and increased total inference cost.**
 
-**Headline finding:** Fixed-8 achieved the highest reliability in this workload.
-The adaptive controller used fewer tools but was slower, more token-expensive,
-and less accurate.
+> **Key result — final repeated comparison, 24 runs per configuration**
+>
+> **Fixed-8:** 100% accuracy · 5.79 average tool calls · 3,698 tokens/run · 4.85s/run
+>
+> **Adaptive:** 79.2% accuracy · 3.92 average tool calls · 4,083 tokens/run · 7.20s/run
+>
+> Adaptive used **32.4% fewer tool calls**, but **10.4% more total tokens** and
+> **48.7% more time**, including controller overhead.
 
 ## Why this project
 
-Agent frameworks expose execution-budget controls, but choosing a limit changes
-what an agent can learn. A small budget can force an answer before enough evidence
-is gathered; a larger one can allow unnecessary investigation. Final-answer
-accuracy alone misses those differences, so Phoenix was used to inspect the
-sequence of model requests, tool calls, evidence collection, and stopping decisions.
+A tool budget changes what an agent can learn: small budgets can force unsupported
+answers, while larger budgets can allow unnecessary investigation. This project
+asks whether adaptive stopping can improve that tradeoff. Final-answer accuracy
+alone cannot show whether an agent collected enough evidence or wasted work.
 
 ## System design
 
@@ -29,15 +32,12 @@ Three tools expose their state:
 - `read_logs(component)`
 - `check_recent_change(component)`
 
-The [eight scenarios](data/scenarios.json) define known root causes, required
-evidence, optional supporting evidence, and distractors. Evaluation fields are
-hidden from the runtime agent and stopping controller. Each run starts with a
-fresh world; tools return deterministic observations with stable evidence IDs.
+The [eight scenarios](data/scenarios.json) define root causes, required/supporting
+evidence, and distractors. These evaluation fields stay hidden from the agent
+and controller. Each run starts fresh and retrieves observations with stable IDs.
 
-Synthetic incidents provide reproducible inputs, objective ground truth,
-controlled difficulty, and deterministic scoring. They remove variability from
-external diagnostic services; model decisions and live inference latency can
-still vary.
+Synthetic incidents give reproducible tool outputs, objective ground truth, and
+controlled difficulty. Model decisions and live inference latency can still vary.
 
 ```text
 User report → Microsoft Agent Framework → Diagnostic tools → Synthetic environment
@@ -47,6 +47,18 @@ User report → Microsoft Agent Framework → Diagnostic tools → Synthetic env
                              Arize Phoenix
                     traces · dataset · evals · experiments
 ```
+
+## How to read the results
+
+| Study | Purpose and scope |
+|---|---|
+| [Original pilot](PILOT_REPORT.md) | Initial 32 runs; historical scoring rubric |
+| [Phoenix fixed-budget sweep](PHOENIX_TRACE_FINDINGS.md) | 32 fresh runs at budgets 2/4/6/8, using the reviewed rubric |
+| [Targeted repeatability](TRAJECTORY_VARIATION.md) | 50 runs across five scenarios at budgets 6/8 |
+| [Final adaptive comparison](ADAPTIVE_RESULTS.md) | 72 runs: all eight scenarios, three configurations, three repetitions |
+
+The tables below belong to separate run batches. Original pilot scores remain in
+their report; [rubric corrections](data/RUBRIC_CHANGES.md) explain scoring changes.
 
 ## Experiment 1: Fixed tool budgets
 
@@ -65,11 +77,8 @@ framework limit because a batch can otherwise overshoot the cap.
 | 6 | 87.5% | 82.3% | 5.13 | 50.0% |
 | 8 | 100% | 96.9% | 5.75 | 12.5% |
 
-Higher budgets substantially improved accuracy and evidence collection in this
-controlled workload. Eight was the best observed fixed-budget configuration in
-this experiment. These are [verified Phoenix results](PHOENIX_TRACE_FINDINGS.md)
-under the [reviewed rubric](data/RUBRIC_CHANGES.md); the original pilot's earlier
-scores are preserved separately in [PILOT_REPORT.md](PILOT_REPORT.md).
+Higher budgets substantially improved accuracy and evidence collection. Eight
+was the best observed fixed-budget configuration in this sweep.
 
 ## What Phoenix revealed
 
@@ -78,15 +87,14 @@ missing, and whether the agent answered voluntarily or was forced to stop by its
 budget. Traces distinguished correct guesses from supported diagnoses and showed
 calls made after sufficient evidence was already available.
 
-A targeted repeatability study ran all three medium and both hard scenarios at
-budgets 6 and 8, five times per cell: **50 runs**. Diagnoses stayed stable within
-all **10 scenario/budget groups**, but **6 of 10** had varying tool trajectories.
+In the targeted study, each medium/hard scenario ran five times at each budget.
+Diagnoses stayed stable within all **10 scenario/budget groups**, but **6 of 10**
+had varying tool trajectories.
 
-**Outcome stability can hide trajectory instability.** The same diagnosis can
-come from different evidence paths, call counts, latency, token usage, and stopping
-behavior. The [trajectory report](TRAJECTORY_VARIATION.md) documents those
-variations. It found no post-sufficiency calls in the medium/hard subset; the
-recurring opportunity to stop sooner was concentrated in earlier easy-case traces.
+**Outcome stability can hide trajectory instability:** identical diagnoses can
+come from different evidence paths, call counts, latency, tokens, and stop reasons.
+The medium/hard study found no post-sufficiency calls. Recurring opportunities to
+stop sooner appeared in earlier easy-case traces, limiting the expected benefit.
 
 ## Experiment 2: Adaptive stopping
 
@@ -102,9 +110,8 @@ check was traced in Phoenix. The [prompt and success criteria](ADAPTIVE_HYPOTHES
 were frozen before the final comparison and were not tuned afterward.
 
 The final experiments—`fixed-budget-6`, `fixed-budget-8`, and
-`adaptive-stopping`—used the same eight-example dataset with three repetitions
-per configuration: **72 runs**. These are separate repeated measurements from
-Experiment 1, so their averages differ.
+`adaptive-stopping`—used the same dataset, with three repetitions per scenario.
+Their repeated measurements are distinct from Experiment 1.
 
 | Metric | Fixed-6 | Fixed-8 | Adaptive |
 |---|---:|---:|---:|
@@ -115,40 +122,41 @@ Experiment 1, so their averages differ.
 | Total tokens/run | 3,047 | 3,698 | 4,083 |
 | Seconds/run | 4.31 | 4.85 | 7.20 |
 
-Compared with fixed-8, adaptive stopping reduced tool use by **32.4%**, but used
-**10.4% more total tokens** and took **48.7% more time**. Accuracy fell to **79.2%**;
-**16 of 24 adaptive runs stopped without sufficient evidence**. Token and latency
-figures include controller overhead.
+**The hypothesis was not supported.** Fewer tool calls did not lower system cost:
+controller overhead increased total tokens and latency. **16 of 24 adaptive runs
+stopped without sufficient evidence.**
 
-The hypothesis was not supported. The controller sometimes accepted a plausible
-intermediate explanation before resolving the underlying cause. For example, it
-stopped after observing slow API reads, before checking database health and cache
-evidence, and the diagnostic agent attributed the incident to the wrong cause.
-See [the complete comparison and failure traces](ADAPTIVE_RESULTS.md).
+The controller sometimes accepted a plausible explanation before resolving the
+cause. In one [failure trace](ADAPTIVE_RESULTS.md#adaptive-failure-or-edge-case),
+it stopped after slow API reads, before database health and cache evidence were
+checked; the agent then attributed the incident to the wrong cause.
 
 ## Main developer learnings
 
-- Tool-call budgets materially affect agent reliability on this workload.
-- Correct final answers can still have incomplete evidential support.
-- Stable final outputs do not imply stable tool trajectories.
-- Fewer diagnostic calls do not necessarily reduce total inference cost.
-- A controller adds latency, tokens, and its own failure modes.
-- Evaluate adaptive stopping as part of the complete system.
+- Tool budgets affect reliability.
+- Accuracy can hide missing evidence and unnecessary investigation.
+- Stable outputs can hide unstable tool trajectories.
+- Fewer tool calls do not guarantee lower total inference cost.
+- Control models add cost and failure modes; evaluate the whole system.
 
 ## Why Phoenix mattered
 
-Python scoring supplied the metrics; Phoenix connected those scores to the
-execution that produced them. Experiments shared a dataset and deterministic
-evaluations, while individual traces exposed evidence collection step by step,
-forced versus voluntary stops, and each adaptive decision with its observed input.
-That made it possible to explain the controller's failures and account for its
-additional model calls.
+Phoenix connected deterministic scores to the executions that produced them:
+
+- **Experiment comparison:** configurations shared a dataset and evaluator definitions.
+- **Evidence-gap analysis:** model/tool spans showed each observation and forced
+  versus voluntary stopping, including correct answers with incomplete evidence.
+- **Controller diagnosis:** `stopping_check` spans exposed the observed input,
+  STOP/CONTINUE reason, and model usage behind premature decisions and added cost.
 
 The working **Metrics**, **List**, and trace views support comparison and diagnosis.
 [Integration notes](ADAPTIVE_DESIGN.md#phoenix-trace-page-workaround) document the
 local server's annotation workaround; experiment evaluations were preserved.
 
 ![Phoenix comparison of fixed budgets and adaptive stopping](results/screenshots/adaptive-comparison-metrics.png)
+
+The screenshot uses Fixed-6 as its comparison baseline; the headline percentage
+changes compare Adaptive with Fixed-8.
 
 ## Evaluation design
 
@@ -167,11 +175,10 @@ was used for the core metrics**; the stopping model was an online controller.
 | Latency / token usage | Agent execution time and reported model usage |
 | Adaptive metadata | Effective STOP, stopping index, false early stop, controller overhead, total tokens |
 
-Correctness and sufficiency remain separate. Missing checklist evidence does not
-prove a diagnosis was impossible; exploratory calls may have value even when
-classified as irrelevant. False early stops are evaluated **after execution**
-using hidden labels. [Full evaluator definitions](ADAPTIVE_DESIGN.md#metric-definitions)
-explain the accounting and denominators.
+Missing checklist evidence does not prove a diagnosis was impossible; exploratory
+calls may still be useful. False early stops are scored **after execution** using
+hidden labels. [Evaluator details](ADAPTIVE_DESIGN.md#metric-definitions) explain
+the accounting and denominators.
 
 ## Repository structure
 
@@ -200,7 +207,7 @@ cd agent-stopping-lab
 python3.12 -m venv .venv
 .venv/bin/python -m pip install -r requirements-agent-lock.txt
 .venv/bin/python -m pip install --no-deps -e .
-cp .env.example .env  # only if .env does not already exist
+test -f .env || cp .env.example .env
 ```
 
 Set `OPENAI_API_KEY` privately in `.env`, plus:
@@ -211,7 +218,8 @@ MODEL_NAME=gpt-4.1-mini-2025-04-14
 MODEL_TEMPERATURE=0
 ```
 
-Keep `.env` ignored and never commit it. Start Phoenix in a separate terminal:
+Keep `.env` ignored and never commit it. From the repository root in a separate
+terminal, install and start the local Phoenix server:
 
 ```bash
 python3.12 -m venv .phoenix-venv
@@ -238,12 +246,11 @@ controlled. Back in the project terminal:
 .venv/bin/python scripts/run_phase3.py comparison
 ```
 
-**Phase 3 prerequisite:** its runner checks the original dataset ID/version and
-hashes from the archived Phase 2 manifest. Fresh Phoenix servers start empty;
-create the Phase 2 dataset first and verify IDs match. Historical IDs and trace
-URLs are local to the original server. See [REPRODUCIBILITY.md](REPRODUCIBILITY.md)
-for this limitation, dependency snapshots, Azure configuration, exact framework
-controls, and [PHOENIX.md](PHOENIX.md) for analysis commands.
+**Phase 3 prerequisite:** the runner requires the archived Phase 2 dataset
+ID/version and hashes. Create the fixed-budget dataset first and verify IDs match;
+historical IDs and trace URLs are not portable between Phoenix servers.
+[Reproducibility details](REPRODUCIBILITY.md) cover this limitation and configuration;
+[Phoenix setup](PHOENIX.md) includes analysis commands.
 
 ## Results and reports
 
@@ -257,16 +264,14 @@ controls, and [PHOENIX.md](PHOENIX.md) for analysis commands.
 
 ## Limitations
 
-The dataset is small and synthetic, uses one primary model snapshot, and covers a
-narrow diagnostic tool environment. Findings are workload-specific and establish
-no universal best tool budget. Repeated runs are not independent incident types;
-serial experiment order and live API variation affect latency. The adaptive
-controller was intentionally not tuned after observing final results.
+Eight synthetic scenarios, one model snapshot, and narrow diagnostic tools limit
+generalization: there is no universal best tool budget here. Repetitions are not
+independent incident types, and experiment order/API variation affect latency.
+The adaptive controller was intentionally not tuned after the final results.
 
 ## Future work
 
-Improve how the controller represents unresolved uncertainty, then test reliability
-on larger, more diverse scenario sets and other frameworks/models. Cheaper
-controllers, learned decision models, or System-1 models become useful cost-reduction
-experiments only after stopping-signal quality improves. This result does not yet
-justify adding Laya.
+Improve representations of unresolved uncertainty and test broader scenarios,
+frameworks, and models. Cheaper controllers or learned System-1 decision models
+become useful cost-reduction experiments only after stopping reliability improves.
+This result does not yet justify Laya.
