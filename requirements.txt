@@ -1,0 +1,2 @@
+# Hugging Face Spaces installs this file. Research environments remain separate.
+-r requirements-demo.txt

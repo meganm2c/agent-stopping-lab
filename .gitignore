@@ -84,3 +84,6 @@ dist/
 !/results/screenshots/experiment-list.png
 !/results/screenshots/experiment-metrics.png
 !/results/screenshots/hard-trace.png
+
+# Isolated replay demo environment
+.demo-venv/

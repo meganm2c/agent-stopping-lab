@@ -1,3 +1,15 @@
+---
+title: Agent Tool-Budget Lab
+emoji: 🔎
+colorFrom: blue
+colorTo: gray
+sdk: gradio
+sdk_version: 6.28.0
+python_version: "3.12"
+app_file: app.py
+pinned: false
+---
+
 # Agent Tool-Budget Lab
 
 A diagnostic agent built with Microsoft Agent Framework investigates eight
@@ -15,6 +27,27 @@ stopping used fewer tools but reduced accuracy and increased total inference cos
 >
 > Adaptive used **32.4% fewer tool calls**, but **10.4% more total tokens** and
 > **48.7% more time**, including controller overhead.
+
+## Interactive Demo
+
+Explore fixed-budget and adaptive trajectories, STOP/CONTINUE decisions, and the
+final comparison in a Gradio app that replays verified experiment artifacts.
+Phoenix was used to capture, evaluate, and analyze the underlying traces and
+experiments. No OpenAI key is required.
+
+Live demo: [Hugging Face Space — add after deployment]
+
+Run locally:
+
+```bash
+python3.12 -m venv .demo-venv
+source .demo-venv/bin/activate
+python -m pip install -r requirements-demo.txt
+python app.py
+```
+
+The demo replays stored results; it needs no API key or running Phoenix server.
+See [demo setup, artifact mapping, and Hugging Face deployment](DEMO.md).
 
 ## Why this project
 

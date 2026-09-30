@@ -1,0 +1,2 @@
+# Replay UI only; no agent, provider, or Phoenix packages required.
+gradio==6.28.0
