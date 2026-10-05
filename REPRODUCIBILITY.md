@@ -1,5 +1,19 @@
 # Reproducing and reviewing this repository
 
+## Cross-harness entry points
+
+For the OpenClaw follow-up, use [the offline test and live setup guide](spikes/openclaw-followup/TESTING.md).
+Raw OpenClaw records remain local and ignored; offline tests use reviewed synthetic
+fixtures. The static demo instead uses a small presentation extract of measured
+facts from [the committed results report](OPENCLAW_RESULTS.md). Fixtures and
+presentation data serve different purposes and are not interchangeable.
+
+[Static deployment](STATIC_DEMO.md) needs no model runtime, API key or Phoenix
+server. The original Microsoft reproduction instructions below remain separate
+from the OpenClaw execution contract and finalizer.
+
+## Original Microsoft reproduction
+
 The published snapshot preserves the completed research. Repository cleanup did
 not rerun experiments, change the policy, rescore results, or edit observations.
 

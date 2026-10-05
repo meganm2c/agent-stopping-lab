@@ -1,4 +1,13 @@
-# Replay demo
+# Original Microsoft Gradio replay demo
+
+**For free hosted deployment, use the [HTML/JavaScript Static Space](STATIC_DEMO.md).**
+The original local Gradio app remains unchanged. The compute-Space instructions
+below are optional and require the appropriate Hugging Face plan. Root README
+metadata now targets the static page; a separate compute Space must use
+`sdk: gradio`, `sdk_version: 6.28.0`, `python_version: "3.12"`, and `app_file: app.py`.
+
+The static page now leads with the OpenClaw cross-harness follow-up; this original
+Gradio app continues to present the Microsoft baseline only.
 
 The Gradio demo reads committed experiment records. It makes no model requests,
 loads no `.env` file, and needs neither Phoenix nor Microsoft Agent Framework.
@@ -85,7 +94,7 @@ No deployment has been performed. After reviewing and committing the demo:
    Include the root `README.md`, `requirements.txt`, `requirements-demo.txt`,
    `app.py`, `demo/`, and every artifact/image listed above. Uploading the committed
    repository also preserves the linked research documentation and checksums.
-3. Keep the README configuration: `sdk: gradio`, `sdk_version: 6.28.0`,
+3. For a separate compute Space, replace the root README configuration with: `sdk: gradio`, `sdk_version: 6.28.0`,
    `python_version: "3.12"`, and `app_file: app.py`. No secrets are needed.
 4. Let the Space build, then open every tab, replay an adaptive run, and expand both
    screenshot accordions. Confirm the final table matches `ADAPTIVE_RESULTS.md`.

@@ -1,0 +1,164 @@
+{
+  "source": "OPENCLAW_RESULTS.md",
+  "scope": "Curated presentation extract from the committed validated report; not raw provider payloads or a full Phoenix export.",
+  "accepted": 20,
+  "physical_attempts": 21,
+  "interrupted": 1,
+  "replacement": 1,
+  "by_budget": [
+    {
+      "budget": 6,
+      "accuracy": 100,
+      "completeness": 73.3,
+      "sufficient": 10,
+      "premature": 90,
+      "calls": 6,
+      "diagnostic_tokens": 3977.9,
+      "finalizer_tokens": 754.8,
+      "total_tokens": 4732.7,
+      "diagnostic_s": 18.6345,
+      "finalization_s": 16.0929,
+      "trace_s": 34.7274
+    },
+    {
+      "budget": 8,
+      "accuracy": 90,
+      "completeness": 96.7,
+      "sufficient": 90,
+      "premature": 10,
+      "calls": 7,
+      "diagnostic_tokens": 4224.2,
+      "finalizer_tokens": 829,
+      "total_tokens": 5053.2,
+      "diagnostic_s": 16.842,
+      "finalization_s": 13.6166,
+      "trace_s": 30.4586
+    }
+  ],
+  "examples": [
+    {
+      "scenario": "diag_008",
+      "budget": 8,
+      "repetition": 1,
+      "trace_id": "1d469ed64ab9c1a6295ca6d04368175b",
+      "diagnosis": "cache_configuration_regression",
+      "correct": true,
+      "sequence": [
+        "check_status(frontend)",
+        "check_status(api)",
+        "check_status(database)",
+        "check_status(cache)",
+        "read_logs(frontend)",
+        "read_logs(api)",
+        "read_logs(cache)",
+        "check_recent_change(cache)"
+      ],
+      "evidence": [
+        "api_logs",
+        "api_status",
+        "cache_change",
+        "cache_logs",
+        "cache_status",
+        "database_status",
+        "frontend_logs",
+        "frontend_status"
+      ],
+      "completeness": 100.0,
+      "sufficient": true,
+      "missing": "none",
+      "tokens": [
+        4961,
+        924,
+        5885
+      ],
+      "latency": [
+        17.34,
+        15.738,
+        33.078,
+        56.977
+      ],
+      "calls": 8,
+      "blocked": 0
+    },
+    {
+      "scenario": "diag_008",
+      "budget": 8,
+      "repetition": 3,
+      "trace_id": "abc189c7ef7b27b34851d00c328eda85",
+      "diagnosis": "cache_configuration_regression",
+      "correct": true,
+      "sequence": [
+        "check_status(frontend)",
+        "check_status(api)",
+        "check_status(database)",
+        "check_status(cache)",
+        "read_logs(cache)",
+        "check_recent_change(cache)"
+      ],
+      "evidence": [
+        "api_status",
+        "cache_change",
+        "cache_logs",
+        "cache_status",
+        "database_status",
+        "frontend_status"
+      ],
+      "completeness": 66.7,
+      "sufficient": false,
+      "missing": "api_logs, frontend_logs",
+      "tokens": [
+        3472,
+        744,
+        4216
+      ],
+      "latency": [
+        20.177,
+        14.124,
+        34.301,
+        66.712
+      ],
+      "calls": 6,
+      "blocked": 0
+    },
+    {
+      "scenario": "diag_008",
+      "budget": 6,
+      "repetition": 1,
+      "trace_id": "d844fa49a87054cf06c58b1d5d584b17",
+      "diagnosis": "cache_configuration_regression",
+      "correct": true,
+      "sequence": [
+        "check_status(frontend)",
+        "check_status(api)",
+        "check_status(database)",
+        "check_status(cache)",
+        "read_logs(frontend)",
+        "read_logs(api)"
+      ],
+      "evidence": [
+        "api_logs",
+        "api_status",
+        "cache_status",
+        "database_status",
+        "frontend_logs",
+        "frontend_status"
+      ],
+      "completeness": 66.7,
+      "sufficient": false,
+      "missing": "cache_change, cache_logs",
+      "tokens": [
+        4179,
+        786,
+        4965
+      ],
+      "latency": [
+        22.238,
+        16.919,
+        39.157,
+        66.559
+      ],
+      "calls": 6,
+      "blocked": 1
+    }
+  ]
+}

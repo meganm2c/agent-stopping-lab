@@ -1,53 +1,83 @@
 ---
-title: Agent Tool-Budget Lab
+title: When Should an Agent Stop?
 emoji: 🔎
 colorFrom: blue
 colorTo: gray
-sdk: gradio
-sdk_version: 6.28.0
-python_version: "3.12"
-app_file: app.py
+sdk: static
+app_file: index.html
 pinned: false
 ---
 
 # Agent Tool-Budget Lab
 
-A diagnostic agent built with Microsoft Agent Framework investigates eight
-synthetic incidents under fixed tool budgets and an adaptive stopping controller.
-Arize Phoenix organizes the dataset, controlled experiments, deterministic
-evaluations, and model/tool traces used to identify evidence gaps and explain
-stopping failures. **Fixed-8 was the most reliable configuration tested; adaptive
-stopping used fewer tools but reduced accuracy and increased total inference cost.**
+## Cross-Harness Evaluation of Agent Stopping with OpenClaw, Microsoft Agent Framework, and Phoenix
 
-> **Key result — final repeated comparison, 24 runs per configuration**
->
-> **Fixed-8:** 100% accuracy · 5.79 average tool calls · 3,698 tokens/run · 4.85s/run
->
-> **Adaptive:** 79.2% accuracy · 3.92 average tool calls · 4,083 tokens/run · 7.20s/run
->
-> Adaptive used **32.4% fewer tool calls**, but **10.4% more total tokens** and
-> **48.7% more time**, including controller overhead.
+This project studies when tool-using agents should stop investigating. It began
+as a controlled Microsoft Agent Framework experiment and was later replicated on
+OpenClaw to test whether evidence-quality and trajectory-instability findings
+generalized across harnesses. Phoenix organized trace inspection, experiment
+comparison and deterministic evaluation.
 
-## Interactive Demo
+**Cross-harness conclusion: YES, PARTIALLY GENERALIZED**
 
-Explore fixed-budget and adaptive trajectories, STOP/CONTINUE decisions, and the
-final comparison in a Gradio app that replays verified experiment artifacts.
-Phoenix was used to capture, evaluate, and analyze the underlying traces and
-experiments. No OpenAI key is required.
+### OpenClaw follow-up
 
-Live demo: [Hugging Face Space — add after deployment]
+Two scenarios × budgets 6/8 × five repetitions: **20 accepted runs** from
+21 physical attempts, including one preserved user interruption and a fresh
+replacement. Exact model: `gpt-4.1-mini-2025-04-14`. Same tools, deterministic
+environment and evidence rubric; fixed budgets only, no adaptive OpenClaw study.
 
-Run locally:
+| Tool budget | Accuracy | Evidence completeness | Evidence sufficient | Premature stop | Avg calls |
+|---|---:|---:|---:|---:|---:|
+| 6 | 100% | 73.3% | 10% | 90% | 6.0 |
+| 8 | 90% | 96.7% | 90% | 10% | 7.0 |
 
-```bash
-python3.12 -m venv .demo-venv
-source .demo-venv/bin/activate
-python -m pip install -r requirements-demo.txt
-python app.py
+**At budget 6, accuracy was 100%, but only 10% of runs had sufficient evidence.**
+Trajectories/evidence sets varied in 4/4 groups; diagnoses were stable in 3/4.
+Ten of twenty runs were correct but evidence-insufficient. One budget-8 run was
+incorrect despite complete evidence; it remains in the accuracy denominator.
+Premature stop means incomplete required evidence, including forced budget stops.
+
+Correct-but-insufficient answers, stable outcomes with varying paths, and greater
+evidence retrieval at higher budgets were **REPRODUCED**. Execution-limit effects
+were **PARTIALLY REPRODUCED**. This is a robustness replication, not a causal
+framework comparison or a claim of latency superiority.
+
+OpenClaw required an explicit adapter-level tools-disabled finalizer. Effective
+prompts, stopping semantics and runtime overhead differ from Microsoft. The
+finalizer adds inference cost and can change the final label. See
+[OpenClaw results and trace examples](OPENCLAW_RESULTS.md),
+[cross-harness comparison](OPENCLAW_COMPARISON.md), and
+[offline tests / live reproduction](spikes/openclaw-followup/TESTING.md).
+
+## Static demo
+
+**When Should an Agent Stop? — Cross-Harness Evaluation with OpenClaw + Phoenix**
+
+The page leads with OpenClaw, compares the findings across harnesses, and replays
+three report-derived OpenClaw examples. The original Microsoft results, 88-run
+replay and Phoenix screenshots remain in a separate baseline section.
+
+No API key, Python backend, Gradio server or running Phoenix is required.
+Only same-origin static assets are loaded. A service worker enables offline reload
+after the first successful load on a supporting browser/host.
+
+```sh
+bash scripts/start_static_demo.sh
 ```
 
-The demo replays stored results; it needs no API key or running Phoenix server.
-See [demo setup, artifact mapping, and Hugging Face deployment](DEMO.md).
+Open `http://127.0.0.1:8000/`. See [static deployment instructions](STATIC_DEMO.md).
+GitHub contains the site; uploading to a Hugging Face Static Space is a separate
+step. The [original Gradio app](DEMO.md) remains available for the Microsoft replay.
+
+## Original Microsoft baseline
+
+The sections below describe the original Microsoft study and its separate phases.
+Its final repeated comparison (24 runs per strategy) found:
+
+- Fixed-8: 100% accuracy, 5.79 calls, 3,698 tokens/run, 4.85s/run.
+- Adaptive: 79.2% accuracy, 3.92 calls, 4,083 tokens/run, 7.20s/run.
+- Adaptive reduced calls by 32.4% but increased tokens by 10.4% and latency by 48.7%.
 
 ## Why this project
 
@@ -221,6 +251,10 @@ scripts/                   Run experiments and analyze/export results
 data/                      Scenarios, evidence rubric, documented corrections
 results/                   Reviewed outputs, trace exports, screenshots, checksums
 tests/                     Offline tests using scripted model responses
+spikes/openclaw-followup/   Validated OpenClaw adapter, offline tests and fixtures
+static/                    Static replay assets and curated OpenClaw report extract
+OPENCLAW_RESULTS.md        OpenClaw measurements and trace examples
+OPENCLAW_COMPARISON.md     Cross-harness interpretation and caveats
 PHOENIX_TRACE_FINDINGS.md   Fixed-budget trace analysis
 TRAJECTORY_VARIATION.md     Targeted repeatability study
 ADAPTIVE_HYPOTHESIS.md      Frozen policy and acceptance criteria
@@ -228,7 +262,7 @@ ADAPTIVE_RESULTS.md         Final comparison and failure analysis
 REPRODUCIBILITY.md          Detailed setup and measurement controls
 ```
 
-## Reproducing the project
+## Reproducing the original Microsoft study
 
 **Review the included results without rerunning models.** For intentional live
 reproduction, use a separate checkout: Phase 3 writes to the archived result paths.
@@ -286,6 +320,10 @@ historical IDs and trace URLs are not portable between Phoenix servers.
 [Phoenix setup](PHOENIX.md) includes analysis commands.
 
 ## Results and reports
+
+- [OpenClaw results](OPENCLAW_RESULTS.md) — 20-run follow-up and curated trace examples
+- [Cross-harness comparison](OPENCLAW_COMPARISON.md) — controls, differences and classifications
+- [OpenClaw tests and reproduction](spikes/openclaw-followup/TESTING.md) — offline fixtures and separate live setup
 
 - [Original pilot](PILOT_REPORT.md) — historical rubric and initial measurements
 - [Phoenix setup](PHOENIX.md) and [trace findings](PHOENIX_TRACE_FINDINGS.md)
