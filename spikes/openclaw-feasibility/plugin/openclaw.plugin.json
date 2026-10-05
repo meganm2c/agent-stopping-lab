@@ -1,0 +1,1 @@
+{"id":"diagnostic-spike","name":"Diagnostic feasibility spike","contracts":{"tools":["check_status","read_logs","check_recent_change"]},"activation":{"onStartup":true},"configSchema":{"type":"object","additionalProperties":false,"properties":{}}}

@@ -1,0 +1,8 @@
+{
+  "name": "openclaw-feasibility",
+  "private": true,
+  "type": "module",
+  "dependencies": {
+    "openclaw": "2026.9.7"
+  }
+}

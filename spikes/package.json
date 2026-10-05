@@ -1,0 +1,7 @@
+{
+  "name": "agent-stopping-lab-offline-tests",
+  "private": true,
+  "engines": {"node": ">=24.16.0 <25 || >=26.1.0"},
+  "scripts": {"test": "node --test openclaw-feasibility/contract.test.mjs"},
+  "devDependencies": {"undici": "8.10.2"}
+}

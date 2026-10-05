@@ -1,0 +1,8 @@
+node_modules/
+.local/
+outputs/
+.runtime/
+__pycache__/
+
+# Raw smoke evidence stays local; tests use reviewed synthetic fixtures.
+evidence/

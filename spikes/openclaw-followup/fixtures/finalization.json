@@ -1,0 +1,18 @@
+{
+  "fixture_note": "Offline synthetic completion metadata, not a provider response or measured run. Messages are built in memory from the compact trace fixture.",
+  "diagnosis": {
+    "predicted_root_cause": "api_configuration_issue",
+    "explanation": "Offline fixture diagnosis",
+    "evidence_used": [
+      "api_status"
+    ]
+  },
+  "usage": {
+    "inputTokens": 8,
+    "outputTokens": 2,
+    "totalTokens": 10
+  },
+  "start_ms": 2100,
+  "request_ms": 2200,
+  "end_ms": 3000
+}

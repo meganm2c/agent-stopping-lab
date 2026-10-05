@@ -1,0 +1,1 @@
+{"id":"diagnostic-finalizer","name":"Diagnostic finalization adapter","activation":{"onStartup":true},"cliCommands":[{"name":"diagnostic-finalize","description":"Run one isolated diagnostic finalizer","hasSubcommands":false}],"configSchema":{"type":"object","additionalProperties":false,"properties":{}}}
